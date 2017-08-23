@@ -15,7 +15,11 @@ public class Autor {
     public Autor(int bid, String bnome){
         this.id=bid;
         this.nome=bnome;
-}
+    }
+    
+    public Autor(){
+        
+    }
     public int getId(){
         return this.id;
     }

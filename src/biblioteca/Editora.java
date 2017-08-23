@@ -15,7 +15,11 @@ public class Editora {
     public Editora(int bid, String bnome){
         this.id=bid;
         this.nome=bnome;
-}
+    }
+    public Editora(){
+        
+    }
+    
     public int getId(){
         return this.id;
     }
