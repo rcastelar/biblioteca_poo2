@@ -52,14 +52,14 @@ public class Livro {
     public void setId(int bid){
         this.id=bid;
     }
-    public void setTitulo(String bnome){
-        this.titulo=bnome;
+    public void setTitulo(String btitulo){
+        this.titulo=btitulo;
     }
     public void setCodigo(int bcodigo){
         this.codigo=bcodigo;
     }
-    public void setStatus(int bid){
-        this.status=bid;
+    public void setStatus(int bstatus){
+        this.status=bstatus;
     }
     public void setEditora_id(int beditora_id){
         this.editora_id=beditora_id;
