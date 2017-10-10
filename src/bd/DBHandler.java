@@ -1,7 +1,6 @@
 package bd;
 
 import java.sql.*;
-import bd.DBCreator;
 
 public class DBHandler {
     public static Connection con;
@@ -37,7 +36,7 @@ public class DBHandler {
 
     public void getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
-        con = DriverManager.getConnection("jdbc:sqlite:SQLiteTest1.db");
+        con = DriverManager.getConnection("jdbc:sqlite:Biblioteca.db");
         initialise();
     }
 
