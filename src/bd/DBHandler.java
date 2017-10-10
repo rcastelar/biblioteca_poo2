@@ -38,7 +38,7 @@ public class DBHandler {
     }
 
     private void initialise() {
-        int tablenumber = 2; //nmero de tabelas no banco. Utilizado para checagem de integridade e criacao do banco
+        int tablenumber = 2; //numero de tabelas no banco. Utilizado para checagem de integridade e criacao do banco
         if (!hasData) {
             hasData = true;
             String checkdb = ("SELECT COUNT(*) FROM sqlite_master WHERE type='table'");

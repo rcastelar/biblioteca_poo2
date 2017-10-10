@@ -11,23 +11,54 @@ package biblioteca;
 public class Livro {
     private int id;
     private String titulo;
-    private int codigo;
-    private int status;
-    private int editora_id;
-    private int sub_divisao_id;
-    private int autor_id;
+    private String posicao;
+    private String autor;
+    private String genero;
+    private String editora;
 
-    public Livro(int bid, String btitulo, int bcodigo, int bstatus, int beditora_id, int bsub_divisao_id, int bautor_id) {
+    public Livro(int bid, String btitulo, String bposicao, String bautor, String bgenero, String beditora) {
         this.id = bid;
         this.titulo = btitulo;
-        this.codigo = bcodigo;
-        this.status = bstatus;
-        this.editora_id = beditora_id;
-        this.sub_divisao_id = bsub_divisao_id;
-        this.autor_id = bautor_id;
+        this.posicao = bposicao;
+        this.autor = bautor;
+        this.genero = bgenero;
+        this.editora = beditora;
+
     }
 
     public Livro() {
+    }
+
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 
     public int getId() {
@@ -38,51 +69,10 @@ public class Livro {
         return this.titulo;
     }
 
-    public int getCodigo() {
-        return this.codigo;
-    }
-
-    public int getStatus() {
-        return this.status;
-    }
-
-    public int getEditora_id() {
-        return this.editora_id;
-    }
-
-    public int getSub_divisao_id() {
-        return this.sub_divisao_id;
-    }
-
-    public int getautor_id() {
-        return this.autor_id;
-    }
 
     public void setId(int bid) {
         this.id = bid;
     }
 
-    public void setTitulo(String btitulo) {
-        this.titulo = btitulo;
-    }
 
-    public void setCodigo(int bcodigo) {
-        this.codigo = bcodigo;
-    }
-
-    public void setStatus(int bstatus) {
-        this.status = bstatus;
-    }
-
-    public void setEditora_id(int beditora_id) {
-        this.editora_id = beditora_id;
-    }
-
-    public void setSub_divisao_id(int bsub_divisao_id) {
-        this.sub_divisao_id = bsub_divisao_id;
-    }
-
-    public void setAutor_id(int bautor_id) {
-        this.autor_id = bautor_id;
-    }
 }
