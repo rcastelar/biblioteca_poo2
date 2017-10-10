@@ -3,7 +3,7 @@ package bd;
 import java.sql.*;
 
 public class DBHandler {
-    public static Connection con;
+    private static Connection con;
     private static boolean hasData = false;
 
     public ResultSet querry(String sql) throws SQLException, ClassNotFoundException {
@@ -11,8 +11,7 @@ public class DBHandler {
             getConnection();
         }
         Statement state = con.createStatement();
-        ResultSet res = state.executeQuery(sql);
-        return res;
+        return state.executeQuery(sql);
     }
 
     public boolean execute(String sql) throws SQLException, ClassNotFoundException {
@@ -20,8 +19,7 @@ public class DBHandler {
             getConnection();
         }
         Statement state = con.createStatement();
-        boolean res = state.execute(sql);
-        return res;
+        return state.execute(sql);
     }
 
     public int update(String sql) throws SQLException, ClassNotFoundException {
@@ -29,8 +27,7 @@ public class DBHandler {
             getConnection();
         }
         Statement state = con.createStatement();
-        int res = state.executeUpdate(sql);
-        return res;
+        return state.executeUpdate(sql);
     }
 
 
@@ -52,7 +49,8 @@ public class DBHandler {
                 e.printStackTrace();
             }
             try {
-                ResultSet tnumber = stest.executeQuery(checkdb);
+                ResultSet tnumber;
+                tnumber = stest.executeQuery(checkdb);
                 if (tnumber.getInt(1) != tablenumber) {
                     createDb();
                 }
