@@ -1,4 +1,4 @@
-package Biblioteca;
+package biblioteca;
 
 import bd.DBHandler;
 import javafx.application.Application;
@@ -6,13 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.sql.*;
+
+import java.sql.SQLException;
 
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("biblioteca.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
@@ -21,15 +22,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-         DBHandler sql_example = new DBHandler();
+        DBHandler sql_example = new DBHandler();
         try {
             sql_example.querry("SELECT * FROM sqlite_master");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
 
 
         launch(args);

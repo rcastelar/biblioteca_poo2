@@ -6,7 +6,6 @@
 package biblioteca;
 
 /**
- *
  * @author f32cpd02
  */
 public class Local {
@@ -14,36 +13,46 @@ public class Local {
     private String nome;
     private String descricao;
     private String posicao;
-    public Local(int bid, String bnome, String bdescricao, String bposicao){
-        this.id=bid;
-        this.nome=bnome;
-        this.descricao= bdescricao;
-        this.posicao=bposicao;
+
+    public Local(int bid, String bnome, String bdescricao, String bposicao) {
+        this.id = bid;
+        this.nome = bnome;
+        this.descricao = bdescricao;
+        this.posicao = bposicao;
     }
-    public Local(){
+
+    public Local() {
     }
-        public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getNome(){
+
+    public String getNome() {
         return this.nome;
     }
-    public String getDescricao(){
+
+    public String getDescricao() {
         return this.descricao;
     }
-    public String getPosicao(){
+
+    public String getPosicao() {
         return this.posicao;
     }
-    public void setId(int bid){
-        this.id=bid;
+
+    public void setId(int bid) {
+        this.id = bid;
     }
-    public void setNome(String bnome){
-        this.nome=bnome;
+
+    public void setNome(String bnome) {
+        this.nome = bnome;
     }
-    public void setDescricao(String bdescricao){
-        this.descricao=bdescricao;
+
+    public void setDescricao(String bdescricao) {
+        this.descricao = bdescricao;
     }
-    public void setPosicao(String bposicao){
+
+    public void setPosicao(String bposicao) {
         this.posicao = bposicao;
     }
 }

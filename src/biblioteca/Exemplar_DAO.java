@@ -6,9 +6,8 @@
 package biblioteca;
 
 /**
- *
  * @author f32cpd01
  */
 public class Exemplar_DAO {
-    
+
 }

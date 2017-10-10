@@ -6,9 +6,8 @@
 package biblioteca;
 
 /**
- *
  * @author f32cpd02
  */
 public class Genero_DAO {
-    
+
 }

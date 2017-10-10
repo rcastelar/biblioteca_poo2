@@ -6,36 +6,43 @@
 package biblioteca;
 
 /**
- *
  * @author f32cpd02
  */
 public class Genero {
     private int id;
     private String nome;
     private String descricao;
-    public Genero(int bid, String bnome, String bdescricao){
-        this.id=bid;
-        this.nome=bnome;
-        this.descricao= bdescricao;
+
+    public Genero(int bid, String bnome, String bdescricao) {
+        this.id = bid;
+        this.nome = bnome;
+        this.descricao = bdescricao;
     }
-    public Genero(){
+
+    public Genero() {
     }
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getNome(){
+
+    public String getNome() {
         return this.nome;
     }
-    public String getDescricao(){
+
+    public String getDescricao() {
         return this.descricao;
     }
-    public void setId(int bid){
-        this.id=bid;
+
+    public void setId(int bid) {
+        this.id = bid;
     }
-    public void setNome(String bnome){
-        this.nome=bnome;
+
+    public void setNome(String bnome) {
+        this.nome = bnome;
     }
-    public void setDescricao(String bdescricao){
-        this.descricao=bdescricao;
+
+    public void setDescricao(String bdescricao) {
+        this.descricao = bdescricao;
     }
 }

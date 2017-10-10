@@ -33,7 +33,7 @@ public class DBHandler {
 
     public void getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
-        con = DriverManager.getConnection("jdbc:sqlite:Biblioteca.db");
+        con = DriverManager.getConnection("jdbc:sqlite:biblioteca.db");
         initialise();
     }
 

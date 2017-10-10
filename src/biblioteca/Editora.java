@@ -6,30 +6,34 @@
 package biblioteca;
 
 /**
- *
  * @author f32cpd02
  */
 public class Editora {
-      private int id;
+    private int id;
     private String nome;
-    public Editora(int bid, String bnome){
-        this.id=bid;
-        this.nome=bnome;
+
+    public Editora(int bid, String bnome) {
+        this.id = bid;
+        this.nome = bnome;
     }
-    public Editora(){
-        
+
+    public Editora() {
+
     }
-    
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getNome(){
+
+    public String getNome() {
         return this.nome;
     }
-    public void setId(int bid){
-        this.id=bid;
+
+    public void setId(int bid) {
+        this.id = bid;
     }
-    public void setNome(String bnome){
-        this.nome=bnome;
+
+    public void setNome(String bnome) {
+        this.nome = bnome;
     }
 }
