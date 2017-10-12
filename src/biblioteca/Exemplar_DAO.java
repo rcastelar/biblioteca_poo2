@@ -81,7 +81,7 @@ public class Exemplar_DAO {
         catch(SQLException e){
             e.printStackTrace();
         }
-        
+
         return LstExemp;
     }
 
