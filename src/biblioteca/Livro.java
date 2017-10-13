@@ -23,7 +23,6 @@ public class Livro {
         this.autor = bautor;
         this.genero = bgenero;
         this.editora = beditora;
-
     }
 
     public Livro() {
@@ -32,7 +31,6 @@ public class Livro {
     public String getPosicao() {
         return posicao;
     }
-
     public void setPosicao(String posicao) {
         this.posicao = posicao;
     }
@@ -40,7 +38,6 @@ public class Livro {
     public String getAutor() {
         return autor;
     }
-
     public void setAutor(String autor) {
         this.autor = autor;
     }
@@ -48,7 +45,6 @@ public class Livro {
     public String getGenero() {
         return genero;
     }
-
     public void setGenero(String genero) {
         this.genero = genero;
     }
@@ -56,7 +52,6 @@ public class Livro {
     public String getEditora() {
         return editora;
     }
-
     public void setEditora(String editora) {
         this.editora = editora;
     }
@@ -64,15 +59,12 @@ public class Livro {
     public int getId() {
         return this.id;
     }
-
-    public String getTitulo() {
-        return this.titulo;
-    }
-
-
     public void setId(int bid) {
         this.id = bid;
     }
 
-
+    public String getTitulo() {
+        return this.titulo;
+    }
+    public void setTitulo(String btitulo) { this.titulo = btitulo; }
 }

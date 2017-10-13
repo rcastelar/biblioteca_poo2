@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:controller="Controllers.ControllerEditLivros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerEditLivros">
     <children>
         <GridPane prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
             <columnConstraints>
@@ -100,7 +100,7 @@
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <TextField prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1">
+                        <TextField id="FieldLivro" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" text="{!}">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
@@ -120,17 +120,17 @@
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <TextField prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4">
+                        <TextField id="FieldAutor" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <TextField prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField id="FieldGenero" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <TextField prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <TextField id="FieldEditora" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>

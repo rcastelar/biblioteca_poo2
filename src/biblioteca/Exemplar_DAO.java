@@ -83,4 +83,31 @@ public class Exemplar_DAO {
         return LstExemp;
     }
 
+    public void InsertExemplar (Exemplar Ex){
+        try{
+            DBHandler Exemplares = new DBHandler();
+            Exemplares.querry("INSERT INTO exemplar(id,id_exemplar,status) VALUES ('"+Ex.getLivro_id()+"','"+Ex.getCodigo_exemplar()+"','"+Ex.getStatus()+"')");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void DeleteExemplar(Exemplar Ex){
+        try {
+            DBHandler Exemplares = new DBHandler();
+            Exemplares.querry("DELETE FROM exemplar WHERE id_exemplar ='"+Ex.getCodigo_exemplar()+"'");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void UpdateExemplar(Exemplar Ex){
+        try{
+            DBHandler Exemplares = new DBHandler();
+            Exemplares.querry("UPDATE exemplar SET id='"+Ex.getLivro_id()+"',status='"+Ex.getStatus()+"' WHERE id_exemplar='"+Ex.getCodigo_exemplar()+"'");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

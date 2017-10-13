@@ -7,7 +7,6 @@
 package biblioteca;
 
 import bd.DBHandler;
-
 import java.sql.*;
 import java.util.*;
 
@@ -18,7 +17,7 @@ public class Livro_DAO {
 
     private String IdLivro;
 
-    Livro_DAO(String IdLivro){
+    public Livro_DAO(String IdLivro){
         this.IdLivro = IdLivro;
     }
 
@@ -52,6 +51,37 @@ public class Livro_DAO {
             e.printStackTrace();
         }
         return LivroReturn;
+    }
+
+    public void InsertLivro(Livro Lv){
+        try {
+            DBHandler Livros = new DBHandler();
+            Livros.querry("INSERT INTO livro(id,titulo,posicao,autor,genero,editora) VALUES ('"+Lv.getId()+"','"
+                    +Lv.getTitulo()+"','"+Lv.getPosicao()+"','"+Lv.getAutor()+"','"+Lv.getGenero()+"','"+Lv.getEditora()+"')");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void DeleteLivro(Livro Lv){
+        try{
+            DBHandler Livros = new DBHandler();
+            Livros.querry("DELETE FROM livro WHERE id='"+Lv.getId()+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void UpdateLivro(Livro Lv){
+        try{
+            DBHandler Livros = new DBHandler();
+            Livros.querry("UPDATE livro SET titulo='"+Lv.getTitulo()+"',posicao'"+Lv.getPosicao()+
+                    "',autor='"+Lv.getAutor()+"',genero='"+Lv.getGenero()+"',editora='"+Lv.getEditora()+"' WHERE id='"+Lv.getId()+"'");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
 
