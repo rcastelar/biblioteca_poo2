@@ -62,7 +62,7 @@ public class DBHandler {
 
     private void createDb() {
         String livro = ("CREATE TABLE IF NOT EXISTS livro(\n" +
-                "id integer PRIMARY KEY,\n" +
+                "id integer PRIMARY KEY AUTOINCREMENT,\n" +
                 "titulo varchar(60),\n" +
                 "posicao varchar(60),\n" +
                 "autor varchar(60),\n" +
@@ -70,7 +70,7 @@ public class DBHandler {
                 "editora varchar(60))\n");
 
         String exemplar = ("CREATE TABLE IF NOT EXISTS exemplar(\n" +
-                "id integer PRIMARY KEY,\n" +
+                "id integer PRIMARY KEY AUTOINCREMENT,\n" +
                 "id_exemplar integer,\n" +
                 "status integer)\n");
 
