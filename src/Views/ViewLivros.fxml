@@ -69,12 +69,14 @@
                 </Button>
             </children>
         </VBox>
-        <TableView layoutX="208.0" layoutY="71.0" prefHeight="697.0" prefWidth="1166.0">
+        <TableView fx:id="TableLivros" layoutX="208.0" layoutY="71.0" prefHeight="697.0" prefWidth="1166.0">
             <columns>
                 <TableColumn minWidth="50.0" prefWidth="280.0" text="Livro" />
-                <TableColumn minWidth="50.0" prefWidth="318.0" text="Nome" />
-                <TableColumn minWidth="50.0" prefWidth="302.0" text="Telefone" />
-                <TableColumn minWidth="50.0" prefWidth="265.0" text="Previsão" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+                <TableColumn minWidth="50.0" prefWidth="222.0" text="Nome" />
+                <TableColumn minWidth="50.0" prefWidth="257.0" text="Telefone" />
+                <TableColumn minWidth="50.0" prefWidth="132.0" text="Previsão" />
+            <TableColumn prefWidth="199.0" text="Column Y" />
             </columns>
             <cursor>
                 <Cursor fx:constant="DEFAULT" />
