@@ -86,7 +86,7 @@ public class Exemplar_DAO {
     public void InsertExemplar (Exemplar Ex){
         try{
             DBHandler Exemplares = new DBHandler();
-            Exemplares.querry("INSERT INTO exemplar(id,id_exemplar,status) VALUES ('"+Ex.getLivro_id()+"','"+Ex.getCodigo_exemplar()+"','"+Ex.getStatus()+"')");
+            Exemplares.querry("INSERT INTO exemplar(id_exemplar,status) VALUES ('"+Ex.getLivro_id()+"','"+Ex.getStatus()+"')");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

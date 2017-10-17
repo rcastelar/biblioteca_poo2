@@ -56,7 +56,7 @@ public class Livro_DAO {
     public void InsertLivro(Livro Lv){
         try {
             DBHandler Livros = new DBHandler();
-            Livros.querry("INSERT INTO livro(id,titulo,posicao,autor,genero,editora) VALUES ('"+Lv.getId()+"','"
+            Livros.querry("INSERT INTO livro(titulo,posicao,autor,genero,editora) VALUES ('"
                     +Lv.getTitulo()+"','"+Lv.getPosicao()+"','"+Lv.getAutor()+"','"+Lv.getGenero()+"','"+Lv.getEditora()+"')");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

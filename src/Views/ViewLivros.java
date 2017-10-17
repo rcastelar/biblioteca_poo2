@@ -23,6 +23,10 @@ public class ViewLivros implements Initializable, ControlledScreen {
 
     @FXML
     private void goToViewEditlivros(ActionEvent event) {
-        myscreen.setScreen("ViewEditLivros");
+    myscreen.setScreen("ViewEditLivros");
+    }
+    @FXML
+    private void goToViewNewlivro(ActionEvent event) {
+        myscreen.setScreen("ViewNewLivro");
     }
 }

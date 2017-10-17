@@ -20,6 +20,7 @@ public class Main extends Application {
         Screens_controller mainContainer = new Screens_controller();
         mainContainer.loadScreen("ViewLivros", "ViewLivros.fxml");
         mainContainer.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
+        mainContainer.loadScreen("ViewNewLivro", "ViewNewLivro.fxml");
         mainContainer.setScreen("ViewLivros");
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

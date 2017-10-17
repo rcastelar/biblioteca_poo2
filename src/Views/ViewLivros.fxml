@@ -26,14 +26,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#goToViewEditlivros" prefWidth="68.0" text="Editar livro" GridPane.columnIndex="3">
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToViewEditlivros" prefHeight="25.0" prefWidth="94.0" text="Detalhes do livro" GridPane.columnIndex="3">
                     <effect>
 
                     </effect>
                     <cursor>
                         <Cursor fx:constant="S_RESIZE" />
                     </cursor></Button>
-                <Button mnemonicParsing="false" text="Novo livro" underline="true" GridPane.columnIndex="2">
+                <Button mnemonicParsing="false" onAction="#goToViewNewlivro" text="Novo livro" GridPane.columnIndex="2">
                     <effect>
 
                     </effect></Button>
