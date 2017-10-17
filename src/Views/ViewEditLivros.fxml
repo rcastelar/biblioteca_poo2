@@ -7,8 +7,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.effect.ImageInput?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -16,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerEditLivros">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ViewEditLivros">
     <children>
         <GridPane prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
             <columnConstraints>
@@ -35,15 +33,12 @@
                         <Font name="Segoe UI" size="35.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" text="Button" underline="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="71.0" text="Excluir exemplar" underline="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <effect>
-                        <ImageInput>
-                            <source>
-                                <Image url="" />
-                            </source>
-                        </ImageInput>
+
                     </effect>
                 </Button>
+            <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="18.0" prefWidth="66.0" text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
@@ -100,7 +95,7 @@
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <TextField id="FieldLivro" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" text="{!}">
+                        <TextField id="FieldLivro" prefHeight="47.0" prefWidth="430.0" text="{!}" GridPane.columnIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
@@ -163,11 +158,7 @@
                         </Label>
                         <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="42.0" text="Button" GridPane.columnIndex="4">
                             <effect>
-                                <ImageInput>
-                                    <source>
-                                        <Image url="" />
-                                    </source>
-                                </ImageInput>
+
                             </effect>
                             <cursor>
                                 <Cursor fx:constant="S_RESIZE" />
@@ -175,20 +166,12 @@
                         </Button>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Button" underline="true" GridPane.columnIndex="3">
                             <effect>
-                                <ImageInput>
-                                    <source>
-                                        <Image url="" />
-                                    </source>
-                                </ImageInput>
+
                             </effect>
                         </Button>
                         <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" text="Button" underline="true" GridPane.columnIndex="2">
                             <effect>
-                                <ImageInput>
-                                    <source>
-                                        <Image url="" />
-                                    </source>
-                                </ImageInput>
+
                             </effect>
                         </Button>
                     </children>
