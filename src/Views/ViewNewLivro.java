@@ -8,7 +8,7 @@ package Views;
         import java.util.ResourceBundle;
 
 
-public class ViewNewLivro implements Initializable, ControlledScreen{
+public class ViewNewLivro implements Initializable, ControlledScreen {
     Screens_controller myController;
 
     @Override
@@ -25,10 +25,20 @@ public class ViewNewLivro implements Initializable, ControlledScreen{
         myController.setScreen("ViewLivros");
         myController.unloadScreen("ViewNewLivro");
     }
+
     @FXML
-    private void newBook(ActionEvent event, String titulo, String posicao, String autor, String genero, String editora){
-        Livro_DAO myBook = new Livro_DAO();
-        myBook.InsertLivro(titulo, posicao, autor, genero, editora);
-    }
+    private void newBook(ActionEvent event2) {
+        String titulo="hue";
+        //Livro_DAO myBook = new Livro_DAO();
+        //try {
+        //    titulo = event.getClass().getField("idFieldAutor").getName();
+            System.out.println(titulo);
+
+        //} catch (NoSuchFieldException e) {
+        //    e.printStackTrace();
+        }
+        // myBook.InsertLivro(titulo, posicao, autor, genero, editora);
+
+    //}
 }
 
