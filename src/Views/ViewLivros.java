@@ -15,6 +15,7 @@ public class ViewLivros implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
     }
 
     public void setScreenParent(Screens_controller screenParent) {
@@ -23,10 +24,14 @@ public class ViewLivros implements Initializable, ControlledScreen {
 
     @FXML
     private void goToViewEditlivros(ActionEvent event) {
-    myscreen.setScreen("ViewEditLivros");
+        myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
+        myscreen.setScreen("ViewEditLivros");
+
     }
     @FXML
     private void goToViewNewlivro(ActionEvent event) {
+        myscreen.loadScreen("ViewNewLivro", "ViewNewLivro.fxml");
         myscreen.setScreen("ViewNewLivro");
+        myscreen.unloadScreen("ViewLivros");
     }
 }

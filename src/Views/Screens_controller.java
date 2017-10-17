@@ -18,7 +18,7 @@ import java.security.Key;
 import java.util.HashMap;
 
 public class Screens_controller extends StackPane{
-    private HashMap<String, Node> screens = new HashMap<>();
+    private static HashMap<String, Node> screens = new HashMap<>();
 
     public Screens_controller(){
         super();

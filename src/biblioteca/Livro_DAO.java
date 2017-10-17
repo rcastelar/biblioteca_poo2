@@ -15,10 +15,12 @@ import java.util.*;
  */
 public class Livro_DAO {
 
-    private String IdLivro;
 
-    public Livro_DAO(String IdLivro){
-        this.IdLivro = IdLivro;
+
+
+
+
+    public Livro_DAO(){
     }
 
     public List<Livro> GetAllLivro() throws SQLException, ClassNotFoundException {
@@ -39,9 +41,10 @@ public class Livro_DAO {
         return LstLivros;
     }
 
-    public Livro GetLivro() throws SQLException, ClassNotFoundException {
+    public Livro GetLivro(int idLivro) throws SQLException, ClassNotFoundException {
+
         DBHandler Livros = new DBHandler();
-        ResultSet rs = Livros.querry("SELECT * FROM livro WHERE id="+this.IdLivro);
+        ResultSet rs = Livros.querry("SELECT * FROM livro WHERE id="+idLivro);
         Livro LivroReturn = null;
         try{
              LivroReturn = new Livro(rs.getInt("id"),rs.getString("titulo"),rs.getString("posicao"),
@@ -53,11 +56,11 @@ public class Livro_DAO {
         return LivroReturn;
     }
 
-    public void InsertLivro(Livro Lv){
+    public void InsertLivro(String titulo, String autor, String posicao, String genero, String editora){
         try {
             DBHandler Livros = new DBHandler();
             Livros.querry("INSERT INTO livro(titulo,posicao,autor,genero,editora) VALUES ('"
-                    +Lv.getTitulo()+"','"+Lv.getPosicao()+"','"+Lv.getAutor()+"','"+Lv.getGenero()+"','"+Lv.getEditora()+"')");
+                    +titulo+"','"+autor+"','"+posicao+"','"+genero+"','"+editora+"')");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
