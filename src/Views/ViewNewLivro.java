@@ -23,7 +23,7 @@ public class ViewNewLivro implements Initializable, ControlledScreen{
     private void goToViewLivros(ActionEvent event) {
 
         myController.setScreen("ViewLivros");
-        myController.unloadScreen("VewNewLivro");
+        myController.unloadScreen("ViewNewLivro");
     }
     @FXML
     private void newBook(ActionEvent event, String titulo, String posicao, String autor, String genero, String editora){

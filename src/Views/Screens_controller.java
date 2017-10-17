@@ -18,11 +18,15 @@ import java.security.Key;
 import java.util.HashMap;
 
 public class Screens_controller extends StackPane{
-    private static HashMap<String, Node> screens = new HashMap<>();
+
+    private static final HashMap<String, Node> screens= new HashMap<>();
 
     public Screens_controller(){
         super();
     }
+
+
+
 
     public void addScreen(String name, Node screen){
         screens.put(name, screen);
@@ -81,12 +85,9 @@ public class Screens_controller extends StackPane{
     }
 
     public boolean unloadScreen(String name){
-        if (screens.remove(name) == null) {
-            System.out.println("Screen didn't exist");
+            screens.remove(name);
             return false;
-        } else {
-            return true;
-        }
+
     }
 
 
