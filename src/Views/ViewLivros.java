@@ -32,6 +32,6 @@ public class ViewLivros implements Initializable, ControlledScreen {
     private void goToViewNewlivro(ActionEvent event) {
         myscreen.loadScreen("ViewNewLivro", "ViewNewLivro.fxml");
         myscreen.setScreen("ViewNewLivro");
-        myscreen.unloadScreen("ViewLivros");
+
     }
 }

@@ -22,7 +22,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen{
         @FXML
         private void goToViewLivros(ActionEvent event) {
 
-            myController.loadScreen("ViewLivros", "ViewLivros.fxml");
+
             myController.setScreen("ViewLivros");
             myController.unloadScreen("VewEditLivros");
         }
