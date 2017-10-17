@@ -59,7 +59,7 @@ public class Livro_DAO {
     public void InsertLivro(String titulo, String autor, String posicao, String genero, String editora){
         try {
             DBHandler Livros = new DBHandler();
-            Livros.querry("INSERT INTO livro(titulo,posicao,autor,genero,editora) VALUES ('"
+            Livros.execute("INSERT INTO livro(titulo,posicao,autor,genero,editora) VALUES ('"
                     +titulo+"','"+autor+"','"+posicao+"','"+genero+"','"+editora+"')");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
