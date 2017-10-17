@@ -74,7 +74,6 @@ public class DBHandler {
                 "id_exemplar integer,\n" +
                 "status integer)\n");
 
-
         try {
             execute(livro);
         } catch (SQLException e) {
@@ -82,6 +81,7 @@ public class DBHandler {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         try {
             execute(exemplar);
         } catch (SQLException e) {

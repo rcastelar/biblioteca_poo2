@@ -25,23 +25,20 @@ public class Exemplar {
     public int getLivro_id() {
         return this.livro_id;
     }
+    public void setLivro_id(int blivro_id) {
+        this.livro_id = blivro_id;
+    }
 
     public int getCodigo_exemplar() {
         return this.codigo_exemplar;
+    }
+    public void setcodigo_exemplar(int bcodigo_exemplar) {
+        this.codigo_exemplar = bcodigo_exemplar;
     }
 
     public int getStatus() {
         return this.status;
     }
-
-    public void setLivro_id(int blivro_id) {
-        this.livro_id = blivro_id;
-    }
-
-    public void setcodigo_exemplar(int bcodigo_exemplar) {
-        this.codigo_exemplar = bcodigo_exemplar;
-    }
-
     public void setStatus(int bstatus) {
         this.status = bstatus;
     }
