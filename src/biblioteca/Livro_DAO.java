@@ -83,8 +83,10 @@ public class Livro_DAO {
     public void UpdateLivro(Livro Lv){
         try{
             DBHandler Livros = new DBHandler();
-            Livros.querry("UPDATE livro SET titulo='"+Lv.getTitulo()+"',posicao'"+Lv.getPosicao()+
-                    "',autor='"+Lv.getAutor()+"',genero='"+Lv.getGenero()+"',editora='"+Lv.getEditora()+"' WHERE id='"+Lv.getId()+"'");
+            System.out.println("UPDATE livro SET titulo='"+Lv.getTitulo()+"',posicao'"+Lv.getPosicao()+
+                    "',autor='"+Lv.getAutor()+"',genero='"+Lv.getGenero()+"',editora='"+Lv.getEditora()+"' WHERE id="+Lv.getId()+";");
+            Livros.execute("UPDATE livro SET titulo='"+Lv.getTitulo()+"',posicao='"+Lv.getPosicao()+
+                    "',autor='"+Lv.getAutor()+"',genero='"+Lv.getGenero()+"',editora='"+Lv.getEditora()+"' WHERE id="+Lv.getId()+";");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

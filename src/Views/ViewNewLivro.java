@@ -30,7 +30,7 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
 
     @FXML
     private void goToViewLivros(ActionEvent event) {
-
+        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
         myController.setScreen("ViewLivros");
         myController.unloadScreen("ViewNewLivro");
     }
@@ -39,10 +39,16 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
     private void newBook(ActionEvent event) {
         Livro_DAO myBook = new Livro_DAO();
         myBook.InsertLivro(FieldTitulo.getText() ,FieldAutor.getText(), FieldLocation.getText(), FieldGenero.getText(), FieldEditora.getText());
-        String titulo;
-    titulo =   FieldAutor.getText();
-
-         System.out.println(titulo);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("iLibrary");
+        alert.setHeaderText(null);
+        alert.setContentText("Livro salvo.");
+        FieldTitulo.setText("");
+        FieldAutor.setText("");
+        FieldLocation.setText("");
+        FieldGenero.setText("");
+        FieldEditora.setText("");
+        alert.showAndWait();
 //
     }
 }
