@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ViewEditLivros">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ViewEditLivros">
     <children>
         <GridPane layoutX="1.0" prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
             <columnConstraints>
@@ -140,11 +140,12 @@
                      </font></TextField>
                     </children>
                 </GridPane>
-                <TableView prefHeight="399.0" prefWidth="1096.0" GridPane.rowIndex="2">
+                <TableView fx:id="TableExemplares" prefHeight="399.0" prefWidth="1096.0" GridPane.rowIndex="2">
                     <columns>
-                        <TableColumn prefWidth="207.0" text="Código Exemplar" />
-                        <TableColumn prefWidth="561.0" text="Nome " />
-                        <TableColumn prefWidth="327.0" text="Status" />
+                        <TableColumn fx:id="ExemplId" prefWidth="207.0" text="Id do exemplar" />
+                        <TableColumn fx:id="Cod_Exemplar" prefWidth="207.0" text="Código Exemplar" />
+                        <TableColumn fx:id="StatusId" prefWidth="561.0" text="Status " />
+                        <TableColumn fx:id="LivroId" prefWidth="327.0" text="Codigo livro" visible="false" />
                     </columns>
                 </TableView>
                 <GridPane GridPane.rowIndex="1">
@@ -170,7 +171,7 @@
 
                             </effect>
                         </Button>
-                  <Button mnemonicParsing="false" text="Adicionar Exemplar" GridPane.columnIndex="4" />
+                  <Button fx:id="BtnAddExemplar" mnemonicParsing="false" onAction="#newExemplar" text="Adicionar Exemplar" GridPane.columnIndex="4" />
                     </children>
                 </GridPane>
             </children>

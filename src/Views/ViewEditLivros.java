@@ -6,17 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-
 import java.net.URL;
-
 import java.sql.SQLException;
-import java.text.FieldPosition;
 import java.util.ResourceBundle;
 
 public class ViewEditLivros implements Initializable, ControlledScreen {
@@ -33,25 +26,23 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML
     private Button BtnEditBook;
     private Screens_controller myController;
-    @FXML  private TableView TableLivros;
-    @FXML private TableColumn TituloId;
-    @FXML private TableColumn AutorId;
-    @FXML private TableColumn GeneroId;
-    @FXML private TableColumn PosicaoId;
+    @FXML  private TableView TableExemplares;
+    @FXML private TableColumn ExemplId;
+    @FXML private TableColumn Cod_Exemplar;
+    @FXML private TableColumn StatusId;
     @FXML private TableColumn LivroId;
-    @FXML private TableColumn EditoraId;
+
     private Controller mainController = Controller.getInstance();
     private Livro selectedlivro = mainController.getSelectedBook();
     ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         FieldTitulo.setText(selectedlivro.getTitulo());
         FieldAutor.setText(selectedlivro.getAutor());
         FieldGenero.setText(selectedlivro.getGenero());
         FieldEditora.setText(selectedlivro.getEditora());
         FieldLocation.setText(selectedlivro.getPosicao());
-
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
             listaExemplares = myexempl.GetAllExemplar();
@@ -60,13 +51,11 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-     //   LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
-     //   TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
-     //   AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
-     //   GeneroId.setCellValueFactory(new PropertyValueFactory<>("Genero"));
-     //   PosicaoId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
-     //   EditoraId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
-     //   TableLivros.setItems(listaLivros);
+        LivroId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ExemplId.setCellValueFactory(new PropertyValueFactory<>("cod_exemplar"));
+        Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
+        StatusId.setCellValueFactory(new PropertyValueFactory<>("sttus"));
+        TableExemplares.setItems(listaExemplares);
 
     }
 
@@ -104,6 +93,16 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
             bookController.UpdateLivro(livroAtualizado);
 
         }
+    }
+    @FXML
+    private void newExemplar(ActionEvent event){
+        Exemplar_DAO myControl = new Exemplar_DAO();
+        myControl.InsertExemplar(1111, selectedlivro.getId(), 0);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("iLibrary");
+        alert.setHeaderText(null);
+        alert.setContentText("Exemplar adicionado.");
+        alert.showAndWait();
     }
 }
 

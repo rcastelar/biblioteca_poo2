@@ -85,10 +85,10 @@ public class Exemplar_DAO {
         return LstExemp;
     }
 
-    public void InsertExemplar (Exemplar Ex){
+    public void InsertExemplar (int cod_exemplar, int id_livro, int status){
         try{
             DBHandler Exemplares = new DBHandler();
-            Exemplares.querry("INSERT INTO exemplar(cod_exemplar, id_livro, status) VALUES ('"+Ex.getCodigo_exemplar()+"','"+Ex.getLivro_id()+"','"+Ex.getStatus()+"')");
+            Exemplares.querry("INSERT INTO exemplar(cod_exemplar, id_livro, status) VALUES ('"+cod_exemplar+"','"+id_livro+"','"+status+"')");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
