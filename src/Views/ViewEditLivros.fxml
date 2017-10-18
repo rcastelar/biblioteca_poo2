@@ -33,7 +33,7 @@
                         <Font name="Segoe UI" size="35.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="115.0" text="Editar livro" underline="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Button fx:id="BtnEditBook" onAction="#editBook" mnemonicParsing="false" prefHeight="32.0" prefWidth="115.0" text="Editar livro" underline="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <effect>
 
                     </effect>
@@ -69,8 +69,8 @@
         <TitledPane animated="false" layoutX="263.0" layoutY="-197.0" text="untitled" />
         <GridPane layoutX="240.0" layoutY="120.0" prefHeight="610.0" prefWidth="1096.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1096.0" minWidth="10.0" prefWidth="1096.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.0" minWidth="0.0" prefWidth="0.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="115.0" vgrow="SOMETIMES" />
@@ -78,15 +78,16 @@
                 <RowConstraints maxHeight="431.0" minHeight="10.0" prefHeight="431.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane prefHeight="182.0" prefWidth="1090.0">
+                <GridPane prefHeight="115.0" prefWidth="1022.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="110.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="400.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="43.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="110.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="400.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="82.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="176.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="21.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="102.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="188.0" />
                     </columnConstraints>
                     <rowConstraints>
+                  <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="598.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                     </rowConstraints>
@@ -101,36 +102,38 @@
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Autor" GridPane.columnIndex="3">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Autor" GridPane.columnIndex="3" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Gênero" GridPane.rowIndex="1">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Gênero" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Editora" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Editora" GridPane.columnIndex="3" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="FieldAutor" disable="true" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4">
+                        <TextField fx:id="FieldAutor" disable="true" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="FieldGenero" disable="true" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="FieldGenero" disable="true" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="FieldEditora" disable="true" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <TextField fx:id="FieldEditora" disable="true" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
+                  <Label text="Local" GridPane.rowIndex="1" />
+                  <TextField fx:id="FieldLocation" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
                 <TableView prefHeight="399.0" prefWidth="1096.0" GridPane.rowIndex="2">
@@ -143,8 +146,8 @@
                 <GridPane GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="846.0" minWidth="10.0" prefWidth="659.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="182.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="846.0" minWidth="10.0" prefWidth="322.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="0.0" prefWidth="0.0" />
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="75.0" />
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="81.0" />
                     </columnConstraints>
@@ -166,11 +169,6 @@
                             </cursor>
                         </Button>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Remover Exemplar" underline="true" GridPane.columnIndex="3">
-                            <effect>
-
-                            </effect>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Adicionar Exemplar" underline="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                             <effect>
 
                             </effect>
