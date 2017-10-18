@@ -12,6 +12,7 @@ package Views;
 public class ViewNewLivro implements Initializable, ControlledScreen {
 
     Screens_controller myController;
+
     @FXML  private TextField FieldTitulo;
     @FXML  private TextField FieldAutor;
     @FXML  private TextField FieldGenero;
@@ -20,6 +21,7 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
     }
 
     public void setScreenParent(Screens_controller screenParent) {

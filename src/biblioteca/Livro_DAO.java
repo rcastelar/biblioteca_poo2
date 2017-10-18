@@ -7,6 +7,9 @@
 package biblioteca;
 
 import bd.DBHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.*;
 
@@ -23,11 +26,11 @@ public class Livro_DAO {
     public Livro_DAO(){
     }
 
-    public List<Livro> GetAllLivro() throws SQLException, ClassNotFoundException {
+    public ObservableList<Livro> GetAllLivro() throws SQLException, ClassNotFoundException {
         DBHandler Livros = new DBHandler();
         ResultSet rs = Livros.querry("SELECT * FROM livro");
 
-        List<Livro> LstLivros = new LinkedList<>();
+        ObservableList<Livro> LstLivros = FXCollections.observableArrayList();
         try{
             while(rs.next()){
                 Livro lv = new Livro(rs.getInt("id"),rs.getString("titulo"),rs.getString("posicao"),
