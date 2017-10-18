@@ -14,7 +14,8 @@ public class Exemplar {
     private int codigo_exemplar;
     private int status;
 
-    Exemplar(int blivro_id, int bcodigo_exemplar, int bstatus) {
+    Exemplar(int bid, int blivro_id, int bcodigo_exemplar, int bstatus) {
+        this.id = bid;
         this.livro_id = blivro_id;
         this.codigo_exemplar = bcodigo_exemplar;
         this.status = bstatus;

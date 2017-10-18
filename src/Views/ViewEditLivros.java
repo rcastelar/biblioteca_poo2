@@ -34,7 +34,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
 
     private Controller mainController = Controller.getInstance();
     private Livro selectedlivro = mainController.getSelectedBook();
-    ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
+    private ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -45,16 +45,16 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         FieldLocation.setText(selectedlivro.getPosicao());
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
-            listaExemplares = myexempl.GetAllExemplar();
+            listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         LivroId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        ExemplId.setCellValueFactory(new PropertyValueFactory<>("cod_exemplar"));
-        Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
-        StatusId.setCellValueFactory(new PropertyValueFactory<>("sttus"));
+        ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
+        Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("livro_id"));
+        StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
 
     }
