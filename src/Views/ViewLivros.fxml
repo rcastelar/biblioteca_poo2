@@ -71,12 +71,10 @@
         </VBox>
         <TableView fx:id="TableLivros" layoutX="208.0" layoutY="71.0" prefHeight="697.0" prefWidth="1166.0">
             <columns>
-                <TableColumn minWidth="50.0" prefWidth="280.0" text="Livro" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-                <TableColumn minWidth="50.0" prefWidth="222.0" text="Nome" />
-                <TableColumn minWidth="50.0" prefWidth="257.0" text="Telefone" />
-                <TableColumn minWidth="50.0" prefWidth="132.0" text="Previsão" />
-            <TableColumn prefWidth="199.0" text="Column Y" />
+            <TableColumn fx:id="TituloId" prefWidth="425.0" text="Titulo" />
+                <TableColumn fx:id="GeneroId" minWidth="20.0" prefWidth="155.0" text="Genero" />
+                <TableColumn fx:id="AutorId" minWidth="50.0" prefWidth="297.0" text="Autor" />
+                <TableColumn fx:id="PosicaoId" minWidth="50.0" prefWidth="288.0" text="Posicao" />
             </columns>
             <cursor>
                 <Cursor fx:constant="DEFAULT" />

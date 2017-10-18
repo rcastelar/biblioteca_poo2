@@ -8,7 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,6 +23,10 @@ public class ViewLivros implements Initializable, ControlledScreen {
 
     Screens_controller myscreen;
     @FXML  private TableView TableLivros;
+    @FXML private TableColumn TituloId;
+    @FXML private TableColumn AutorId;
+    @FXML private TableColumn GeneroId;
+    @FXML private TableColumn PosicaoId;
     ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -34,6 +40,12 @@ public class ViewLivros implements Initializable, ControlledScreen {
             e.printStackTrace();
         }
 
+
+
+        TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
+        AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
+        GeneroId.setCellValueFactory(new PropertyValueFactory<>("Genero"));
+        PosicaoId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
         TableLivros.setItems(listaLivros);
 
     }
