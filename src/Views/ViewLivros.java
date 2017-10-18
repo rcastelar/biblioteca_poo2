@@ -1,5 +1,6 @@
 package Views;
 
+import biblioteca.Controller;
 import biblioteca.Livro;
 import biblioteca.Livro_DAO;
 import javafx.collections.FXCollections;
@@ -27,6 +28,8 @@ public class ViewLivros implements Initializable, ControlledScreen {
     @FXML private TableColumn AutorId;
     @FXML private TableColumn GeneroId;
     @FXML private TableColumn PosicaoId;
+    @FXML private TableColumn LivroId;
+    @FXML private TableColumn EditoraId;
     ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,11 +44,12 @@ public class ViewLivros implements Initializable, ControlledScreen {
         }
 
 
-
+        LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
         AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
         GeneroId.setCellValueFactory(new PropertyValueFactory<>("Genero"));
         PosicaoId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
+        EditoraId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
         TableLivros.setItems(listaLivros);
 
     }
@@ -58,12 +62,17 @@ public class ViewLivros implements Initializable, ControlledScreen {
     private void goToViewEditlivros(ActionEvent event) {
         myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
         myscreen.setScreen("ViewEditLivros");
-
     }
     @FXML
     private void goToViewNewlivro(ActionEvent event) {
         myscreen.loadScreen("ViewNewLivro", "ViewNewLivro.fxml");
         myscreen.setScreen("ViewNewLivro");
+    }
+    @FXML
+    private void mySelectedBook(){
+        Controller mainController = Controller.getInstance();
+        mainController.setSelectedBook((Livro)TableLivros.getSelectionModel().getSelectedItem());
+
 
     }
 }
