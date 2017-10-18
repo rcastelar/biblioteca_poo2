@@ -8,7 +8,7 @@ Integrantes do grupo:
  Objetivo: Criar um programa de controle para uma biblioteca. Requisitos disponiveis no diagrama de casos de uso.
  
  
- # ftchatdatabase
+ # Biblioteca_POO2
 
 ## Tutorial para deploy de novas features:
 
