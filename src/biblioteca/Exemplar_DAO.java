@@ -6,6 +6,10 @@
 package biblioteca;
 
 import bd.DBHandler;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.*;
 
@@ -15,16 +19,14 @@ import java.util.*;
 public class Exemplar_DAO {
 
     private String IdLivro;
-
-    public Exemplar_DAO(String IdLivro){
-        this.IdLivro = IdLivro;
+    public Exemplar_DAO(){
     }
 
-    public List<Exemplar> GetAllExemplar() throws SQLException, ClassNotFoundException {
+    public ObservableList<Exemplar> GetAllExemplar() throws SQLException, ClassNotFoundException {
         DBHandler Exemplares = new DBHandler();
         ResultSet rs = Exemplares.querry("SELECT * FROM exemplar WHERE id='"+this.IdLivro+"'");
 
-        List<Exemplar> LstExemp = new LinkedList();
+        ObservableList<Exemplar> LstExemp = FXCollections.observableArrayList();
         try {
             while (rs.next()) {
                 Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("id_exemplar"), rs.getInt("status"));
@@ -86,7 +88,7 @@ public class Exemplar_DAO {
     public void InsertExemplar (Exemplar Ex){
         try{
             DBHandler Exemplares = new DBHandler();
-            Exemplares.querry("INSERT INTO exemplar(id_exemplar,status) VALUES ('"+Ex.getLivro_id()+"','"+Ex.getStatus()+"')");
+            Exemplares.querry("INSERT INTO exemplar(cod_exemplar, id_livro, status) VALUES ('"+Ex.getCodigo_exemplar()+"','"+Ex.getLivro_id()+"','"+Ex.getStatus()+"')");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

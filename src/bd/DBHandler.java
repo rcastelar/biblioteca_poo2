@@ -71,7 +71,8 @@ public class DBHandler {
 
         String exemplar = ("CREATE TABLE IF NOT EXISTS exemplar(\n" +
                 "id integer PRIMARY KEY AUTOINCREMENT,\n" +
-                "id_exemplar integer,\n" +
+                "cod_exemplar integer,\n" +
+                "id_livro,\n"+
                 "status integer)\n");
 
         try {

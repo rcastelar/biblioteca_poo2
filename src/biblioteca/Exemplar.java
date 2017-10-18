@@ -9,6 +9,7 @@ package biblioteca;
  * @author f32cpd01
  */
 public class Exemplar {
+    private int id;
     private int livro_id;
     private int codigo_exemplar;
     private int status;
@@ -20,6 +21,13 @@ public class Exemplar {
     }
 
     Exemplar() {
+    }
+
+    public int getId() {
+        return this.id;
+    }
+    public void setid(int b_id) {
+        this.id = b_id;
     }
 
     public int getLivro_id() {

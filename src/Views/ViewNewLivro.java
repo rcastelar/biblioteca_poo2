@@ -38,7 +38,7 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
     @FXML
     private void newBook(ActionEvent event) {
         Livro_DAO myBook = new Livro_DAO();
-        myBook.InsertLivro(FieldTitulo.getText() ,FieldAutor.getText(), FieldLocation.getText(), FieldGenero.getText(), FieldEditora.getText());
+        myBook.InsertLivro(FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("iLibrary");
         alert.setHeaderText(null);
