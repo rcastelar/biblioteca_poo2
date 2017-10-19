@@ -14,12 +14,12 @@ public class DBHandler {
         return state.executeQuery(sql);
     }
 
-    public boolean execute(String sql) throws SQLException, ClassNotFoundException {
+    public void execute(String sql) throws SQLException, ClassNotFoundException {
         if (con == null) {
             getConnection();
         }
         Statement state = con.createStatement();
-        return state.execute(sql);
+        state.execute(sql);
     }
 
     public int update(String sql) throws SQLException, ClassNotFoundException {
@@ -77,17 +77,13 @@ public class DBHandler {
 
         try {
             execute(livro);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         try {
             execute(exemplar);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

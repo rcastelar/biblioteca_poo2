@@ -15,13 +15,11 @@ import javafx.util.Duration;
 import java.util.HashMap;
 
 public class Screens_controller extends StackPane{
-
     private static final HashMap<String, Node> screens= new HashMap<>();
 
     public Screens_controller(){
         super();
     }
-
 
     private void addScreen(String name, Node screen) {
         screens.put(name, screen);
@@ -44,7 +42,6 @@ public class Screens_controller extends StackPane{
                 return false;
             }
         }
-
 
     public boolean setScreen(final String name) {
         if (screens.get(name) != null) {

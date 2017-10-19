@@ -6,20 +6,11 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-//import javafx.fxml.FXMLLoader;
-//import javafx.scene.Parent;
-
-
 public class Main extends Application {
-
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Screens_controller mainContainer = new Screens_controller();
         mainContainer.loadScreen("ViewLivros", "ViewLivros.fxml");
-
-
         mainContainer.setScreen("ViewLivros");
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
@@ -27,10 +18,7 @@ public class Main extends Application {
         primaryStage.setTitle("Livros");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
-
 
     public static void main(String[] args) {
         launch(args);

@@ -3,13 +3,15 @@ package Views;
 import biblioteca.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.text.View;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -36,7 +38,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML private Button BtnRemoveExemplar;
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller mainController = Controller.getInstance();
-    private Livro selectedlivro = mainController.getSelectedBook();
+    private Livro selectedlivro = (Livro) mainController.getSelectedBook();
     private ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
 
     @Override
@@ -47,19 +49,16 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         FieldEditora.setText(selectedlivro.getEditora());
         FieldLocation.setText(selectedlivro.getPosicao());
         updateExempTable();
-
     }
 
         private void updateExempTable(){
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
             listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
+            LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));

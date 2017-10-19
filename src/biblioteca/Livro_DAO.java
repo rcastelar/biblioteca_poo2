@@ -10,18 +10,13 @@ import bd.DBHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author f32cpd02
  */
 public class Livro_DAO {
-
-
-
-
-
 
     public Livro_DAO(){
     }
@@ -73,9 +68,7 @@ public class Livro_DAO {
         try{
             DBHandler Livros = new DBHandler();
             Livros.querry("DELETE FROM livro WHERE id='"+Lv.getId()+"'");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
