@@ -13,9 +13,7 @@ import java.util.List;
 public class Controller{
     private static Controller instance;
     private Livro selectedBook;
-    private Controller(){
-
-    }
+    private Controller(){ }
 
     public static Controller getInstance(){
         if (instance == null){
@@ -26,7 +24,6 @@ public class Controller{
 
     public Livro getSelectedBook(){
         return selectedBook;
-
     }
 
     public void setSelectedBook(Livro gid){
@@ -34,4 +31,4 @@ public class Controller{
     }
 
 
-        }
+}

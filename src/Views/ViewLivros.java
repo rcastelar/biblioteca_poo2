@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -60,9 +61,17 @@ public class ViewLivros implements Initializable, ControlledScreen {
 
     @FXML
     private void goToViewEditlivros(ActionEvent event) {
-        myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
-        myscreen.setScreen("ViewEditLivros");
-        myscreen.unloadScreen("ViewLivros");
+        if (!TableLivros.getSelectionModel().isEmpty()) {
+            myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
+            myscreen.setScreen("ViewEditLivros");
+            myscreen.unloadScreen("ViewLivros");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("iLibrary");
+            alert.setHeaderText(null);
+            alert.setContentText("Nenhum livro selecionado.");
+            alert.showAndWait();
+        }
     }
     @FXML
     private void goToViewNewlivro(ActionEvent event) {

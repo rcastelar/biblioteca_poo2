@@ -29,7 +29,7 @@ public class Exemplar_DAO {
         ObservableList<Exemplar> LstExemp = FXCollections.observableArrayList();
         try {
             while (rs.next()) {
-                Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("cod_exemplar"), rs.getInt("id_livro"), rs.getInt("status"));
+                Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("cod_exemplar"), rs.getInt("id_livro"), rs.getString("status"));
                 LstExemp.add(ex);
             }
         }
@@ -53,7 +53,7 @@ public class Exemplar_DAO {
                 ResultSet rs = Exemplares.querry(mysql);
 
                 while (rs.next()) {
-                    Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("cod_exemplar"), rs.getInt("id_livro"), rs.getInt("status"));
+                    Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("cod_exemplar"), rs.getInt("id_livro"), rs.getString("status"));
                     LstExemp.add(ex);
                 }
             }
@@ -73,7 +73,7 @@ public class Exemplar_DAO {
                 ResultSet rs = Exemplares.querry("SELECT * FROM exemplar WHERE id='"+this.IdLivro+"' AND " + campo + "in:valor");
 
                 while (rs.next()) {
-                    Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("cod_exemplar"),rs.getInt("id_livro") , rs.getInt("status"));
+                    Exemplar ex = new Exemplar(rs.getInt("id"), rs.getInt("cod_exemplar"),rs.getInt("id_livro") , rs.getString("status"));
                     LstExemp.add(ex);
                 }
             }
@@ -85,10 +85,10 @@ public class Exemplar_DAO {
         return LstExemp;
     }
 
-    public void InsertExemplar (int cod_exemplar, int id_livro, int status){
+    public void InsertExemplar (int cod_exemplar, int id_livro, String status){
         try{
             DBHandler Exemplares = new DBHandler();
-            Exemplares.execute("INSERT INTO exemplar(cod_exemplar, id_livro, status) VALUES ("+cod_exemplar+", "+id_livro+", "+status+");");
+            Exemplares.execute("INSERT INTO exemplar(cod_exemplar, id_livro, status) VALUES ("+cod_exemplar+", "+id_livro+", '"+status+"');");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -106,7 +106,7 @@ public class Exemplar_DAO {
     public void UpdateExemplar(Exemplar Ex){
         try{
             DBHandler Exemplares = new DBHandler();
-            Exemplares.querry("UPDATE exemplar SET id='"+Ex.getLivro_id()+"',status='"+Ex.getStatus()+"' WHERE id_exemplar='"+Ex.getCodigo_exemplar()+"'");
+            Exemplares.querry("UPDATE exemplar SET id_livro='"+Ex.getLivro_id()+"',status='"+Ex.getStatus()+"' WHERE id_exemplar='"+Ex.getId()+"'");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

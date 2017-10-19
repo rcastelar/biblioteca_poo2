@@ -51,9 +51,9 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        LivroId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
-        Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("livro_id"));
+        LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
+        ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
 
@@ -97,7 +97,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML
     private void newExemplar(ActionEvent event){
         Exemplar_DAO myControl = new Exemplar_DAO();
-        myControl.InsertExemplar(1111, selectedlivro.getId(), 0);
+        myControl.InsertExemplar(1111, selectedlivro.getId(), "Disponível");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("iLibrary");
         alert.setHeaderText(null);

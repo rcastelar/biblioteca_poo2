@@ -73,7 +73,7 @@ public class DBHandler {
                 "id integer PRIMARY KEY AUTOINCREMENT,\n" +
                 "cod_exemplar integer,\n" +
                 "id_livro,\n"+
-                "status integer)\n");
+                "status varchar(100))\n");
 
         try {
             execute(livro);

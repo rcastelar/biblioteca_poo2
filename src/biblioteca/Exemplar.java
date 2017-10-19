@@ -12,9 +12,9 @@ public class Exemplar {
     private int id;
     private int livro_id;
     private int codigo_exemplar;
-    private int status;
+    private String status;
 
-    Exemplar(int bid, int blivro_id, int bcodigo_exemplar, int bstatus) {
+    Exemplar(int bid, int bcodigo_exemplar, int blivro_id, String bstatus) {
         this.id = bid;
         this.livro_id = blivro_id;
         this.codigo_exemplar = bcodigo_exemplar;
@@ -45,10 +45,10 @@ public class Exemplar {
         this.codigo_exemplar = bcodigo_exemplar;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return this.status;
     }
-    public void setStatus(int bstatus) {
+    public void setStatus(String bstatus) {
         this.status = bstatus;
     }
 }
