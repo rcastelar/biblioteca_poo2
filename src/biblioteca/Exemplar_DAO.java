@@ -6,12 +6,13 @@
 package biblioteca;
 
 import bd.DBHandler;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author f32cpd01
@@ -97,7 +98,7 @@ public class Exemplar_DAO {
     public void DeleteExemplar(Exemplar Ex){
         try {
             DBHandler Exemplares = new DBHandler();
-            Exemplares.querry("DELETE FROM exemplar WHERE id ='"+Ex.getId()+"'");
+            Exemplares.execute("DELETE FROM exemplar WHERE id ='" + Ex.getId() + "'");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
