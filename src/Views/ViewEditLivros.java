@@ -55,12 +55,10 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
             listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
+            LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
