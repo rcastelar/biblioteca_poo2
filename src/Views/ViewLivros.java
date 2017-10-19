@@ -79,7 +79,5 @@ public class ViewLivros implements Initializable, ControlledScreen {
     private void mySelectedBook(){
         Controller mainController = Controller.getInstance();
         mainController.setSelectedBook((Livro)TableLivros.getSelectionModel().getSelectedItem());
-
-
     }
 }

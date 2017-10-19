@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ViewNewLivro">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ViewNewLivro">
     <children>
         <GridPane prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
             <columnConstraints>
@@ -69,13 +69,14 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="115.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="431.0" minHeight="10.0" prefHeight="431.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="191.0" minHeight="9.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="191.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="431.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane prefHeight="194.0" prefWidth="1096.0">
+                <GridPane prefHeight="194.0" prefWidth="1096.0" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="110.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="400.0" />
@@ -84,6 +85,7 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="400.0" />
                     </columnConstraints>
                     <rowConstraints>
+                  <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="598.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                     </rowConstraints>
@@ -93,44 +95,52 @@
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <TextField id="FieldTitulo" fx:id="FieldTitulo" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1">
+                        <TextField id="FieldTitulo" fx:id="FieldTitulo" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.columnSpan="4">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Autor" GridPane.columnIndex="3">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Autor" GridPane.columnIndex="3" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Gênero" GridPane.rowIndex="1">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Gênero" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Editora" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Editora" GridPane.columnIndex="3" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </Label>
-                        <TextField id="FieldAutor" fx:id="FieldAutor" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4">
+                        <TextField id="FieldAutor" fx:id="FieldAutor" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <TextField id="FieldGenero" fx:id="FieldGenero" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField id="FieldGenero" fx:id="FieldGenero" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
-                        <TextField id="FieldEditora" fx:id="FieldEditora" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <TextField id="FieldEditora" fx:id="FieldEditora" onAction="#newBook" prefHeight="47.0" prefWidth="430.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Segoe UI" size="22.0" />
                             </font>
                         </TextField>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="167.0" text="Posicao" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Segoe UI" size="22.0" />
+                     </font></Label>
+                  <TextField id="FieldLocation" fx:id="FieldLocation" onAction="#newBook" prefHeight="25.0" prefWidth="521.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Segoe UI" size="22.0" />
+                     </font></TextField>
                     </children>
                 </GridPane>
-                <GridPane GridPane.rowIndex="1">
+                <GridPane GridPane.rowIndex="2">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="846.0" minWidth="10.0" prefWidth="659.0" />
@@ -140,11 +150,9 @@
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
                     </rowConstraints>
-               <children>
-                  <Label text="Posicao" GridPane.rowIndex="2" />
-                  <TextField id= "FieldLocation" fx:id="FieldLocation" onAction="#newBook" prefHeight="25.0" prefWidth="521.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               </children>
                 </GridPane>
             </children>
         </GridPane>

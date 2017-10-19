@@ -11,10 +11,10 @@ package biblioteca;
 public class Exemplar {
     private int id;
     private int livro_id;
-    private int codigo_exemplar;
+    private String codigo_exemplar;
     private String status;
 
-    Exemplar(int bid, int bcodigo_exemplar, int blivro_id, String bstatus) {
+    Exemplar(int bid, String bcodigo_exemplar, int blivro_id, String bstatus) {
         this.id = bid;
         this.livro_id = blivro_id;
         this.codigo_exemplar = bcodigo_exemplar;
@@ -38,10 +38,10 @@ public class Exemplar {
         this.livro_id = blivro_id;
     }
 
-    public int getCodigo_exemplar() {
+    public String getCodigo_exemplar() {
         return this.codigo_exemplar;
     }
-    public void setcodigo_exemplar(int bcodigo_exemplar) {
+    public void setcodigo_exemplar(String bcodigo_exemplar) {
         this.codigo_exemplar = bcodigo_exemplar;
     }
 

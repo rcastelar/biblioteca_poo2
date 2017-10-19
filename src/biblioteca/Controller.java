@@ -13,6 +13,7 @@ import java.util.List;
 public class Controller{
     private static Controller instance;
     private Livro selectedBook;
+    private Exemplar selectedExemplar;
     private Controller(){ }
 
     public static Controller getInstance(){
@@ -30,5 +31,12 @@ public class Controller{
         selectedBook = gid;
     }
 
+    public Exemplar getSelectedExemplar(){
+        return selectedExemplar;
+    }
+
+    public void setSelectedExemplar(Exemplar gid){
+        selectedExemplar = gid;
+    }
 
 }
