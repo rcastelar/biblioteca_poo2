@@ -43,6 +43,11 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         FieldGenero.setText(selectedlivro.getGenero());
         FieldEditora.setText(selectedlivro.getEditora());
         FieldLocation.setText(selectedlivro.getPosicao());
+        updateExempTable();
+
+    }
+
+        private void updateExempTable(){
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
             listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
@@ -56,7 +61,6 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
-
     }
 
     public void setScreenParent(Screens_controller screenParent) {
@@ -98,11 +102,8 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     private void newExemplar(ActionEvent event){
         Exemplar_DAO myControl = new Exemplar_DAO();
         myControl.InsertExemplar(1111, selectedlivro.getId(), "Disponível");
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("iLibrary");
-        alert.setHeaderText(null);
-        alert.setContentText("Exemplar adicionado.");
-        alert.showAndWait();
+        updateExempTable();
+        ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
     }
 }
 
