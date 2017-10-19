@@ -1,13 +1,14 @@
 package Views;
 
-        import biblioteca.Livro_DAO;
-        import javafx.fxml.FXML;
-        import javafx.fxml.Initializable;
-        import javafx.event.ActionEvent;
-        import javafx.scene.control.*;
-        import java.net.URL;
-        import java.util.ResourceBundle;
+import biblioteca.Livro_DAO;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ViewNewLivro implements Initializable, ControlledScreen {
 
@@ -21,7 +22,6 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     public void setScreenParent(Screens_controller screenParent) {

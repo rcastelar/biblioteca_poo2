@@ -2,7 +2,7 @@ package biblioteca;
 
 public class Controller {
     private static Controller instance;
-    private Livro selectedBook;
+    private Publicacao selectedPub;
     private Exemplar selectedExemplar;
 
     private Controller() {
@@ -15,12 +15,12 @@ public class Controller {
         return instance;
     }
 
-    public Livro getSelectedBook() {
-        return selectedBook;
+    public Publicacao getSelectedBook() {
+        return selectedPub;
     }
 
     public void setSelectedBook(Livro gid) {
-        selectedBook = gid;
+        selectedPub = gid;
     }
 
     public Exemplar getSelectedExemplar() {
