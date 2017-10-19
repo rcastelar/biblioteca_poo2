@@ -1,6 +1,5 @@
 package Views;
 
-import Views.ControlledScreen;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -13,8 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-
-import java.security.Key;
 import java.util.HashMap;
 
 public class Screens_controller extends StackPane{
@@ -26,9 +23,7 @@ public class Screens_controller extends StackPane{
     }
 
 
-
-
-    public void addScreen(String name, Node screen){
+    private void addScreen(String name, Node screen) {
         screens.put(name, screen);
     }
 
@@ -39,8 +34,8 @@ public class Screens_controller extends StackPane{
     public boolean loadScreen(String name, String resource){
         try{
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
-                Parent loadScreen = (Parent) myLoader.load();
-                ControlledScreen myScreenControler = ( (ControlledScreen) myLoader.getController());
+            Parent loadScreen = myLoader.load();
+            ControlledScreen myScreenControler = myLoader.getController();
                 myScreenControler.setScreenParent(this);
                 addScreen(name, loadScreen);
                 return true;
@@ -84,7 +79,7 @@ public class Screens_controller extends StackPane{
         }
     }
 
-    public boolean unloadScreen(String name){
+    boolean unloadScreen(String name) {
             screens.remove(name);
             return false;
 

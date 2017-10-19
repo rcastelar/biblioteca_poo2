@@ -66,11 +66,7 @@ public class ViewLivros implements Initializable, ControlledScreen {
             myscreen.setScreen("ViewEditLivros");
             myscreen.unloadScreen("ViewLivros");
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("iLibrary");
-            alert.setHeaderText(null);
-            alert.setContentText("Nenhum livro selecionado.");
-            alert.showAndWait();
+            ViewAlert alert = new ViewAlert("Nenhum livro selecionado");
         }
     }
     @FXML
@@ -83,7 +79,5 @@ public class ViewLivros implements Initializable, ControlledScreen {
     private void mySelectedBook(){
         Controller mainController = Controller.getInstance();
         mainController.setSelectedBook((Livro)TableLivros.getSelectionModel().getSelectedItem());
-
-
     }
 }

@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import javax.swing.text.View;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -31,7 +33,8 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML private TableColumn Cod_Exemplar;
     @FXML private TableColumn StatusId;
     @FXML private TableColumn LivroId;
-
+    @FXML private Button BtnRemoveExemplar;
+    private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller mainController = Controller.getInstance();
     private Livro selectedlivro = mainController.getSelectedBook();
     private ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
@@ -43,6 +46,11 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         FieldGenero.setText(selectedlivro.getGenero());
         FieldEditora.setText(selectedlivro.getEditora());
         FieldLocation.setText(selectedlivro.getPosicao());
+        updateExempTable();
+
+    }
+
+        private void updateExempTable(){
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
             listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
@@ -56,7 +64,6 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
-
     }
 
     public void setScreenParent(Screens_controller screenParent) {
@@ -96,13 +103,23 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     }
     @FXML
     private void newExemplar(ActionEvent event){
-        Exemplar_DAO myControl = new Exemplar_DAO();
-        myControl.InsertExemplar(1111, selectedlivro.getId(), "Disponível");
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("iLibrary");
-        alert.setHeaderText(null);
-        alert.setContentText("Exemplar adicionado.");
-        alert.showAndWait();
+
+        ViewAlert alertGet =new ViewAlert();
+        String exempCod = alertGet.getUmDado("Codigo do exemplar:");
+        bdControl.InsertExemplar(exempCod, selectedlivro.getId(), "Disponível");
+        updateExempTable();
+        ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
+    }
+    @FXML
+    private void removeSelectedExemplar(){
+        if (!TableExemplares.getSelectionModel().isEmpty()) {
+            bdControl.DeleteExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+            updateExempTable();
+            ViewAlert ok = new ViewAlert("Exemplar excluido");
+        }
+        else{
+           ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
+        }
     }
 }
 
