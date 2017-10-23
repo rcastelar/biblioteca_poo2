@@ -1,8 +1,7 @@
 package Views;
 
-import biblioteca.Controller;
+import biblioteca.Controller_Publicacao;
 import biblioteca.Livro;
-import biblioteca.Livro_DAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,11 +12,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ViewLivros implements Initializable, ControlledScreen {
-
+    Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
     Screens_controller myscreen;
     @FXML
     private TableView<Livro> TableLivros;
@@ -34,16 +32,10 @@ public class ViewLivros implements Initializable, ControlledScreen {
     @FXML
     private TableColumn<Object, Object> EditoraId;
     ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        Livro_DAO mybooks = new Livro_DAO();
-        try {
-            listaLivros = mybooks.GetAllLivro();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        listaLivros = mainControllerPublicacao.getListaLivros();
         LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
         AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
@@ -76,7 +68,6 @@ public class ViewLivros implements Initializable, ControlledScreen {
     }
     @FXML
     private void mySelectedBook(){
-        Controller mainController = Controller.getInstance();
-        mainController.setSelectedBook(TableLivros.getSelectionModel().getSelectedItem());
+        mainControllerPublicacao.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());
     }
 }
