@@ -1,7 +1,5 @@
 package biblioteca;
 
-//import bd.DBHandler;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,10 +7,8 @@ public class Controller {
     private static Controller instance;
     private Publicacao selectedPub;
     private Exemplar selectedExemplar;
-    //  private DBHandler myDB = DBHandler.getInstance();
-    private static ObservableList<Object> listaLivros = FXCollections.observableArrayList();
-
-    private static int livrosQde;
+    private static int qdePublicacao;
+    private static ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
 
     public static Controller getInstance() {
         if (instance == null) {
@@ -22,22 +18,19 @@ public class Controller {
     }
 
     private Controller() {
-        //  DBHandler myDb = DBHandler.getInstance();
-        //  listaLivros = myDb.querry("./src/bd/livros/arquivolivros.txt");
+        Livro_DAO myLivroDao = new Livro_DAO();
+        listaLivros = myLivroDao.getAllLivro();
     }
 
-    public int getLivrosQde() {
-        return livrosQde;
+    public ObservableList getListaLivros() {
+        return listaLivros;
     }
 
-    public void setLivrosQde(int myqde) {
-        livrosQde = myqde;
-    }
-    public Publicacao getSelectedBook() {
+    public Publicacao getSelectedPublicacao() {
         return selectedPub;
     }
 
-    public void setSelectedBook(Livro gid) {
+    public void setSelectedPublicacao(Publicacao gid) {
         selectedPub = gid;
     }
 
@@ -50,8 +43,19 @@ public class Controller {
     }
 
     public void addLivro(Livro myLivro) {
+        Livro_DAO myLivroDao = new Livro_DAO();
         listaLivros.add(myLivro);
+        myLivroDao.InsertLivro(listaLivros);
     }
 
+    public void addExemplar(Exemplar myExemplar) {
+        Livro_DAO myLivroDao = new Livro_DAO();
+        for (Livro neededBook : listaLivros) {
+            if (selectedPub.getId() == neededBook.get().getId()) {
+                neededBook.addToListaExempar(myExemplar);
+            }
+        }
+        myLivroDao.InsertLivro(listaLivros);
+    }
 }
 

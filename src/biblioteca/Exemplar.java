@@ -11,27 +11,19 @@ import java.io.Serializable;
  * @author f32cpd01
  */
 public class Exemplar implements Serializable {
-    private int id;
     private int livro_id;
     private String codigo_exemplar;
     private String status;
 
-    Exemplar(int bid, String bcodigo_exemplar, int blivro_id, String bstatus) {
-        this.id = bid;
+    public Exemplar(String bcodigo_exemplar, int blivro_id, String bstatus) {
         this.livro_id = blivro_id;
         this.codigo_exemplar = bcodigo_exemplar;
         this.status = bstatus;
     }
 
-    Exemplar() {
+    public Exemplar() {
     }
 
-    public int getId() {
-        return this.id;
-    }
-    public void setid(int b_id) {
-        this.id = b_id;
-    }
 
     public int getLivro_id() {
         return this.livro_id;

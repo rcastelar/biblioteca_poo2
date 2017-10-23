@@ -3,41 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**package biblioteca;
-
- //import bd.DBHandler;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
- import java.io.EOFException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
+package biblioteca;
 
 /**
  * @author f32cpd01
-
+ */
 public class Exemplar_DAO {
 
     private String IdLivro;
     public Exemplar_DAO(){
     }
-
-public ObservableList<Exemplar> GetAllExemplar(int idLivro) throws EOFException {
-//DBHandler Exemplares = DBHandler.getInstance();
-ResultSet rs = (ResultSet) Exemplares.querry("arquivoLivros.txt");
-        ObservableList<Exemplar> LstExemp = FXCollections.observableArrayList();
-        try {
-            while (rs.next()) {
-                Exemplar ex = new Exemplar(rs.getInt("id"), rs.getString("cod_exemplar"), rs.getInt("id_livro"), rs.getString("status"));
-                LstExemp.add(ex);
-            }
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-        return LstExemp;
+/**
+ public ObservableList<Exemplar> GetAllExemplar() {
+ ObjectInputStream os = null;
+ ObservableList<Livro> mylist = FXCollections.observableArrayList();
+ try {
+ os = new ObjectInputStream(
+ Files.newInputStream(arquivoLivros));
+ List<Livro> list = (List<Livro>) os.readObject();
+ //personsObservable = FXCollections.observableList(list);
+ mylist = FXCollections.observableArrayList(list);
+ } catch (IOException | ClassNotFoundException e) {
+ e.printStackTrace();
+ }
+ return mylist;
     }
 
 
@@ -58,6 +47,5 @@ public void UpdateExemplar(Exemplar Ex) throws EOFException {
 DBHandler Exemplares = DBHandler.getInstance();
 Exemplares.querry("UPDATE exemplar SET id_livro='"+Ex.getLivro_id()+"',status='"+Ex.getStatus()+"' WHERE id_exemplar='"+Ex.getId()+"'");
     }
-
-}
  */
+}

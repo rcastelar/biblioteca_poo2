@@ -2,7 +2,6 @@ package Views;
 
 import biblioteca.Controller;
 import biblioteca.Livro;
-import biblioteca.Livro_DAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,18 +32,10 @@ public class ViewLivros implements Initializable, ControlledScreen {
     @FXML
     private TableColumn<Object, Object> EditoraId;
     ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        Livro_DAO mybooks = new Livro_DAO();
-        /**    try {
-         //   listaLivros = mybooks.GetAllLivro();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-         }*/
         listaLivros = mainController.getListaLivros();
-
-
         LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
         AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
@@ -77,7 +68,6 @@ public class ViewLivros implements Initializable, ControlledScreen {
     }
     @FXML
     private void mySelectedBook(){
-        Controller mainController = Controller.getInstance();
-        mainController.setSelectedBook(TableLivros.getSelectionModel().getSelectedItem());
+        mainController.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());
     }
 }

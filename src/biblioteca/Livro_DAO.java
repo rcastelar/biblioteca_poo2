@@ -6,12 +6,9 @@
 
 package biblioteca;
 
-//import bd.DBHandler;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -27,6 +24,7 @@ import java.util.List;
 public class Livro_DAO {
     Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
 
+
     public Livro_DAO() {
     }
 
@@ -38,25 +36,11 @@ public class Livro_DAO {
             os = new ObjectInputStream(
                     Files.newInputStream(arquivoLivros));
             List<Livro> list = (List<Livro>) os.readObject();
-            //personsObservable = FXCollections.observableList(list);
             mylist = FXCollections.observableArrayList(list);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return mylist;
-    }
-
-    public ObservableList<Livro> querry() {
-        //mudar para pegar o arquivo inteiro e carregar s dados em uma estrutura de objetos.
-        ObservableList<Livro> listResult = FXCollections.observableArrayList();
-
-        try (FileInputStream fis = new FileInputStream("/src/bd/livro/arquivoLivros.txt");
-             ObjectInputStream ois = new ObjectInputStream(fis);) {
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return listResult;
     }
 
 
@@ -73,14 +57,11 @@ public class Livro_DAO {
         try {
             ObjectOutputStream os = new ObjectOutputStream(
                     Files.newOutputStream(arquivoLivros));
-
-            //oos.writeObject(new ArrayList<EmployeeEntity>(personsObservable));
             os.writeObject(new ArrayList<Livro>(meusLivros));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-
 
     public void DeleteLivro(Livro Lv) {
         //  DBHandler Livros = DBHandler.getInstance();
