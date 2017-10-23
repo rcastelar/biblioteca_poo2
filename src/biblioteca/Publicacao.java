@@ -33,6 +33,16 @@ public abstract class Publicacao implements Serializable {
         return FXCollections.observableList(listaExemplar);
     }
 
+    public void removeExemplar(Exemplar myexemplar) {
+        Livro_DAO myLivroDao = new Livro_DAO();
+        for (Exemplar neededExemplar : listaExemplar) {
+            if (myexemplar.getCodigo_exemplar() == neededExemplar.getCodigo_exemplar()) {
+                listaExemplar.remove(neededExemplar);
+                break;
+            }
+        }
+    }
+
     public void addToListaExempar(Exemplar myExemplar) {
         listaExemplar.add(myExemplar);
     }

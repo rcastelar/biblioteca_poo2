@@ -73,5 +73,10 @@ public class Controller_Publicacao {
         }
         myLivroDao.InsertLivro(listaLivros);
     }
+
+    public void removeExemplar(Exemplar myExemplar) {
+        Livro_DAO myLivroDao = new Livro_DAO();
+        selectedPub.removeExemplar(myExemplar);
+    }
 }
 

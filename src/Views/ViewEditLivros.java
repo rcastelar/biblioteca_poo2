@@ -1,7 +1,6 @@
 package Views;
 
 import biblioteca.*;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +37,6 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
     private Livro selectedlivro = (Livro) mainControllerPublicacao.getSelectedPublicacao();
-    private ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,7 +50,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
 
         private void updateExempTable(){
             //   Exemplar_DAO myexempl = new Exemplar_DAO();
-            listaExemplares = selectedlivro.getListaExemplar();
+            ObservableList<Exemplar> listaExemplares = selectedlivro.getListaExemplar();
             LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
@@ -100,22 +98,25 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     }
     @FXML
     private void newExemplar(ActionEvent event){
+
         ViewAlert alertGet =new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         Exemplar myExemplar = new Exemplar(exempCod, selectedlivro.getId(), "Disponível");
         mainControllerPublicacao.addExemplar(myExemplar);
         updateExempTable();
         ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
+
     }
+
     @FXML
     private void removeSelectedExemplar(){
         if (!TableExemplares.getSelectionModel().isEmpty()) {
-            //   bdControl.DeleteExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+            ViewAlert alertGet = new ViewAlert();
+            mainControllerPublicacao.removeExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
-            ViewAlert ok = new ViewAlert("Exemplar excluido");
-        }
-        else{
-           ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
+            ViewAlert showAlert = new ViewAlert("Exemplar removido");
+        } else {
+            ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
         }
     }
 }

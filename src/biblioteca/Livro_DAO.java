@@ -9,6 +9,7 @@ package biblioteca;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -30,15 +31,27 @@ public class Livro_DAO {
 
 
     public ObservableList<Livro> getAllLivro() {
-        ObjectInputStream os = null;
+        ObjectInputStream os;
         ObservableList<Livro> mylist = FXCollections.observableArrayList();
-        try {
-            os = new ObjectInputStream(
-                    Files.newInputStream(arquivoLivros));
-            List<Livro> list = (List<Livro>) os.readObject();
-            mylist = FXCollections.observableArrayList(list);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+        if (!Files.exists(arquivoLivros)) {
+            try {
+                Files.createFile(arquivoLivros);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                os = new ObjectInputStream(
+                        Files.newInputStream(arquivoLivros));
+                List<Livro> list = (List<Livro>) os.readObject();
+                mylist = FXCollections.observableArrayList(list);
+
+            } catch (EOFException e) {
+                return mylist;
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return mylist;
     }
@@ -57,15 +70,13 @@ public class Livro_DAO {
         try {
             ObjectOutputStream os = new ObjectOutputStream(
                     Files.newOutputStream(arquivoLivros));
-            os.writeObject(new ArrayList<Livro>(meusLivros));
+            os.writeObject(new ArrayList<>(meusLivros));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     public void DeleteLivro(Livro Lv) {
-        //  DBHandler Livros = DBHandler.getInstance();
-        // Livros.querry("DELETE FROM livro WHERE id='" + Lv.getId() + "'");
     }
 }
 
