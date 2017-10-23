@@ -36,8 +36,8 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML private TableColumn LivroId;
     @FXML private Button BtnRemoveExemplar;
     private Exemplar_DAO bdControl = new Exemplar_DAO();
-    private Controller mainController = Controller.getInstance();
-    private Livro selectedlivro = (Livro) mainController.getSelectedPublicacao();
+    private Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
+    private Livro selectedlivro = (Livro) mainControllerPublicacao.getSelectedPublicacao();
     private ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
 
     @Override
@@ -93,8 +93,8 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
             Livro_DAO bookController = new Livro_DAO();
 //    bookController.UpdateLivro(livroAtualizado);
             ///
-            Livro mybook = new Livro(mainController.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
-            mainController.editLivro(mybook);
+            Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
+            mainControllerPublicacao.editLivro(mybook);
             ///
         }
     }
@@ -103,7 +103,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         ViewAlert alertGet =new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         Exemplar myExemplar = new Exemplar(exempCod, selectedlivro.getId(), "Disponível");
-        mainController.addExemplar(myExemplar);
+        mainControllerPublicacao.addExemplar(myExemplar);
         updateExempTable();
         ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
     }

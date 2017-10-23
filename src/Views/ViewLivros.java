@@ -1,6 +1,6 @@
 package Views;
 
-import biblioteca.Controller;
+import biblioteca.Controller_Publicacao;
 import biblioteca.Livro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewLivros implements Initializable, ControlledScreen {
-    Controller mainController = Controller.getInstance();
+    Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
     Screens_controller myscreen;
     @FXML
     private TableView<Livro> TableLivros;
@@ -35,7 +35,7 @@ public class ViewLivros implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listaLivros = mainController.getListaLivros();
+        listaLivros = mainControllerPublicacao.getListaLivros();
         LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
         AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
@@ -68,6 +68,6 @@ public class ViewLivros implements Initializable, ControlledScreen {
     }
     @FXML
     private void mySelectedBook(){
-        mainController.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());
+        mainControllerPublicacao.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());
     }
 }

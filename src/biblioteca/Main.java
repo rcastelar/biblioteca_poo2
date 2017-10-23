@@ -22,7 +22,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Controller mainController = Controller.getInstance();
+        Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
         launch(args);
     }
 }
