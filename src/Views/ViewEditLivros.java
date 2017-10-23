@@ -1,4 +1,4 @@
-package Views;
+/**package Views;
 
 import biblioteca.*;
 import javafx.collections.FXCollections;
@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+ import java.io.EOFException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -55,7 +56,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
         Exemplar_DAO myexempl = new Exemplar_DAO();
         try {
             listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
-        } catch (SQLException | ClassNotFoundException e) {
+} catch (EOFException e) {
             e.printStackTrace();
         }
             LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
@@ -96,8 +97,7 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
             Livro livroAtualizado = new Livro (selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
                     FieldGenero.getText(), FieldEditora.getText());
             Livro_DAO bookController = new Livro_DAO();
-            bookController.UpdateLivro(livroAtualizado);
-
+//    bookController.UpdateLivro(livroAtualizado);
         }
     }
     @FXML
@@ -122,3 +122,4 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     }
 }
 
+ */

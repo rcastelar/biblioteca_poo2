@@ -5,10 +5,12 @@
  */
 package biblioteca;
 
+import java.io.Serializable;
+
 /**
  * @author f32cpd01
  */
-public class Exemplar {
+public class Exemplar implements Serializable {
     private int id;
     private int livro_id;
     private String codigo_exemplar;

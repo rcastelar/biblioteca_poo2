@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ViewLivros implements Initializable, ControlledScreen {
@@ -38,11 +37,11 @@ public class ViewLivros implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
 
         Livro_DAO mybooks = new Livro_DAO();
-        try {
-            listaLivros = mybooks.GetAllLivro();
+        /**    try {
+         //   listaLivros = mybooks.GetAllLivro();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-        }
+         }*/
 
         LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));

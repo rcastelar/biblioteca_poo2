@@ -6,83 +6,85 @@
 
 package biblioteca;
 
-import bd.DBHandler;
+//import bd.DBHandler;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * @author f32cpd02
  */
 public class Livro_DAO {
+    Controller mainController = Controller.getInstance();
+    Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
 
-    public Livro_DAO(){
+    public Livro_DAO() {
     }
 
-    public ObservableList<Livro> GetAllLivro() throws SQLException, ClassNotFoundException {
-        DBHandler Livros = new DBHandler();
-        ResultSet rs = Livros.querry("SELECT * FROM livro");
 
-        ObservableList<Livro> LstLivros = FXCollections.observableArrayList();
-        try{
-            while(rs.next()){
-                Livro lv = new Livro(rs.getInt("id"),rs.getString("titulo"),rs.getString("posicao"),
-                        rs.getString("autor"),rs.getString("genero"),rs.getString("editora"));
-                LstLivros.add(lv);
-            }
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-        return LstLivros;
-    }
-
-    public Livro GetLivro(int idLivro) throws SQLException, ClassNotFoundException {
-
-        DBHandler Livros = new DBHandler();
-        ResultSet rs = Livros.querry("SELECT * FROM livro WHERE id="+idLivro);
-        Livro LivroReturn = null;
-        try{
-             LivroReturn = new Livro(rs.getInt("id"),rs.getString("titulo"),rs.getString("posicao"),
-                        rs.getString("autor"),rs.getString("genero"),rs.getString("editora"));
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
-        return LivroReturn;
-    }
-
-    public void InsertLivro(String titulo, String autor, String posicao, String genero, String editora){
+    public void getAllLivro() {
+        ObjectInputStream os = null;
         try {
-            DBHandler Livros = new DBHandler();
-            Livros.execute("INSERT INTO livro(titulo,posicao,autor,genero,editora) VALUES ('"
-                    +titulo+"','"+autor+"','"+posicao+"','"+genero+"','"+editora+"')");
-        } catch (SQLException | ClassNotFoundException e) {
+            os = new ObjectInputStream(
+                    Files.newInputStream(arquivoLivros));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mainController.addLivro((Livro) os.readObject());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public void DeleteLivro(Livro Lv){
-        try{
-            DBHandler Livros = new DBHandler();
-            Livros.querry("DELETE FROM livro WHERE id='"+Lv.getId()+"'");
-        } catch (SQLException | ClassNotFoundException e) {
+    public ObservableList<Livro> querry() {
+        //mudar para pegar o arquivo inteiro e carregar s dados em uma estrutura de objetos.
+        ObservableList<Livro> listResult = FXCollections.observableArrayList();
+
+        try (FileInputStream fis = new FileInputStream("/src/bd/livro/arquivoLivros.txt");
+             ObjectInputStream ois = new ObjectInputStream(fis);) {
+            listResult.add((Livro) ois.readObject());
+            return listResult;
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+        }
+        return listResult;
+    }
+
+
+    public void InsertLivro(Livro meuLivro) {
+        int i = 0;
+        while ((!Files.exists(arquivoLivros) && (i < 2))) {
+            try {
+                Files.createFile(arquivoLivros);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            i++;
+        }
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(
+                    Files.newOutputStream(arquivoLivros));
+            os.writeObject(meuLivro);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
-    public void UpdateLivro(Livro Lv){
-        try{
-            DBHandler Livros = new DBHandler();
-            System.out.println("UPDATE livro SET titulo='"+Lv.getTitulo()+"',posicao'"+Lv.getPosicao()+
-                    "',autor='"+Lv.getAutor()+"',genero='"+Lv.getGenero()+"',editora='"+Lv.getEditora()+"' WHERE id="+Lv.getId()+";");
-            Livros.execute("UPDATE livro SET titulo='"+Lv.getTitulo()+"',posicao='"+Lv.getPosicao()+
-                    "',autor='"+Lv.getAutor()+"',genero='"+Lv.getGenero()+"',editora='"+Lv.getEditora()+"' WHERE id="+Lv.getId()+";");
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
+    public void DeleteLivro(Livro Lv) {
+        //  DBHandler Livros = DBHandler.getInstance();
+        // Livros.querry("DELETE FROM livro WHERE id='" + Lv.getId() + "'");
     }
 }
 

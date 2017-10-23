@@ -1,5 +1,7 @@
 package Views;
 
+import biblioteca.Controller;
+import biblioteca.Livro;
 import biblioteca.Livro_DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +15,7 @@ import java.util.ResourceBundle;
 public class ViewNewLivro implements Initializable, ControlledScreen {
 
     Screens_controller myController;
-
+    Controller mainController = Controller.getInstance();
     @FXML  private TextField FieldTitulo;
     @FXML  private TextField FieldAutor;
     @FXML  private TextField FieldGenero;
@@ -37,8 +39,11 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
 
     @FXML
     private void newBook(ActionEvent event) {
+        int id = 1;
         Livro_DAO myBook = new Livro_DAO();
-        myBook.InsertLivro(FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
+        Livro mybook = new Livro(id, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
+        mainController.addLivro(mybook);
+        // myBook.InsertLivro(mybook);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("iLibrary");
         alert.setHeaderText(null);
