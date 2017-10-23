@@ -1,7 +1,6 @@
 package Views;
 
 import biblioteca.*;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ViewEditLivros implements Initializable, ControlledScreen {
@@ -37,9 +35,8 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML private TableColumn LivroId;
     @FXML private Button BtnRemoveExemplar;
     private Exemplar_DAO bdControl = new Exemplar_DAO();
-    private Controller mainController = Controller.getInstance();
-    private Livro selectedlivro = (Livro) mainController.getSelectedBook();
-    private ObservableList<Exemplar> listaExemplares = FXCollections.observableArrayList();
+    private Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
+    private Livro selectedlivro = (Livro) mainControllerPublicacao.getSelectedPublicacao();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,12 +49,8 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
     }
 
         private void updateExempTable(){
-        Exemplar_DAO myexempl = new Exemplar_DAO();
-        try {
-            listaExemplares = myexempl.GetAllExemplar(selectedlivro.getId());
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+            //   Exemplar_DAO myexempl = new Exemplar_DAO();
+            ObservableList<Exemplar> listaExemplares = selectedlivro.getListaExemplar();
             LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
@@ -96,8 +89,11 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
             Livro livroAtualizado = new Livro (selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
                     FieldGenero.getText(), FieldEditora.getText());
             Livro_DAO bookController = new Livro_DAO();
-            bookController.UpdateLivro(livroAtualizado);
-
+//    bookController.UpdateLivro(livroAtualizado);
+            ///
+            Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
+            mainControllerPublicacao.editLivro(mybook);
+            ///
         }
     }
     @FXML
@@ -105,20 +101,22 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
 
         ViewAlert alertGet =new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        bdControl.InsertExemplar(exempCod, selectedlivro.getId(), "Disponível");
+        Exemplar myExemplar = new Exemplar(exempCod, selectedlivro.getId(), "Disponível");
+        mainControllerPublicacao.addExemplar(myExemplar);
         updateExempTable();
         ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
+
     }
+
     @FXML
     private void removeSelectedExemplar(){
         if (!TableExemplares.getSelectionModel().isEmpty()) {
-            bdControl.DeleteExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+            ViewAlert alertGet = new ViewAlert();
+            mainControllerPublicacao.removeExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
-            ViewAlert ok = new ViewAlert("Exemplar excluido");
-        }
-        else{
-           ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
+            ViewAlert showAlert = new ViewAlert("Exemplar removido");
+        } else {
+            ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
         }
     }
 }
-

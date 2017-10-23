@@ -1,14 +1,21 @@
 package biblioteca;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * @author f32cpd02
  */
-public class Publicacao {
+public abstract class Publicacao implements Serializable {
     protected int id;
     protected String titulo;
     protected String posicao;
     protected String genero;
     protected String editora;
+    private ArrayList<Exemplar> listaExemplar = new ArrayList<>();
 
     public Publicacao(int bid, String btitulo, String bposicao, String bgenero, String beditora) {
         this.id = bid;
@@ -18,8 +25,28 @@ public class Publicacao {
         this.editora = beditora;
     }
 
-    public Publicacao() {
+    public Publicacao(){
     }
+
+    public ObservableList<Exemplar> getListaExemplar() {
+
+        return FXCollections.observableList(listaExemplar);
+    }
+
+    public void removeExemplar(Exemplar myexemplar) {
+        Livro_DAO myLivroDao = new Livro_DAO();
+        for (Exemplar neededExemplar : listaExemplar) {
+            if (myexemplar.getCodigo_exemplar() == neededExemplar.getCodigo_exemplar()) {
+                listaExemplar.remove(neededExemplar);
+                break;
+            }
+        }
+    }
+
+    public void addToListaExempar(Exemplar myExemplar) {
+        listaExemplar.add(myExemplar);
+    }
+
 
     public String getPosicao() {
         return posicao;
@@ -60,7 +87,6 @@ public class Publicacao {
     public void setTitulo(String btitulo) {
         this.titulo = btitulo;
     }
-
 
     public Publicacao get() {
         return this;

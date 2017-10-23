@@ -17,10 +17,12 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Livros");
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
+        Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
         launch(args);
     }
 }
