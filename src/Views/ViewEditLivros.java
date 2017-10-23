@@ -92,11 +92,14 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
                     FieldGenero.getText(), FieldEditora.getText());
             Livro_DAO bookController = new Livro_DAO();
 //    bookController.UpdateLivro(livroAtualizado);
+            ///
+            Livro mybook = new Livro(mainController.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
+            mainController.editLivro(mybook);
+            ///
         }
     }
     @FXML
     private void newExemplar(ActionEvent event){
-
         ViewAlert alertGet =new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         Exemplar myExemplar = new Exemplar(exempCod, selectedlivro.getId(), "Disponível");

@@ -78,7 +78,6 @@ public abstract class Publicacao implements Serializable {
         this.titulo = btitulo;
     }
 
-
     public Publicacao get() {
         return this;
     }

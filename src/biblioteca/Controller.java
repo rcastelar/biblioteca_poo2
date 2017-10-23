@@ -48,11 +48,27 @@ public class Controller {
         myLivroDao.InsertLivro(listaLivros);
     }
 
+    public void editLivro(Livro myLivro) {
+        Livro_DAO myLivroDao = new Livro_DAO();
+        for (Livro neededBook : listaLivros) {
+            if (selectedPub.getId() == neededBook.get().getId()) {
+                neededBook.setAutor(myLivro.getAutor());
+                neededBook.setEditora(myLivro.getEditora());
+                neededBook.setGenero(myLivro.getGenero());
+                neededBook.setPosicao(myLivro.getPosicao());
+                neededBook.setTitulo(myLivro.getTitulo());
+                break;
+            }
+        }
+        myLivroDao.InsertLivro(listaLivros);
+    }
+
     public void addExemplar(Exemplar myExemplar) {
         Livro_DAO myLivroDao = new Livro_DAO();
         for (Livro neededBook : listaLivros) {
             if (selectedPub.getId() == neededBook.get().getId()) {
                 neededBook.addToListaExempar(myExemplar);
+                break;
             }
         }
         myLivroDao.InsertLivro(listaLivros);
