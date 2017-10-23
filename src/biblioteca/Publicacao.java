@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author f32cpd02
@@ -14,7 +15,7 @@ public abstract class Publicacao implements Serializable {
     protected String posicao;
     protected String genero;
     protected String editora;
-    private ObservableList<Exemplar> listaExemplar = FXCollections.observableArrayList();
+    private ArrayList<Exemplar> listaExemplar = new ArrayList<>();
 
     public Publicacao(int bid, String btitulo, String bposicao, String bgenero, String beditora) {
         this.id = bid;
@@ -24,11 +25,12 @@ public abstract class Publicacao implements Serializable {
         this.editora = beditora;
     }
 
-    public Publicacao() {
+    public Publicacao(){
     }
 
     public ObservableList<Exemplar> getListaExemplar() {
-        return this.listaExemplar;
+
+        return FXCollections.observableList(listaExemplar);
     }
 
     public void addToListaExempar(Exemplar myExemplar) {

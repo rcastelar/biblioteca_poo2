@@ -17,6 +17,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Livros");
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewLivros implements Initializable, ControlledScreen {
-
+    Controller mainController = Controller.getInstance();
     Screens_controller myscreen;
     @FXML
     private TableView<Livro> TableLivros;
@@ -42,6 +42,8 @@ public class ViewLivros implements Initializable, ControlledScreen {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
          }*/
+        listaLivros = mainController.getListaLivros();
+
 
         LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));

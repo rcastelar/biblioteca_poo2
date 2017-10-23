@@ -43,7 +43,6 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
         Livro_DAO myBook = new Livro_DAO();
         Livro mybook = new Livro(id, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
         mainController.addLivro(mybook);
-        // myBook.InsertLivro(mybook);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("iLibrary");
         alert.setHeaderText(null);

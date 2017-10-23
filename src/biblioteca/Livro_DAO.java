@@ -18,33 +18,32 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author f32cpd02
  */
 public class Livro_DAO {
-    Controller mainController = Controller.getInstance();
     Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
 
     public Livro_DAO() {
     }
 
 
-    public void getAllLivro() {
+    public ObservableList<Livro> getAllLivro() {
         ObjectInputStream os = null;
+        ObservableList<Livro> mylist = FXCollections.observableArrayList();
         try {
             os = new ObjectInputStream(
                     Files.newInputStream(arquivoLivros));
-        } catch (IOException e) {
+            List<Livro> list = (List<Livro>) os.readObject();
+            //personsObservable = FXCollections.observableList(list);
+            mylist = FXCollections.observableArrayList(list);
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try {
-            mainController.addLivro((Livro) os.readObject());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        return mylist;
     }
 
     public ObservableList<Livro> querry() {
@@ -53,16 +52,15 @@ public class Livro_DAO {
 
         try (FileInputStream fis = new FileInputStream("/src/bd/livro/arquivoLivros.txt");
              ObjectInputStream ois = new ObjectInputStream(fis);) {
-            listResult.add((Livro) ois.readObject());
-            return listResult;
-        } catch (IOException | ClassNotFoundException e) {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return listResult;
     }
 
 
-    public void InsertLivro(Livro meuLivro) {
+    public void InsertLivro(ObservableList<Livro> meusLivros) {
         int i = 0;
         while ((!Files.exists(arquivoLivros) && (i < 2))) {
             try {
@@ -75,7 +73,9 @@ public class Livro_DAO {
         try {
             ObjectOutputStream os = new ObjectOutputStream(
                     Files.newOutputStream(arquivoLivros));
-            os.writeObject(meuLivro);
+
+            //oos.writeObject(new ArrayList<EmployeeEntity>(personsObservable));
+            os.writeObject(new ArrayList<Livro>(meusLivros));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
