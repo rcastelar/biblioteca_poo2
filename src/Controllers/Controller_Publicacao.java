@@ -1,5 +1,9 @@
-package biblioteca;
+package Controllers;
 
+import biblioteca.Exemplar;
+import biblioteca.Livro;
+import biblioteca.Livro_DAO;
+import biblioteca.Publicacao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -50,16 +54,11 @@ public class Controller_Publicacao {
 
     public void editLivro(Livro myLivro) {
         Livro_DAO myLivroDao = new Livro_DAO();
-        for (Livro neededBook : listaLivros) {
-            if (selectedPub.getId() == neededBook.get().getId()) {
-                neededBook.setAutor(myLivro.getAutor());
-                neededBook.setEditora(myLivro.getEditora());
-                neededBook.setGenero(myLivro.getGenero());
-                neededBook.setPosicao(myLivro.getPosicao());
-                neededBook.setTitulo(myLivro.getTitulo());
-                break;
-            }
-        }
+        ((Livro) selectedPub).setAutor(myLivro.getAutor());
+        selectedPub.setEditora(myLivro.getEditora());
+        selectedPub.setGenero(myLivro.getGenero());
+        selectedPub.setPosicao(myLivro.getPosicao());
+        selectedPub.setTitulo(myLivro.getTitulo());
         myLivroDao.InsertLivro(listaLivros);
     }
 

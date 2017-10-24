@@ -1,6 +1,6 @@
 package Views;
 
-import biblioteca.Controller_Publicacao;
+import Controllers.Controller_Publicacao;
 import biblioteca.Livro;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
