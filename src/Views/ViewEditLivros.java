@@ -9,10 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -84,20 +81,31 @@ public class ViewEditLivros implements Initializable, ControlledScreen {
             BtnEditBook.setText("Salvar");
 
         } else {
-            FieldTitulo.setDisable(true);
-            FieldAutor.setDisable(true);
-            FieldGenero.setDisable(true);
-            FieldEditora.setDisable(true);
-            FieldLocation.setDisable(true);
-            BtnEditBook.setText("Editar livro");
-            Livro livroAtualizado = new Livro (selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
-                    FieldGenero.getText(), FieldEditora.getText());
-            Livro_DAO bookController = new Livro_DAO();
-//    bookController.UpdateLivro(livroAtualizado);
-            ///
-            Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
-            mainControllerPublicacao.editLivro(mybook);
-            ///
+            if(!FieldTitulo.getText().isEmpty()) {
+                FieldTitulo.setDisable(true);
+                FieldAutor.setDisable(true);
+                FieldGenero.setDisable(true);
+                FieldEditora.setDisable(true);
+                FieldLocation.setDisable(true);
+                BtnEditBook.setText("Editar livro");
+                Livro livroAtualizado = new Livro(selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
+                        FieldGenero.getText(), FieldEditora.getText());
+                Livro_DAO bookController = new Livro_DAO();
+                //bookController.UpdateLivro(livroAtualizado);
+                ///
+                Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
+                mainControllerPublicacao.editLivro(mybook);
+                ///
+            }
+            else
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("iLibrary");
+                alert.setHeaderText(null);
+                alert.setContentText("Livro não pode ser salvo. Preencha o campo Título! ");
+                alert.showAndWait();
+                FieldTitulo.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
+            }
         }
     }
     @FXML
