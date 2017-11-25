@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Controller_Publicacao {
-    private static Controller_Publicacao instance;
+    private static Controller_Publicacao instancepu;
     private Publicacao selectedPub;
     private Exemplar selectedExemplar;
     private static int qdePublicacao;
@@ -20,10 +20,10 @@ public class Controller_Publicacao {
     }
 
     public static Controller_Publicacao getInstance() {
-        if (instance == null) {
-            instance = new Controller_Publicacao();
+        if (instancepu == null) {
+            instancepu = new Controller_Publicacao();
         }
-        return instance;
+        return instancepu;
     }
 
     public ObservableList getListaLivros() {
