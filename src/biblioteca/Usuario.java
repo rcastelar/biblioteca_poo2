@@ -5,6 +5,11 @@
  */
 package biblioteca;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
+
 /**
  * @author f32cpd02
  */
@@ -13,22 +18,41 @@ public class Usuario {
     private int rg;
     private String nome;
     private String endereco;
-
+    private ArrayList<Exemplar> listaEmprestimo = new ArrayList<>();
     private int telefone;
 
-    private Livro[] livros_emprestados;
 
-    public Usuario(int bid, int brg, String bnome, String brua, String bnumero_moradia, int bcep, int btelefone, String bcidade, String bestado, Livro[] blivros_emprestados) {
+
+    public Usuario(int bid, int brg, String bnome, String brua, int btelefone) {
         this.id = bid;
         this.rg = brg;
         this.nome = bnome;
         this.endereco = brua;
         this.telefone = btelefone;
-        this.livros_emprestados = blivros_emprestados;
     }
 
     public Usuario() {
     }
+
+    public ObservableList<Exemplar> getListaEmprestimo() {
+
+        return FXCollections.observableList(listaEmprestimo);
+    }
+
+    public void removeEmprestimo(Exemplar myexemplar) {
+        Livro_DAO myLivroDao = new Livro_DAO();
+        for (Exemplar neededExemplar : listaEmprestimo) {
+            if (myexemplar.getCodigo_exemplar() == neededExemplar.getCodigo_exemplar()) {
+                listaEmprestimo.remove(neededExemplar);
+                break;
+            }
+        }
+    }
+
+    public void addToListaEmprestimo(Exemplar myExemplar) {
+        listaEmprestimo.add(myExemplar);
+    }
+
 
     public int getId() {
         return this.id;
@@ -42,7 +66,7 @@ public class Usuario {
         return this.nome;
     }
 
-    public String getRua() {
+    public String getEndereco() {
         return this.endereco;
     }
 
@@ -50,9 +74,7 @@ public class Usuario {
         return this.telefone;
     }
 
-    public Livro[] getLivro() {
-        return this.livros_emprestados;
-    }
+
 
     public void setId(int bid) {
         this.id = bid;
@@ -66,7 +88,7 @@ public class Usuario {
         this.nome = bnome;
     }
 
-    public void setRua(String brua) {
+    public void setEndereco(String brua) {
         this.endereco = brua;
     }
 
@@ -75,9 +97,8 @@ public class Usuario {
         this.telefone = btelefone;
     }
 
-
-
-    public void setLivro(Livro[] blivro) {
-        this.livros_emprestados = blivro;
+    public Usuario get() {
+        return this;
     }
 }
+

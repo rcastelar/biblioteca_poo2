@@ -1,14 +1,12 @@
 package Controllers;
 
-import biblioteca.Usuario;
-import biblioteca.Usuario_DAO;
+import biblioteca.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Controller_Usuario {
     private static Controller_Usuario instanceus;
     private Usuario selectedUser;
-    private static int qdeUsuario;
     private static ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
 
     private Controller_Usuario() {
@@ -44,17 +42,26 @@ public class Controller_Usuario {
 
     public void editUsuario(Usuario myUsuario) {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
-    //    ((Usuario) selectedUser).setAutor(myUsuario.getAutor());
-    //    selectedUser.setEditora(myUsuario.getEditora());
-     //   selectedUser.setGenero(myUsuario.getGenero());
-    //    selectedUser.setPosicao(myUsuario.getPosicao());
-    //    selectedUser.setTitulo(myUsuario.getTitulo());
+        ((Usuario) selectedUser).setNome(myUsuario.getNome());
+        selectedUser.setEndereco(myUsuario.getEndereco());
+        selectedUser.setRg(myUsuario.getRg());
+        selectedUser.setId(myUsuario.getId());
+        selectedUser.setTelefone(myUsuario.getTelefone());
         myUsuarioDao.InsertUsuario(listaUsuarios);
     }
 
-
-    public void removeUsuario(Usuario myUsuario) {
+    public void addEmprestimo(Exemplar myExemplar) {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
-    //    selectedUser.removeUsuario(myUsuario);
+       for (Usuario neededUsuario : listaUsuarios) {
+            if (selectedUser.getId() == neededUsuario.get().getId()) {
+                neededUsuario.addToListaEmprestimo(myExemplar);
+                break;
+            }
+        }
+        myUsuarioDao.InsertUsuario(listaUsuarios);
+    }
+
+    public void removeEmprestimo(Exemplar myExemplar) {
+        selectedUser.removeEmprestimo(myExemplar);
     }
 }
