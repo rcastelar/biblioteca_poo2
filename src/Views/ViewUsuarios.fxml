@@ -74,10 +74,10 @@
     <TableView fx:id="TableLivros" layoutX="208.0" layoutY="73.0" onMouseClicked="#mySelectedBook" prefHeight="697.0" prefWidth="1171.0">
         <columns>
             <TableColumn fx:id="LivroId" prefWidth="52.0" text="Id" />
-            <TableColumn fx:id="TituloId" prefWidth="448.0" text="Titulo" />
-            <TableColumn fx:id="GeneroId" minWidth="20.0" prefWidth="155.0" text="Genero" />
-            <TableColumn fx:id="AutorId" minWidth="50.0" prefWidth="297.0" text="Autor" />
-            <TableColumn fx:id="PosicaoId" minWidth="50.0" prefWidth="288.0" text="Posicao" />
+            <TableColumn fx:id="TituloId" prefWidth="448.0" text="Nome" />
+            <TableColumn fx:id="GeneroId" minWidth="20.0" prefWidth="155.0" text="Telefone" />
+            <TableColumn fx:id="AutorId" minWidth="50.0" prefWidth="297.0" text="Endereco" />
+            <TableColumn fx:id="PosicaoId" minWidth="50.0" prefWidth="288.0" text="RG" />
             <TableColumn fx:id="EditoraId" minWidth="50.0" prefWidth="288.0" text="Posicao" />
         </columns>
         <cursor>
