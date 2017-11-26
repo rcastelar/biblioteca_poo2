@@ -1,10 +1,9 @@
 package Views;
 
-import Controllers.Controller_Publicacao;
+import Controllers.Controller_Usuario;
 import biblioteca.Exemplar;
 import biblioteca.Exemplar_DAO;
-import biblioteca.Livro;
-import biblioteca.Livro_DAO;
+import biblioteca.Usuario;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,46 +15,62 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewEditUsuarios implements Initializable, ControlledScreen {
+
+    //Botoes
     @FXML
-    private TextField FieldTitulo;
+    private Button BtnEditUser;
     @FXML
-    private TextField FieldAutor;
+    private Button BtnAddExemplar;
     @FXML
-    private TextField FieldGenero;
+    private Button BtnRemoveExemplar;
+
+    //Colunas
     @FXML
-    private TextField FieldEditora;
+    private TableColumn nome_livro;
     @FXML
-    private TextField FieldLocation;
+    private TableColumn LivroId;
+
+    //TextFields
     @FXML
-    private Button BtnEditBook;
-    private Screens_controller myController;
+    private TextField FieldNome;
+    @FXML
+    private TextField FieldTelefone;
+    @FXML
+    private TextField FieldRG;
+    @FXML
+    private TextField FieldEndereco;
+
+    //tabela e colunas
     @FXML  private TableView TableExemplares;
     @FXML private TableColumn ExemplId;
-    @FXML private TableColumn Cod_Exemplar;
-    @FXML private TableColumn StatusId;
-    @FXML private TableColumn LivroId;
-    @FXML private Button BtnRemoveExemplar;
-    private Exemplar_DAO bdControl = new Exemplar_DAO();
-    private Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-    private Livro selectedlivro = (Livro) mainControllerPublicacao.getSelectedPublicacao();
+    @FXML
+    private TableColumn DatalimiteId;
+    @FXML
+    private TableColumn nomeLivro;
 
+    //controlers e entidades
+    private Screens_controller myController;
+    private Exemplar_DAO bdControl = new Exemplar_DAO();
+    private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
+    private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
+
+
+    // metodos
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        FieldTitulo.setText(selectedlivro.getTitulo());
-        FieldAutor.setText(selectedlivro.getAutor());
-        FieldGenero.setText(selectedlivro.getGenero());
-        FieldEditora.setText(selectedlivro.getEditora());
-        FieldLocation.setText(selectedlivro.getPosicao());
+        FieldNome.setText(selectedUsuario.getNome());
+        FieldTelefone.setText(selectedUsuario.getTelefone());
+        FieldRG.setText(selectedUsuario.getRg());
+        FieldEndereco.setText(selectedUsuario.getEndereco());
         updateExempTable();
     }
 
         private void updateExempTable(){
             //   Exemplar_DAO myexempl = new Exemplar_DAO();
-            ObservableList<Exemplar> listaExemplares = selectedlivro.getListaExemplar();
-            LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
+            ObservableList<Exemplar> listaExemplares = selectedUsuario.getListaEmprestimo();
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
-        StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
+            nomeLivro.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
+            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
     }
 
@@ -64,67 +79,66 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
     }
 
     @FXML
+    private void goToViewUsuarios(ActionEvent event) {
+        myController.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
+        myController.setScreen("ViewUsuarios");
+        myController.unloadScreen("VewEditUsuarios");
+    }
+    @FXML
     private void goToViewLivros(ActionEvent event) {
         myController.loadScreen("ViewLivros", "ViewLivros.fxml");
         myController.setScreen("ViewLivros");
-        myController.unloadScreen("VewEditLivros");
+        myController.unloadScreen("VewEditUsuarios");
     }
-
     @FXML
-    private void editBook(ActionEvent event) {
-        if (FieldTitulo.isDisabled()) {
-            FieldTitulo.setDisable(false);
-            FieldAutor.setDisable(false);
-            FieldGenero.setDisable(false);
-            FieldEditora.setDisable(false);
-            FieldLocation.setDisable(false);
-            BtnEditBook.setText("Salvar");
+    private void editUser(ActionEvent event) {
+        if (FieldNome.isDisabled()) {
+            FieldNome.setDisable(false);
+            FieldTelefone.setDisable(false);
+            FieldRG.setDisable(false);
+            FieldEndereco.setDisable(false);
+            BtnEditUser.setText("Salvar");
 
         } else {
-            if(!FieldTitulo.getText().isEmpty()) {
-                FieldTitulo.setDisable(true);
-                FieldAutor.setDisable(true);
-                FieldGenero.setDisable(true);
-                FieldEditora.setDisable(true);
-                FieldLocation.setDisable(true);
-                BtnEditBook.setText("Editar livro");
-                Livro livroAtualizado = new Livro(selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
-                        FieldGenero.getText(), FieldEditora.getText());
-                Livro_DAO bookController = new Livro_DAO();
-                //bookController.UpdateLivro(livroAtualizado);
-                ///
-                Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
-                mainControllerPublicacao.editLivro(mybook);
-                ///
+            if (!FieldNome.getText().isEmpty()) {
+                FieldNome.setDisable(true);
+                FieldTelefone.setDisable(true);
+                FieldRG.setDisable(true);
+                FieldEndereco.setDisable(true);
+                BtnEditUser.setText("Editar Usuario");
+                Usuario UsuarioAtualizado = new Usuario(selectedUsuario.getId(), FieldNome.getText(), FieldEndereco.getText(),
+                        FieldRG.getText(), FieldTelefone.getText());
+                Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
+                mainControllerUsuario.editUsuario(myuser);
             }
             else
             {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("iLibrary");
                 alert.setHeaderText(null);
-                alert.setContentText("Livro não pode ser salvo. Preencha o campo Título! ");
+                alert.setContentText("Usuario não pode ser salvo. Preencha o campo Título! ");
                 alert.showAndWait();
-                FieldTitulo.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
+                FieldNome.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
             }
         }
     }
     @FXML
-    private void newExemplar(ActionEvent event){
+    private void newEmprestimo(ActionEvent event) {
 
         ViewAlert alertGet =new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        Exemplar myExemplar = new Exemplar(exempCod, selectedlivro.getId(), "Disponível");
-        mainControllerPublicacao.addExemplar(myExemplar);
+        Exemplar myExemplar = new Exemplar(exempCod, selectedUsuario.getId(), "Disponível");
+        mainControllerUsuario.addEmprestimo(myExemplar);
         updateExempTable();
         ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
 
     }
 
     @FXML
-    private void removeSelectedExemplar(){
+    private void removeSelectedEmprestimo() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
             ViewAlert alertGet = new ViewAlert();
-            mainControllerPublicacao.removeExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+            mainControllerUsuario.removeEmprestimo((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
             ViewAlert showAlert = new ViewAlert("Exemplar removido");
         } else {

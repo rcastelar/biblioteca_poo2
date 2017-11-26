@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/9"
-      fx:controller="Views.ViewEditLivros">
+      minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121"
+      fx:controller="Views.ViewEditUsuarios">
     <GridPane layoutX="-6.0" prefHeight="73.0" prefWidth="1373.0" style="-fx-background-color: '#1E90FF';">
         <columnConstraints>
             <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0"
@@ -25,18 +25,18 @@
                 <Font name="Segoe UI" size="35.0"/>
             </font>
         </Label>
-        <Button fx:id="BtnEditBook" mnemonicParsing="false" onAction="#editBook" prefHeight="30.0" prefWidth="94.0"
+        <Button fx:id="BtnEditUser" mnemonicParsing="false" onAction="#editUser" prefHeight="30.0" prefWidth="94.0"
                 text="Editar Usuario" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <effect>
 
             </effect>
         </Button>
-        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="30.0" prefWidth="80.0" text="Voltar"
+        <Button mnemonicParsing="false" onAction="#goToViewUsuarios" prefHeight="30.0" prefWidth="80.0" text="Voltar"
                 wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
     <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
-        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';"
-                text="Livros" textFill="WHITE">
+        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="50.0" prefWidth="208.0"
+                style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0"/>
             </font>
@@ -92,7 +92,7 @@
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="FieldTitulo" disable="true" prefHeight="35.0" prefWidth="604.0" GridPane.columnIndex="1"
+            <TextField fx:id="FieldNome" disable="true" prefHeight="35.0" prefWidth="604.0" GridPane.columnIndex="1"
                        GridPane.columnSpan="4">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
@@ -110,13 +110,13 @@
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="FieldGenero" disable="true" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1"
+            <TextField fx:id="FieldTelefone" disable="true" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1"
                        GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
-            <TextField fx:id="FieldEditora" disable="true" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="4"
+            <TextField fx:id="FieldRG" disable="true" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="4"
                        GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
@@ -128,7 +128,7 @@
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="FieldLocation" disable="true" prefHeight="35.0" prefWidth="981.0" GridPane.columnIndex="1"
+            <TextField fx:id="FieldEndereco" disable="true" prefHeight="35.0" prefWidth="981.0" GridPane.columnIndex="1"
                        GridPane.columnSpan="4" GridPane.rowIndex="1">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
@@ -138,8 +138,8 @@
         <TableView fx:id="TableExemplares" prefHeight="399.0" prefWidth="1096.0" GridPane.rowIndex="2">
             <columns>
                 <TableColumn fx:id="ExemplId" prefWidth="204.99998474121094" text="Codigo do Exemplar"/>
-                <TableColumn fx:id="Cod_Exemplar" prefWidth="508.0" text="Nome do livro"/>
-                <TableColumn fx:id="StatusId" prefWidth="380.0" text="Data limite para devolucao"/>
+                <TableColumn fx:id="nomeLivro" prefWidth="508.0" text="Nome do livro"/>
+                <TableColumn fx:id="DatalimiteId" prefWidth="380.0" text="Data limite para devolucao"/>
                 <TableColumn fx:id="LivroId" prefWidth="327.0" text="Codigo livro" visible="false"/>
             </columns>
         </TableView>
@@ -165,13 +165,13 @@
                 </font>
             </Label>
             <Button fx:id="BtnRemoveExemplar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                    onAction="#removeSelectedExemplar" prefHeight="25.0" prefWidth="120.0" text="Executar devolucao"
+                    onAction="#removeSelectedEmprestimo" prefHeight="25.0" prefWidth="120.0" text="Executar devolucao"
                     GridPane.columnIndex="3">
                 <effect>
 
                 </effect>
             </Button>
-            <Button fx:id="BtnAddExemplar" mnemonicParsing="false" onAction="#newExemplar" prefHeight="25.0"
+            <Button fx:id="BtnAddExemplar" mnemonicParsing="false" onAction="#newEmprestimo" prefHeight="25.0"
                     prefWidth="134.0" text="Emprestar exemplar" GridPane.columnIndex="4"/>
         </GridPane>
     </GridPane>

@@ -8,12 +8,13 @@ package biblioteca;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author f32cpd02
  */
-public class Usuario {
+public class Usuario implements Serializable {
     private int id;
     private String rg;
     private String nome;
@@ -22,7 +23,7 @@ public class Usuario {
     private String telefone;
 
 
-    public Usuario(int bid, String brg, String bnome, String brua, String btelefone) {
+    public Usuario(int bid, String bnome, String brua, String brg, String btelefone) {
         this.id = bid;
         this.rg = brg;
         this.nome = bnome;

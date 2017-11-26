@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/9"
-      fx:controller="Views.ViewNewLivro">
+      minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121"
+      fx:controller="Views.ViewNewUsuario">
     <GridPane prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
         <columnConstraints>
             <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="216.0" />
@@ -22,15 +22,18 @@
                 <Font name="Segoe UI" size="35.0" />
             </font>
         </Label>
-        <Button mnemonicParsing="false" onAction="#newBook" prefHeight="30.0" prefWidth="105.0" text="Salvar livro" GridPane.columnIndex="3" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onAction="#newUser" prefHeight="30.0" prefWidth="105.0" text="Salvar livro"
+                GridPane.columnIndex="3" GridPane.rowIndex="1">
             <effect>
 
             </effect>
         </Button>
-        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="30.0" prefWidth="73.0" text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#goToViewUsuario" prefHeight="30.0" prefWidth="73.0" text="Voltar"
+                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
     <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
-        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
+        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="50.0" prefWidth="208.0"
+                style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0" />
             </font>
@@ -82,7 +85,8 @@
                 </font>
             </Label>
 
-            <TextField id="FieldTitulo" fx:id="FieldTitulo" onAction="#newBook" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.columnSpan="4">
+            <TextField id="FieldTitulo" fx:id="FieldNome" onAction="#newUser" prefHeight="35.0" prefWidth="430.0"
+                       GridPane.columnIndex="1" GridPane.columnSpan="4">
                 <font>
                     <Font name="Segoe UI" size="18.0" />
                 </font>
@@ -99,13 +103,14 @@
                     <Font name="Segoe UI" size="20.0" />
                 </font>
             </Label>
-            <TextField id="FieldAutor" fx:id="FieldAutor" onAction="#newBook" prefHeight="35.0" prefWidth="423.0"
+            <TextField id="FieldAutor" fx:id="FieldRG" onAction="#newUser" prefHeight="35.0" prefWidth="423.0"
                        GridPane.columnIndex="4" GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="18.0" />
                 </font>
             </TextField>
-            <TextField id="FieldGenero" fx:id="FieldGenero" onAction="#newBook" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField id="FieldGenero" fx:id="FieldTelefone" onAction="#newUser" prefHeight="35.0" prefWidth="430.0"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="18.0" />
                 </font>
@@ -115,7 +120,7 @@
                     <Font name="Segoe UI" size="20.0" />
                 </font>
             </Label>
-            <TextField id="FieldLocation" fx:id="FieldLocation" onAction="#newBook" prefHeight="35.0" prefWidth="521.0"
+            <TextField id="FieldLocation" fx:id="FieldEndereco" onAction="#newUser" prefHeight="35.0" prefWidth="521.0"
                        GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
                 <font>
                     <Font name="Segoe UI" size="18.0" />

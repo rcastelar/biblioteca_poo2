@@ -52,7 +52,7 @@ public class ViewUsuarios implements Initializable, ControlledScreen {
         NomeId.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         EnderecoId.setCellValueFactory(new PropertyValueFactory<>("Endereco"));
         TelefoneId.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-        RGId.setCellValueFactory(new PropertyValueFactory<>("RG"));
+        RGId.setCellValueFactory(new PropertyValueFactory<>("Rg"));
         TableUsuarios.setItems(listaUsuarios);
     }
 

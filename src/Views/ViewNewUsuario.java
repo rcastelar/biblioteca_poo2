@@ -1,7 +1,7 @@
 package Views;
 
-import Controllers.Controller_Publicacao;
-import biblioteca.Livro;
+import Controllers.Controller_Usuario;
+import biblioteca.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,12 +14,15 @@ import java.util.ResourceBundle;
 public class ViewNewUsuario implements Initializable, ControlledScreen {
 
     Screens_controller myController;
-    Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-    @FXML  private TextField FieldTitulo;
-    @FXML  private TextField FieldAutor;
-    @FXML  private TextField FieldGenero;
-    @FXML  private TextField FieldEditora;
-    @FXML  private TextField FieldLocation;
+    Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
+    @FXML
+    private TextField FieldNome;
+    @FXML
+    private TextField FieldRG;
+    @FXML
+    private TextField FieldTelefone;
+    @FXML
+    private TextField FieldEndereco;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -33,24 +36,30 @@ public class ViewNewUsuario implements Initializable, ControlledScreen {
     private void goToViewLivros(ActionEvent event) {
         myController.loadScreen("ViewLivros", "ViewLivros.fxml");
         myController.setScreen("ViewLivros");
-        myController.unloadScreen("ViewNewLivro");
+        myController.unloadScreen("ViewNewUsuario");
     }
 
     @FXML
-    private void newBook(ActionEvent event) {
-        if(!FieldTitulo.getText().isEmpty()) {
+    private void goToViewUsuario(ActionEvent event) {
+        myController.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
+        myController.setScreen("ViewUsuarios");
+        myController.unloadScreen("ViewNewUsuario");
+    }
+
+    @FXML
+    private void newUser(ActionEvent event) {
+        if (!FieldNome.getText().isEmpty()) {
             int id = 1;
-            Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
-            mainControllerPublicacao.addLivro(mybook);
+            Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
+            mainControllerUsuario.addUsuario(myuser);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);
             alert.setContentText("Livro salvo.");
-            FieldTitulo.setText("");
-            FieldAutor.setText("");
-            FieldLocation.setText("");
-            FieldGenero.setText("");
-            FieldEditora.setText("");
+            FieldNome.setText("");
+            FieldRG.setText("");
+            FieldEndereco.setText("");
+            FieldTelefone.setText("");
             alert.showAndWait();
         }
         else
@@ -58,11 +67,10 @@ public class ViewNewUsuario implements Initializable, ControlledScreen {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);
-            alert.setContentText("Livro não pode ser salvo. Preencha o campo Título!");
+            alert.setContentText("Usuario não pode ser salvo. Preencha o campo Nome!");
             alert.showAndWait();
-            FieldTitulo.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
+            FieldNome.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
         }
-//
     }
 }
 
