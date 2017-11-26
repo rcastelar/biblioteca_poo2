@@ -21,5 +21,4 @@ public class MasterView {
         myscreen.loadScreen("ViewLivros", "ViewLivros.fxml");
         myscreen.setScreen("ViewLivros");
     }
-
 }
