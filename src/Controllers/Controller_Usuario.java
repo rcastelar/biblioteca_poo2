@@ -12,6 +12,7 @@ public class Controller_Usuario {
     private Usuario selectedUser;
     private static ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
     Controller_Publicacao myController_Publicacao = Controller_Publicacao.getInstance();
+
     private Controller_Usuario() {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
         listaUsuarios = myUsuarioDao.getAllUsuario();
@@ -54,29 +55,51 @@ public class Controller_Usuario {
     }
 
     public int addEmprestimo(String myExemplarCod) {
-
+        Livro_DAO myLivroDao = new Livro_DAO();
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
+        //o simbolo ; separa a parte do codigo do exemplar que se refere ao livro da parte que se refere ao proprio exemplar
         String[] codigos = myExemplarCod.split(";");
         String livroid = codigos[0];
         String mydate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-       for (Livro neededlivro : myController_Publicacao.getListaLivros()) {
+        for (Livro neededlivro : myController_Publicacao.getListaLivros()) {
             if ((neededlivro).getId() == Integer.parseInt(livroid)) {
                 for (Exemplar neededexemplar : (neededlivro).getListaExemplar()) {
                     if ((neededexemplar).getCodigo_exemplar().equals(myExemplarCod)) {
-                        Emprestimo myEmprestimo = new Emprestimo(neededexemplar, neededlivro, mydate);
-                        selectedUser.addToListaEmprestimo(myEmprestimo);
-                        return 1;
-                    }else {
-                        return 0;
+                        if (neededexemplar.getStatus().equals("Disponível")) {
+                            Emprestimo myEmprestimo = new Emprestimo(neededexemplar, neededlivro, mydate);
+                            selectedUser.addToListaEmprestimo(myEmprestimo);
+                            neededexemplar.setStatus("Emprestado");
+                            myUsuarioDao.InsertUsuario(listaUsuarios);
+                            myLivroDao.InsertLivro(myController_Publicacao.getListaLivros());
+                            return 1;
+                        } else {
+                            return 2;
+                        }
                     }
                 }
             }
         }
-        myUsuarioDao.InsertUsuario(listaUsuarios);
-       return 1;
+
+        return 0;
     }
 
     public void removeEmprestimo(Emprestimo myExemplar) {
-        selectedUser.removeEmprestimo(myExemplar);
-    }
+        String[] codigos = myExemplar.getcodigo_exemplar().split(";");
+        String livroid = codigos[0];
+        Livro_DAO myLivroDao = new Livro_DAO();
+        Usuario_DAO myUsuarioDao = new Usuario_DAO();
+        for (Livro neededlivro : myController_Publicacao.getListaLivros()) {
+            if ((neededlivro).getId() == Integer.parseInt(livroid)) {
+                for (Exemplar neededexemplar : (neededlivro).getListaExemplar()) {
+                    if ((neededexemplar).getCodigo_exemplar().equals(myExemplar.getcodigo_exemplar())) {
+                        neededexemplar.setStatus("Disponível");
+                        selectedUser.removeEmprestimo(myExemplar);
+                            myUsuarioDao.InsertUsuario(listaUsuarios);
+                            myLivroDao.InsertLivro(myController_Publicacao.getListaLivros());
+                        }
+
+                    }
+                }
+            }
+        }
 }
