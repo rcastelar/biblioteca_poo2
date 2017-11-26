@@ -55,7 +55,7 @@ public class ViewNewUsuario implements Initializable, ControlledScreen {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);
-            alert.setContentText("Livro salvo.");
+            alert.setContentText("Usuario salvo.");
             FieldNome.setText("");
             FieldRG.setText("");
             FieldEndereco.setText("");
