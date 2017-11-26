@@ -30,7 +30,7 @@
 
             </effect>
             <cursor>
-                <Cursor fx:constant="S_RESIZE" />
+                <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Button>
         <Button fx:id="btnNewUser" mnemonicParsing="false" onAction="#goToViewNewUsuario" prefHeight="29.0" prefWidth="101.0" text="Novo usuario" GridPane.columnIndex="2">

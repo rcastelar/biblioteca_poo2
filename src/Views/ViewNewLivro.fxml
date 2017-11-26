@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -28,10 +29,13 @@
                 <Font name="Segoe UI" size="35.0" />
             </font>
         </Label>
-        <Button mnemonicParsing="false" onAction="#newBook" prefHeight="30.0" prefWidth="105.0" text="Salvar livro" GridPane.columnIndex="3" GridPane.rowIndex="1">
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newBook" prefHeight="30.0" prefWidth="105.0" text="Salvar livro" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <effect>
 
             </effect>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
         </Button>
         <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="30.0" prefWidth="73.0" text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
