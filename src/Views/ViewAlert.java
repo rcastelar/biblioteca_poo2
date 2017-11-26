@@ -14,7 +14,6 @@ public class ViewAlert {
         alert.showAndWait();
     }
     public ViewAlert(){
-
     }
 
     public String getUmDado(String content){

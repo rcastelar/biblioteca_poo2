@@ -84,14 +84,14 @@ public class Controller_Usuario {
     }
 
     public void removeEmprestimo(Emprestimo myExemplar) {
-        String[] codigos = myExemplar.getcodigo_exemplar().split(";");
+        String[] codigos = myExemplar.getCodigo_exemplar().split(";");
         String livroid = codigos[0];
         Livro_DAO myLivroDao = new Livro_DAO();
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
         for (Livro neededlivro : myController_Publicacao.getListaLivros()) {
             if ((neededlivro).getId() == Integer.parseInt(livroid)) {
                 for (Exemplar neededexemplar : (neededlivro).getListaExemplar()) {
-                    if ((neededexemplar).getCodigo_exemplar().equals(myExemplar.getcodigo_exemplar())) {
+                    if ((neededexemplar).getCodigo_exemplar().equals(myExemplar.getCodigo_exemplar())) {
                         neededexemplar.setStatus("Disponível");
                         selectedUser.removeEmprestimo(myExemplar);
                             myUsuarioDao.InsertUsuario(listaUsuarios);

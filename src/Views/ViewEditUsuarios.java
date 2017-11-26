@@ -68,7 +68,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
             ObservableList<Emprestimo> listaExemplares = selectedUsuario.getListaEmprestimo();
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
             nomeLivro.setCellValueFactory(new PropertyValueFactory("titulo"));
-            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("Dataemprestimo"));
+            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("dataemprestimo"));
         TableExemplares.setItems(listaExemplares);
     }
 

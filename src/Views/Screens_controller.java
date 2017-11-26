@@ -16,7 +16,7 @@ public class Screens_controller extends StackPane{
 
     public String NameViewAtual;
 
-    private static final HashMap<String, Node> screens = new HashMap<>();
+    private static HashMap<String, Node> screens = new HashMap<>();
 
     public Screens_controller(){
         super();
@@ -67,9 +67,7 @@ public class Screens_controller extends StackPane{
                         new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
                 fadeIn.play();
             }
-
             NameViewAtual = name;
-
             return true;
         } else {
             System.out.println("Screen hasn't benn loaded! \n");
@@ -80,9 +78,5 @@ public class Screens_controller extends StackPane{
     boolean unloadScreen(String name) {
             screens.remove(name);
             return false;
-
     }
-
-
-
 }

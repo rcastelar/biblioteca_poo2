@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Emprestimo implements Serializable{
-    private String Dataemprestimo;
+    private String dataemprestimo;
     private Exemplar myexemplar;
     private Livro mybook;
 
@@ -27,16 +27,16 @@ public class Emprestimo implements Serializable{
         return this.mybook.getTitulo();
     }
 
- public String getcodigo_exemplar(){
+ public String getCodigo_exemplar(){
         return this.myexemplar.getCodigo_exemplar();
  }
 
     public String getDataemprestimo() {
-        return Dataemprestimo;
+        return dataemprestimo;
     }
 
-    public void setDataemprestimo(String dataemprestimo) {
-        Dataemprestimo = dataemprestimo;
+    public void setDataemprestimo(String gdataemprestimo) {
+        dataemprestimo = gdataemprestimo;
     }
 
     public void setMybook(Livro mybook) {

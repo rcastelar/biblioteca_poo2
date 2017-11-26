@@ -36,7 +36,7 @@ public class Exemplar implements Serializable {
     public String getCodigo_exemplar() {
         return this.codigo_exemplar;
     }
-    public void setcodigo_exemplar(String bcodigo_exemplar) {
+    public void setCodigo_exemplar(String bcodigo_exemplar) {
         this.codigo_exemplar = bcodigo_exemplar;
     }
 
