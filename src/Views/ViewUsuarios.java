@@ -46,6 +46,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
     @FXML
     private Button btnEditUser;
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listaUsuarios = mainControllerUsuarios.getListaUsuarios();
@@ -56,27 +57,20 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
         TableUsuarios.setItems(listaUsuarios);
     }
 
-
     @FXML
-    private void goToViewEditUsuarios(ActionEvent event) {
+    private void ToViewEditUsuarios(ActionEvent event) {
         if (!TableUsuarios.getSelectionModel().isEmpty()) {
-            myscreen.loadScreen("ViewEditUsuarios", "ViewEditUsuarios.fxml");
-            myscreen.setScreen("ViewEditUsuarios");
-            myscreen.unloadScreen("ViewUsuarios");
+            goToViewEditUsuarios(event);
         } else {
             ViewAlert alert = new ViewAlert("Nenhum usuario selecionado");
         }
     }
-    @FXML
-    private void goToViewNewUsuario(ActionEvent event) {
-        myscreen.unloadScreen("ViewUsuarios");
-        myscreen.loadScreen("ViewNewUsuario", "ViewNewUsuario.fxml");
-        myscreen.setScreen("ViewNewUsuario");
-    }
+
     @FXML
     private void mySelectedUser() {
         mainControllerUsuarios.setSelectedUsuario(TableUsuarios.getSelectionModel().getSelectedItem());
     }
+
     @FXML
     private void pesquisaUsuarios(KeyEvent e) {
         String palavraChave = Pesquisar.getText();
@@ -85,8 +79,8 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
             listaPesquisa.clear();
 
             for (Usuario l : listaUsuarios) {
-                if ((l.getNome().contains(palavraChave) || l.getRg().contains(palavraChave) || l.getTelefone().contains(palavraChave) ||
-                        l.getEndereco().contains(palavraChave)) && !listaPesquisa.contains(l))
+                if ((l.getNome().contains(palavraChave) || l.getRg().contains(palavraChave) || l.getTelefone().contains(palavraChave)
+                        || l.getEndereco().contains(palavraChave)) && !listaPesquisa.contains(l))
                     listaPesquisa.add(l);
             }
             TableUsuarios.setItems(listaPesquisa);

@@ -1,10 +1,8 @@
 package Views;
 
 import Controllers.Controller_Usuario;
-import biblioteca.Emprestimo;
-import biblioteca.Exemplar;
-import biblioteca.Exemplar_DAO;
-import biblioteca.Usuario;
+import biblioteca.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewEditUsuarios implements Initializable, ControlledScreen {
+public class ViewEditUsuarios extends MasterView implements Initializable, ControlledScreen {
 
     //Botoes
     @FXML
@@ -79,18 +77,8 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
         myController = screenParent;
     }
 
-    @FXML
-    private void goToViewUsuarios(ActionEvent event) {
-        myController.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
-        myController.setScreen("ViewUsuarios");
-        myController.unloadScreen("VewEditUsuarios");
-    }
-    @FXML
-    private void goToViewLivros(ActionEvent event) {
-        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
-        myController.setScreen("ViewLivros");
-        myController.unloadScreen("VewEditUsuarios");
-    }
+
+
     @FXML
     private void editUser(ActionEvent event) {
         if (FieldNome.isDisabled()) {
@@ -125,8 +113,7 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
     }
     @FXML
     private void newEmprestimo(ActionEvent event) {
-
-        ViewAlert alertGet =new ViewAlert();
+        ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         mainControllerUsuario.addEmprestimo(exempCod);
         updateExempTable();

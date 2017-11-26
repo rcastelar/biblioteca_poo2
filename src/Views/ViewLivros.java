@@ -11,15 +11,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewLivros implements Initializable, ControlledScreen {
+public class ViewLivros extends MasterView implements Initializable, ControlledScreen {
     Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-    Screens_controller myscreen;
 
     @FXML
     private TextField Pesquisar;
@@ -53,26 +51,15 @@ public class ViewLivros implements Initializable, ControlledScreen {
         TableLivros.setItems(listaLivros);
     }
 
-    public void setScreenParent(Screens_controller screenParent) {
-        myscreen = screenParent;
-    }
-
     @FXML
-    private void goToViewEditlivros(ActionEvent event) {
+    private void ToViewEditlivros(ActionEvent event) {
         if (!TableLivros.getSelectionModel().isEmpty()) {
-            myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
-            myscreen.setScreen("ViewEditLivros");
-            myscreen.unloadScreen("ViewLivros");
+            goToViewEditlivros(event);
         } else {
             ViewAlert alert = new ViewAlert("Nenhum livro selecionado");
         }
     }
-    @FXML
-    private void goToViewNewlivro(ActionEvent event) {
-        myscreen.unloadScreen("ViewLivros");
-        myscreen.loadScreen("ViewNewLivro", "ViewNewLivro.fxml");
-        myscreen.setScreen("ViewNewLivro");
-    }
+
     @FXML
     private void mySelectedBook(){
         mainControllerPublicacao.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());

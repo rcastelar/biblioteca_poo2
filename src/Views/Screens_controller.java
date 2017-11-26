@@ -13,7 +13,10 @@ import javafx.util.Duration;
 import java.util.HashMap;
 
 public class Screens_controller extends StackPane{
-    private static final HashMap<String, Node> screens= new HashMap<>();
+
+    public String NameViewAtual;
+
+    private static final HashMap<String, Node> screens = new HashMap<>();
 
     public Screens_controller(){
         super();
@@ -41,7 +44,7 @@ public class Screens_controller extends StackPane{
             }
         }
 
-    public boolean setScreen(final String name) {
+    public boolean setScreen(String name) {
         if (screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
             if (!getChildren().isEmpty()) {
@@ -64,6 +67,9 @@ public class Screens_controller extends StackPane{
                         new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
                 fadeIn.play();
             }
+
+            NameViewAtual = name;
+
             return true;
         } else {
             System.out.println("Screen hasn't benn loaded! \n");
