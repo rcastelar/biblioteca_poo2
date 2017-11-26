@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewEditUsuarios implements Initializable, ControlledScreen {
+public class ViewEditUsuarios extends MasterView implements Initializable, ControlledScreen {
 
     //Botoes
     @FXML
@@ -48,7 +48,6 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
     private TableColumn nomeLivro;
 
     //controlers e entidades
-    private Screens_controller myController;
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
@@ -73,22 +72,6 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
             TableExemplares.setItems(listaEmprestimo);
     }
 
-    public void setScreenParent(Screens_controller screenParent) {
-        myController = screenParent;
-    }
-
-    @FXML
-    private void goToViewUsuarios(ActionEvent event) {
-        myController.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
-        myController.setScreen("ViewUsuarios");
-        myController.unloadScreen("VewEditUsuarios");
-    }
-    @FXML
-    private void goToViewLivros(ActionEvent event) {
-        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
-        myController.setScreen("ViewLivros");
-        myController.unloadScreen("VewEditUsuarios");
-    }
     @FXML
     private void editUser(ActionEvent event) {
         if (FieldNome.isDisabled()) {

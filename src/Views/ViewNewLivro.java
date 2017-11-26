@@ -11,9 +11,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewNewLivro implements Initializable, ControlledScreen {
+public class ViewNewLivro extends MasterView implements Initializable, ControlledScreen {
 
-    Screens_controller myController;
     Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
     @FXML  private TextField FieldTitulo;
     @FXML  private TextField FieldAutor;
@@ -23,17 +22,6 @@ public class ViewNewLivro implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }
-
-    public void setScreenParent(Screens_controller screenParent) {
-        myController = screenParent;
-    }
-
-    @FXML
-    private void goToViewLivros(ActionEvent event) {
-        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
-        myController.setScreen("ViewLivros");
-        myController.unloadScreen("ViewNewLivro");
     }
 
     @FXML
