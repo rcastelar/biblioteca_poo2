@@ -17,7 +17,7 @@ import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewUsuarios implements Initializable, ControlledScreen {
+public class ViewUsuarios extends MasterView implements Initializable, ControlledScreen {
 
 
     @FXML
@@ -60,12 +60,12 @@ public class ViewUsuarios implements Initializable, ControlledScreen {
         myscreen = screenParent;
     }
 
-    @FXML
+    /*@FXML
     private void goToViewLivros(ActionEvent event) {
         myscreen.unloadScreen("ViewUsuarios");
         myscreen.loadScreen("ViewLivros", "ViewLivros.fxml");
         myscreen.setScreen("ViewLivros");
-    }
+    }*/
 
     @FXML
     private void goToViewEditUsuarios(ActionEvent event) {
