@@ -112,10 +112,12 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         int result = mainControllerUsuario.addEmprestimo(exempCod);
-       // if (result == 0)
-        updateExempTable();
-        ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
-
+        if (result == 0){
+            ViewAlert showAlert= new ViewAlert("Exemplar nao cadastrado!");
+        }else {
+            updateExempTable();
+            ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
+        }
     }
 
     @FXML
