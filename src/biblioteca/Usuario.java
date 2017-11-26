@@ -15,11 +15,11 @@ import java.util.ArrayList;
  * @author f32cpd02
  */
 public class Usuario implements Serializable {
+    private final ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
     private int id;
     private String rg;
     private String nome;
     private String endereco;
-    private final ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
     private String telefone;
 
 

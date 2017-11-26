@@ -57,7 +57,6 @@ public class Usuario_DAO {
 
 
     public void InsertUsuario(ObservableList<Usuario> meusUsuarios) {
-        int i = 0;
         if (!Files.exists(arquivoUsuarios)) {
             try {
                 Files.createFile(arquivoUsuarios);
