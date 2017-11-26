@@ -21,19 +21,4 @@ public class Autor {
 
     }
 
-    public int getId() {
-        return this.id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setId(int bid) {
-        this.id = bid;
-    }
-
-    public void setNome(String bnome) {
-        this.nome = bnome;
-    }
 }

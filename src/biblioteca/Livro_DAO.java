@@ -23,7 +23,7 @@ import java.util.List;
  * @author f32cpd02
  */
 public class Livro_DAO {
-    Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
+    private final Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
 
 
     public Livro_DAO() {
@@ -76,7 +76,5 @@ public class Livro_DAO {
         }
     }
 
-    public void DeleteLivro(Livro Lv) {
-    }
 }
 

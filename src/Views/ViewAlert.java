@@ -5,18 +5,19 @@ import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;
 
-public class ViewAlert {
-    public ViewAlert(String content){
+class ViewAlert {
+    public ViewAlert(String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("iLibrary");
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
     }
-    public ViewAlert(){
+
+    public ViewAlert() {
     }
 
-    public String getUmDado(String content){
+    public String getUmDado(String content) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Ilybrary");
         dialog.setHeaderText(null);

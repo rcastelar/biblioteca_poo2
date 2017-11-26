@@ -13,12 +13,17 @@ import java.util.ResourceBundle;
 
 public class ViewNewLivro extends MasterView implements Initializable, ControlledScreen {
 
-    Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-    @FXML  private TextField FieldTitulo;
-    @FXML  private TextField FieldAutor;
-    @FXML  private TextField FieldGenero;
-    @FXML  private TextField FieldEditora;
-    @FXML  private TextField FieldLocation;
+    private final Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
+    @FXML
+    private TextField FieldTitulo;
+    @FXML
+    private TextField FieldAutor;
+    @FXML
+    private TextField FieldGenero;
+    @FXML
+    private TextField FieldEditora;
+    @FXML
+    private TextField FieldLocation;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -26,7 +31,7 @@ public class ViewNewLivro extends MasterView implements Initializable, Controlle
 
     @FXML
     private void newBook(ActionEvent event) {
-        if(!FieldTitulo.getText().isEmpty()) {
+        if (!FieldTitulo.getText().isEmpty()) {
             int id = 1;
             Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
             mainControllerPublicacao.addLivro(mybook);
@@ -40,9 +45,7 @@ public class ViewNewLivro extends MasterView implements Initializable, Controlle
             FieldGenero.setText("");
             FieldEditora.setText("");
             alert.showAndWait();
-        }
-        else
-        {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);

@@ -9,6 +9,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static void main(String[] args) {
+        Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
+        Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
+
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Screens_controller mainContainer = new Screens_controller();
@@ -22,12 +29,5 @@ public class Main extends Application {
         primaryStage.setMaximized(false);
         primaryStage.setResizable(false);
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-        Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
-
-        launch(args);
     }
 }

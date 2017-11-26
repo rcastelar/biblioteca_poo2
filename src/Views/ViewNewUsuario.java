@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class ViewNewUsuario extends MasterView implements Initializable, ControlledScreen {
 
-    Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
+    private final Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     @FXML
     private TextField FieldNome;
     @FXML
@@ -42,9 +42,7 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
             FieldEndereco.setText("");
             FieldTelefone.setText("");
             alert.showAndWait();
-        }
-        else
-        {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);

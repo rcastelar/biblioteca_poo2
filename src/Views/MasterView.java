@@ -3,17 +3,15 @@ package Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class MasterView {
+class MasterView {
 
-    Screens_controller myscreen;
-
-    public MasterView(){
+    private Screens_controller myscreen;
+    MasterView() {
     }
 
     public void setScreenParent(Screens_controller screenParent) {
         myscreen = screenParent;
-   }
-
+    }
     @FXML
     public void goToViewLivros(ActionEvent event) {
         myscreen.unloadScreen(myscreen.NameViewAtual);
@@ -29,14 +27,14 @@ public class MasterView {
     }
 
     @FXML
-    public void goToViewEditUsuarios(ActionEvent event) {
+    void goToViewEditUsuarios(ActionEvent event) {
         myscreen.unloadScreen(myscreen.NameViewAtual);
         myscreen.loadScreen("ViewEditUsuarios", "ViewEditUsuarios.fxml");
         myscreen.setScreen("ViewEditUsuarios");
     }
 
     @FXML
-    public void goToViewEditlivros(ActionEvent event) {
+    void goToViewEditlivros(ActionEvent event) {
         myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
         myscreen.setScreen("ViewEditLivros");
         myscreen.unloadScreen("ViewLivros");

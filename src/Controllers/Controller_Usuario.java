@@ -9,9 +9,9 @@ import java.util.Date;
 
 public class Controller_Usuario {
     private static Controller_Usuario instanceus;
-    private Usuario selectedUser;
     private static ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
-    Controller_Publicacao myController_Publicacao = Controller_Publicacao.getInstance();
+    private final Controller_Publicacao myController_Publicacao = Controller_Publicacao.getInstance();
+    private Usuario selectedUser;
 
     private Controller_Usuario() {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
@@ -46,7 +46,7 @@ public class Controller_Usuario {
 
     public void editUsuario(Usuario myUsuario) {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
-        ((Usuario) selectedUser).setNome(myUsuario.getNome());
+        selectedUser.setNome(myUsuario.getNome());
         selectedUser.setEndereco(myUsuario.getEndereco());
         selectedUser.setRg(myUsuario.getRg());
         selectedUser.setId(myUsuario.getId());
@@ -94,12 +94,12 @@ public class Controller_Usuario {
                     if ((neededexemplar).getCodigo_exemplar().equals(myExemplar.getCodigo_exemplar())) {
                         neededexemplar.setStatus("Disponível");
                         selectedUser.removeEmprestimo(myExemplar);
-                            myUsuarioDao.InsertUsuario(listaUsuarios);
-                            myLivroDao.InsertLivro(myController_Publicacao.getListaLivros());
-                        }
-
+                        myUsuarioDao.InsertUsuario(listaUsuarios);
+                        myLivroDao.InsertLivro(myController_Publicacao.getListaLivros());
                     }
+
                 }
             }
         }
+    }
 }

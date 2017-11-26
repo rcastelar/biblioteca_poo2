@@ -23,16 +23,15 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
     @FXML
     public Button btnMainLivros;
     //Screens_controller myscreen;
-
-    @FXML
-    private TextField Pesquisar;
     @FXML
     public Button btnNewUser;
     @FXML
     public Button btnMainUsuarios;
-    Controller_Usuario mainControllerUsuarios = Controller_Usuario.getInstance();
-    ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
-    ObservableList<Usuario> listaPesquisa = FXCollections.observableArrayList();
+    private final Controller_Usuario mainControllerUsuarios = Controller_Usuario.getInstance();
+    private ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+    private final ObservableList<Usuario> listaPesquisa = FXCollections.observableArrayList();
+    @FXML
+    private TextField Pesquisar;
     @FXML
     private TableView<Usuario> TableUsuarios;
     @FXML
@@ -85,7 +84,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
             }
             TableUsuarios.setItems(listaPesquisa);
 
-        } else if (palavraChave.length() == 0 ) {
+        } else if (palavraChave.length() == 0) {
             TableUsuarios.setItems(listaUsuarios);
 
         }

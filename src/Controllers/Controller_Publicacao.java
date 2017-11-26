@@ -9,10 +9,9 @@ import javafx.collections.ObservableList;
 
 public class Controller_Publicacao {
     private static Controller_Publicacao instancepu;
+    private static ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
     private Publicacao selectedPub;
     private Exemplar selectedExemplar;
-    private static int qdePublicacao;
-    private static ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
 
     private Controller_Publicacao() {
         Livro_DAO myLivroDao = new Livro_DAO();
@@ -38,14 +37,6 @@ public class Controller_Publicacao {
         selectedPub = gid;
     }
 
-    public Exemplar getSelectedExemplar() {
-        return selectedExemplar;
-    }
-
-    public void setSelectedExemplar(Exemplar gid) {
-        selectedExemplar = gid;
-    }
-
     public void addLivro(Livro myLivro) {
         Livro_DAO myLivroDao = new Livro_DAO();
         listaLivros.add(myLivro);
@@ -64,7 +55,7 @@ public class Controller_Publicacao {
 
     public void addExemplar(Exemplar myExemplar) {
         Livro_DAO myLivroDao = new Livro_DAO();
-        String cod = selectedPub.getId()+";"+ myExemplar.getCodigo_exemplar();
+        String cod = selectedPub.getId() + ";" + myExemplar.getCodigo_exemplar();
         myExemplar.setCodigo_exemplar(cod);
         for (Livro neededBook : listaLivros) {
             if (selectedPub.getId() == neededBook.get().getId()) {

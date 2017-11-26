@@ -22,7 +22,7 @@ import java.util.List;
  * @author f32cpd02
  */
 public class Usuario_DAO {
-    Path arquivoUsuarios = Paths.get("./src/bd/arquivoUsuarios.txt");
+    private final Path arquivoUsuarios = Paths.get("./src/bd/arquivoUsuarios.txt");
 
 
     public Usuario_DAO() {
@@ -75,6 +75,4 @@ public class Usuario_DAO {
         }
     }
 
-    public void DeleteUsuario(Usuario Us) {
-    }
 }

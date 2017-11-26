@@ -10,7 +10,6 @@ package biblioteca;
  */
 public class Exemplar_DAO {
 
-    private String IdLivro;
-    public Exemplar_DAO(){
+    public Exemplar_DAO() {
     }
 }
