@@ -58,13 +58,12 @@ public class Usuario_DAO {
 
     public void InsertUsuario(ObservableList<Usuario> meusUsuarios) {
         int i = 0;
-        while ((!Files.exists(arquivoUsuarios) && (i < 2))) {
+        if (!Files.exists(arquivoUsuarios)) {
             try {
                 Files.createFile(arquivoUsuarios);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            i++;
         }
         try {
             ObjectOutputStream os = new ObjectOutputStream(

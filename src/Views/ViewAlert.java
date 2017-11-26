@@ -23,6 +23,6 @@ class ViewAlert {
         dialog.setHeaderText(null);
         dialog.setContentText(content);
         Optional<String> result = dialog.showAndWait();
-        return result.get();
+        return result.orElse(null);
     }
 }

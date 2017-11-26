@@ -77,9 +77,8 @@ public class ViewLivros extends MasterView implements Initializable, ControlledS
             }
             TableLivros.setItems(listaPesquisa);
 
-        } else if (palavraChave.length() == 0) {
+        } else{
             TableLivros.setItems(listaLivros);
-
         }
     }
 }

@@ -85,8 +85,6 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
                 FieldRG.setDisable(true);
                 FieldEndereco.setDisable(true);
                 BtnEditUser.setText("Editar Usuario");
-                Usuario UsuarioAtualizado = new Usuario(selectedUsuario.getId(), FieldNome.getText(), FieldEndereco.getText(),
-                        FieldRG.getText(), FieldTelefone.getText());
                 Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
                 mainControllerUsuario.editUsuario(myuser);
             } else {
@@ -106,24 +104,24 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         int result = mainControllerUsuario.addEmprestimo(exempCod);
         if (result == 0) {
-            ViewAlert showAlert = new ViewAlert("Exemplar nao cadastrado!");
+            new ViewAlert("Exemplar nao cadastrado!");
         } else if (result == 2) {
-            ViewAlert showAlert = new ViewAlert("Efetue a devolucao do exemplar antes de emprestalo novamente.");
+            new ViewAlert("Efetue a devolucao do exemplar antes de emprestalo novamente.");
         } else {
             updateExempTable();
-            ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
+            new ViewAlert("Exemplar adicionado");
         }
     }
 
     @FXML
     private void removeSelectedEmprestimo() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
-            ViewAlert alertGet = new ViewAlert();
+            new ViewAlert();
             mainControllerUsuario.removeEmprestimo(TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
-            ViewAlert showAlert = new ViewAlert("Exemplar devolvido");
+            new ViewAlert("Exemplar devolvido");
         } else {
-            ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
+            new ViewAlert("Nenhum exemplar selecionado");
         }
     }
 }

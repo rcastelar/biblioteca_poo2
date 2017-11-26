@@ -61,7 +61,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
         if (!TableUsuarios.getSelectionModel().isEmpty()) {
             goToViewEditUsuarios(event);
         } else {
-            ViewAlert alert = new ViewAlert("Nenhum usuario selecionado");
+            new ViewAlert("Nenhum usuario selecionado");
         }
     }
 
@@ -84,7 +84,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
             }
             TableUsuarios.setItems(listaPesquisa);
 
-        } else if (palavraChave.length() == 0) {
+        } else {
             TableUsuarios.setItems(listaUsuarios);
 
         }

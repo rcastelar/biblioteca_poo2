@@ -35,7 +35,7 @@ public abstract class Publicacao implements Serializable {
 
     public void removeExemplar(Exemplar myexemplar) {
         for (Exemplar neededExemplar : listaExemplar) {
-            if (myexemplar.getCodigo_exemplar() == neededExemplar.getCodigo_exemplar()) {
+            if (myexemplar.getCodigo_exemplar().equals(neededExemplar.getCodigo_exemplar())) {
                 listaExemplar.remove(neededExemplar);
                 break;
             }

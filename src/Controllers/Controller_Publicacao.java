@@ -66,7 +66,6 @@ public class Controller_Publicacao {
     }
 
     public void removeExemplar(Exemplar myExemplar) {
-        Livro_DAO myLivroDao = new Livro_DAO();
         selectedPub.removeExemplar(myExemplar);
     }
 }

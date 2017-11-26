@@ -3,7 +3,6 @@ package Views;
 import Controllers.Controller_Publicacao;
 import biblioteca.Exemplar;
 import biblioteca.Livro;
-import biblioteca.Livro_DAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -58,14 +58,12 @@ public class Livro_DAO {
 
 
     public void InsertLivro(ObservableList<Livro> meusLivros) {
-        int i = 0;
-        while ((!Files.exists(arquivoLivros) && (i < 2))) {
+        if (!Files.exists(arquivoLivros) ) {
             try {
                 Files.createFile(arquivoLivros);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            i++;
         }
         try {
             ObjectOutputStream os = new ObjectOutputStream(

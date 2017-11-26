@@ -30,7 +30,6 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
     @FXML
     private void newUser(ActionEvent event) {
         if (!FieldNome.getText().isEmpty()) {
-            int id = 1;
             Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
             mainControllerUsuario.addUsuario(myuser);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

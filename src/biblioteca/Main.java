@@ -1,7 +1,5 @@
 package biblioteca;
 
-import Controllers.Controller_Publicacao;
-import Controllers.Controller_Usuario;
 import Views.Screens_controller;
 import javafx.application.Application;
 import javafx.scene.Group;
