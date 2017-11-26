@@ -1,17 +1,17 @@
 package Controllers;
 
-import biblioteca.Emprestimo;
-import biblioteca.Exemplar;
-import biblioteca.Usuario;
-import biblioteca.Usuario_DAO;
+import biblioteca.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Controller_Usuario {
     private static Controller_Usuario instanceus;
     private Usuario selectedUser;
     private static ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
-
+    Controller_Publicacao myController_Publicacao = Controller_Publicacao.getInstance();
     private Controller_Usuario() {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
         listaUsuarios = myUsuarioDao.getAllUsuario();
@@ -53,18 +53,29 @@ public class Controller_Usuario {
         myUsuarioDao.InsertUsuario(listaUsuarios);
     }
 
-    public void addEmprestimo(Emprestimo myEmprestimo) {
+    public int addEmprestimo(String myExemplarCod) {
+
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
-       for (Usuario neededUsuario : listaUsuarios) {
-            if (selectedUser.getId() == neededUsuario.get().getId()) {
-                neededUsuario.addToListaEmprestimo(myEmprestimo);
-                break;
+        String[] codigos = myExemplarCod.split(";");
+        String livroid = codigos[0];
+        String mydate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+       for (Object neededlivro : myController_Publicacao.getListaLivros()) {
+            if (((Livro)neededlivro).getId() == Integer.parseInt(livroid)) {
+                for (Object neededexemplar : ((Livro)neededlivro).getListaExemplar()) {
+                    if (((Exemplar)neededexemplar).getCodigo_exemplar().equals(myExemplarCod)) {
+                        Emprestimo myEmprestimo = new Emprestimo((Exemplar)neededexemplar, (Livro)neededlivro, mydate);
+                        selectedUser.addToListaEmprestimo(myEmprestimo);
+                    }else {
+                        return 0;
+                    }
+                }
             }
         }
         myUsuarioDao.InsertUsuario(listaUsuarios);
+       return 1;
     }
 
-    public void removeEmprestimo(Exemplar myExemplar) {
+    public void removeEmprestimo(Emprestimo myExemplar) {
         selectedUser.removeEmprestimo(myExemplar);
     }
 }

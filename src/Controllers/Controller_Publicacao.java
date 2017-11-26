@@ -64,7 +64,8 @@ public class Controller_Publicacao {
 
     public void addExemplar(Exemplar myExemplar) {
         Livro_DAO myLivroDao = new Livro_DAO();
-        myExemplar.setcodigo_exemplar(selectedPub.getId() + ";" + myExemplar.getCodigo_exemplar());
+        String cod = selectedPub.getId()+";"+ myExemplar.getCodigo_exemplar();
+        myExemplar.setcodigo_exemplar(cod);
         for (Livro neededBook : listaLivros) {
             if (selectedPub.getId() == neededBook.get().getId()) {
                 neededBook.addToListaExempar(myExemplar);

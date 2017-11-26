@@ -51,7 +51,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
-    ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
+
 
     // metodos
     @Override
@@ -65,12 +65,15 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
 
         private void updateExempTable(){
             //   Exemplar_DAO myexempl = new Exemplar_DAO();
-            ObservableList<Emprestimo> listaEmprestimo = selectedUsuario.getListaEmprestimo();
-        ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
-            nomeLivro.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
-            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("status"));
-            TableExemplares.setItems(listaEmprestimo);
+            ObservableList<Emprestimo> listaExemplares = selectedUsuario.getListaEmprestimo();
+        ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
+            nomeLivro.setCellValueFactory(new PropertyValueFactory("titulo"));
+            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("Dataemprestimo"));
+        TableExemplares.setItems(listaExemplares);
     }
+
+
+
 
     @FXML
     private void editUser(ActionEvent event) {
@@ -108,25 +111,20 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private void newEmprestimo(ActionEvent event) {
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        String[] cods = exempCod.split(";");
-        Livro myLivro;
-        // for (Livro l : listaLivros) {
-        //     if (l.getId() = (cods[0].) {
-        //         Livro = l;
-        //     }
-        //}
-        // Emprestimo myEmprestimo = new Emprestimo(exempCod, selectedUsuario.getId(), "Disponível");
-        // mainControllerUsuario.addEmprestimo(myEmprestimo);
-        //    updateExempTable();
-        ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
+        int result = mainControllerUsuario.addEmprestimo(exempCod);
+        if (result == 0){
+            ViewAlert showAlert= new ViewAlert("Exemplar nao cadastrado!");
+        }else {
+            updateExempTable();
+            ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
+        }
     }
-
 
     @FXML
     private void removeSelectedEmprestimo() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
             ViewAlert alertGet = new ViewAlert();
-            mainControllerUsuario.removeEmprestimo((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+            mainControllerUsuario.removeEmprestimo((Emprestimo) TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
             ViewAlert showAlert = new ViewAlert("Exemplar removido");
         } else {

@@ -30,7 +30,7 @@
 
             </effect>
             <cursor>
-                <Cursor fx:constant="CLOSED_HAND" />
+                <Cursor fx:constant="S_RESIZE" />
             </cursor>
         </Button>
         <Button mnemonicParsing="false" onAction="#goToViewNewlivro" prefHeight="30.0" prefWidth="71.0" text="Novo livro" GridPane.columnIndex="2">

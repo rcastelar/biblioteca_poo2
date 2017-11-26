@@ -25,6 +25,7 @@ public class Exemplar implements Serializable {
     }
 
 
+
     public int getLivro_id() {
         return this.livro_id;
     }
