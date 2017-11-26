@@ -33,7 +33,7 @@
 
             </effect>
         </Button>
-        <Button mnemonicParsing="false" onAction="#goToViewUsuario" prefHeight="30.0" prefWidth="73.0" text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#goToViewUsuarios" prefHeight="30.0" prefWidth="73.0" text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
     <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
         <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
