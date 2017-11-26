@@ -65,14 +65,10 @@ public class Controller_Usuario {
                     if (((Exemplar)neededexemplar).getCodigo_exemplar().equals(myExemplarCod)) {
                         Emprestimo myEmprestimo = new Emprestimo((Exemplar)neededexemplar, (Livro)neededlivro, mydate);
                         selectedUser.addToListaEmprestimo(myEmprestimo);
-
-
                     }else {
                         return 0;
                     }
                 }
-
-
             }
         }
         myUsuarioDao.InsertUsuario(listaUsuarios);
