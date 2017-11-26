@@ -22,7 +22,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
 
     @FXML
     public Button btnMainLivros;
-    Screens_controller myscreen;
+    //Screens_controller myscreen;
 
     @FXML
     private TextField Pesquisar;
@@ -57,16 +57,6 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
         TableUsuarios.setItems(listaUsuarios);
     }
 
-    public void setScreenParent(Screens_controller screenParent) {
-        myscreen = screenParent;
-    }
-
-    /*@FXML
-    private void goToViewLivros(ActionEvent event) {
-        myscreen.unloadScreen("ViewUsuarios");
-        myscreen.loadScreen("ViewLivros", "ViewLivros.fxml");
-        myscreen.setScreen("ViewLivros");
-    }*/
 
     @FXML
     private void goToViewEditUsuarios(ActionEvent event) {
