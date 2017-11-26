@@ -1,12 +1,13 @@
 package Views;
 
-import Controllers.Controller_Publicacao;
-import biblioteca.Livro;
+import Controllers.Controller_Usuario;
+import biblioteca.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -17,39 +18,42 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewUsuarios implements Initializable, ControlledScreen {
-    Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
+
+
+    @FXML
+    public Button btnMainLivros;
     Screens_controller myscreen;
 
     @FXML
     private TextField Pesquisar;
     @FXML
-    private TableView<Livro> TableLivros;
+    public Button btnNewUser;
     @FXML
-    private TableColumn<Object, Object> TituloId;
+    public Button btnMainUsuarios;
+    Controller_Usuario mainControllerUsuarios = Controller_Usuario.getInstance();
+    ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+    ObservableList<Usuario> listaPesquisa = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<Object, Object> AutorId;
+    private TableView<Usuario> TableUsuarios;
     @FXML
-    private TableColumn<Object, Object> GeneroId;
+    private TableColumn<Object, Object> NomeId;
     @FXML
-    private TableColumn<Object, Object> PosicaoId;
+    private TableColumn<Object, Object> EnderecoId;
     @FXML
-    private TableColumn<Object, Object> LivroId;
+    private TableColumn<Object, Object> TelefoneId;
     @FXML
-    private TableColumn<Object, Object> EditoraId;
-
-    ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
-    ObservableList<Livro> listaPesquisa = FXCollections.observableArrayList();
+    private TableColumn<Object, Object> RGId;
+    @FXML
+    private Button btnEditUser;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listaLivros = mainControllerPublicacao.getListaLivros();
-        LivroId.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        TituloId.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
-        AutorId.setCellValueFactory(new PropertyValueFactory<>("Autor"));
-        GeneroId.setCellValueFactory(new PropertyValueFactory<>("Genero"));
-        PosicaoId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
-        EditoraId.setCellValueFactory(new PropertyValueFactory<>("Posicao"));
-        TableLivros.setItems(listaLivros);
+        listaUsuarios = mainControllerUsuarios.getListaUsuarios();
+        NomeId.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        EnderecoId.setCellValueFactory(new PropertyValueFactory<>("Endereco"));
+        TelefoneId.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
+        RGId.setCellValueFactory(new PropertyValueFactory<>("RG"));
+        TableUsuarios.setItems(listaUsuarios);
     }
 
     public void setScreenParent(Screens_controller screenParent) {
@@ -57,43 +61,50 @@ public class ViewUsuarios implements Initializable, ControlledScreen {
     }
 
     @FXML
-    private void goToViewEditlivros(ActionEvent event) {
-        if (!TableLivros.getSelectionModel().isEmpty()) {
-            myscreen.loadScreen("ViewEditLivros", "ViewEditLivros.fxml");
-            myscreen.setScreen("ViewEditLivros");
-            myscreen.unloadScreen("ViewLivros");
+    private void goToViewLivros(ActionEvent event) {
+        myscreen.unloadScreen("ViewUsuarios");
+        myscreen.loadScreen("ViewLivros", "ViewLivros.fxml");
+        myscreen.setScreen("ViewLivros");
+    }
+
+    @FXML
+    private void goToViewEditUsuarios(ActionEvent event) {
+        if (!TableUsuarios.getSelectionModel().isEmpty()) {
+            myscreen.loadScreen("ViewEditUsuarios", "ViewEditUsuarios.fxml");
+            myscreen.setScreen("ViewEditUsuarios");
+            myscreen.unloadScreen("ViewUsuarios");
         } else {
-            ViewAlert alert = new ViewAlert("Nenhum livro selecionado");
+            ViewAlert alert = new ViewAlert("Nenhum usuario selecionado");
         }
     }
     @FXML
-    private void goToViewNewlivro(ActionEvent event) {
-        myscreen.unloadScreen("ViewLivros");
-        myscreen.loadScreen("ViewNewLivro", "ViewNewLivro.fxml");
-        myscreen.setScreen("ViewNewLivro");
+    private void goToViewNewUsuario(ActionEvent event) {
+        myscreen.unloadScreen("ViewUsuarios");
+        myscreen.loadScreen("ViewNewUsuario", "ViewNewUsuario.fxml");
+        myscreen.setScreen("ViewNewUsuario");
     }
     @FXML
-    private void mySelectedBook(){
-        mainControllerPublicacao.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());
+    private void mySelectedUser() {
+        mainControllerUsuarios.setSelectedUsuario(TableUsuarios.getSelectionModel().getSelectedItem());
     }
     @FXML
-    private void pesquisaLivros(KeyEvent e) {
+    private void pesquisaUsuarios(KeyEvent e) {
         String palavraChave = Pesquisar.getText();
 
         if (!palavraChave.isEmpty()) {
             listaPesquisa.clear();
 
-            for (Livro l : listaLivros) {
-                if ((l.getPosicao().contains(palavraChave) || l.getEditora().contains(palavraChave) || l.getGenero().contains(palavraChave) ||
-                        l.getAutor().contains(palavraChave) || l.getTitulo().contains(palavraChave)) && !listaPesquisa.contains(l))
+            for (Usuario l : listaUsuarios) {
+                if ((l.getNome().contains(palavraChave) || l.getRg().contains(palavraChave) || l.getTelefone().contains(palavraChave) ||
+                        l.getEndereco().contains(palavraChave)) && !listaPesquisa.contains(l))
                     listaPesquisa.add(l);
             }
 
             if (!listaPesquisa.isEmpty()) {
-                TableLivros.setItems(listaPesquisa);
+                TableUsuarios.setItems(listaPesquisa);
             }
         } else if (palavraChave.length() == 0 ) {
-            TableLivros.setItems(listaLivros);
+            TableUsuarios.setItems(listaUsuarios);
 
         }
     }

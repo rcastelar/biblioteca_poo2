@@ -4,19 +4,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121"
+      minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/9"
       fx:controller="Views.ViewEditLivros">
     <GridPane layoutX="-6.0" prefHeight="73.0" prefWidth="1373.0" style="-fx-background-color: '#1E90FF';">
         <columnConstraints>
-            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="480.0"
-                               minWidth="10.0" prefWidth="205.0"/>
-            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="1070.0"
-                               minWidth="0.0" prefWidth="101.0"/>
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0"
+                               prefWidth="205.0"/>
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="1070.0" minWidth="0.0"
+                               prefWidth="101.0"/>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1008.0" minWidth="10.0"
                                prefWidth="956.0"/>
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0"
-                               prefWidth="110.0"/>
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="110.0"/>
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="3.0" minHeight="0.0" prefHeight="0.0"/>
@@ -27,8 +25,8 @@
                 <Font name="Segoe UI" size="35.0"/>
             </font>
         </Label>
-        <Button fx:id="BtnEditBook" mnemonicParsing="false" onAction="#editBook" prefHeight="30.0" prefWidth="80.0"
-                text="Editar livro" GridPane.columnIndex="3" GridPane.rowIndex="1">
+        <Button fx:id="BtnEditBook" mnemonicParsing="false" onAction="#editBook" prefHeight="30.0" prefWidth="94.0"
+                text="Editar Usuario" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <effect>
 
             </effect>
@@ -36,8 +34,7 @@
         <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="30.0" prefWidth="80.0" text="Voltar"
                 wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
-    <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0"
-          style="-fx-background-color: '#1E90FF';">
+    <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';"
                 text="Livros" textFill="WHITE">
             <font>
@@ -77,8 +74,8 @@
         </rowConstraints>
         <GridPane prefHeight="115.0" prefWidth="1022.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="81.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="491.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="95.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="475.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="8.0" prefWidth="43.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="78.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="404.0"/>
@@ -90,61 +87,49 @@
                 <RowConstraints maxHeight="598.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <Label contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="167.0"
-                   style="-fx: 60px;" text="Titulo">
+                   style="-fx: 60px;" text="Nome">
                 <font>
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="FieldTitulo" disable="true" prefHeight="35.0" prefWidth="604.0"
-                       GridPane.columnIndex="1" GridPane.columnSpan="4">
+            <TextField fx:id="FieldTitulo" disable="true" prefHeight="35.0" prefWidth="604.0" GridPane.columnIndex="1"
+                       GridPane.columnSpan="4">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
-            <Label contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Autor"
-                   GridPane.columnIndex="3" GridPane.rowIndex="1">
-                <font>
-                    <Font name="Segoe UI" size="20.0"/>
-                </font>
-            </Label>
-            <Label contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Gênero"
+            <Label contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Telefone"
                    GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <Label contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Editora"
+            <Label contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="RG"
                    GridPane.columnIndex="3" GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="FieldAutor" disable="true" prefHeight="35.0" prefWidth="430.0"
-                       GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <TextField fx:id="FieldGenero" disable="true" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1"
+                       GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
-            <TextField fx:id="FieldGenero" disable="true" prefHeight="35.0" prefWidth="430.0"
-                       GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="FieldEditora" disable="true" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="4"
+                       GridPane.rowIndex="2">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
-            <TextField fx:id="FieldEditora" disable="true" prefHeight="35.0" prefWidth="430.0"
-                       GridPane.columnIndex="4" GridPane.rowIndex="2">
-                <font>
-                    <Font name="Segoe UI" size="18.0"/>
-                </font>
-            </TextField>
-            <Label contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Local"
+            <Label contentDisplay="CENTER" prefHeight="53.0" prefWidth="106.0" style="-fx: 60px;" text="Endereco"
                    textAlignment="CENTER" GridPane.rowIndex="1">
                 <font>
                     <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="FieldLocation" disable="true" prefHeight="35.0" GridPane.columnIndex="1"
-                       GridPane.rowIndex="1">
+            <TextField fx:id="FieldLocation" disable="true" prefHeight="35.0" prefWidth="981.0" GridPane.columnIndex="1"
+                       GridPane.columnSpan="4" GridPane.rowIndex="1">
                 <font>
                     <Font name="Segoe UI" size="18.0"/>
                 </font>
@@ -152,9 +137,9 @@
         </GridPane>
         <TableView fx:id="TableExemplares" prefHeight="399.0" prefWidth="1096.0" GridPane.rowIndex="2">
             <columns>
-                <TableColumn fx:id="ExemplId" prefWidth="204.99998474121094" text="Id do exemplar"/>
-                <TableColumn fx:id="Cod_Exemplar" prefWidth="508.0" text="Código Exemplar"/>
-                <TableColumn fx:id="StatusId" prefWidth="380.0" text="Status "/>
+                <TableColumn fx:id="ExemplId" prefWidth="204.99998474121094" text="Codigo do Exemplar"/>
+                <TableColumn fx:id="Cod_Exemplar" prefWidth="508.0" text="Nome do livro"/>
+                <TableColumn fx:id="StatusId" prefWidth="380.0" text="Data limite para devolucao"/>
                 <TableColumn fx:id="LivroId" prefWidth="327.0" text="Codigo livro" visible="false"/>
             </columns>
         </TableView>
@@ -173,21 +158,21 @@
             <rowConstraints>
                 <RowConstraints/>
             </rowConstraints>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0"
-                   style="-fx: 60px;" text="Exemplares" GridPane.columnIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;"
+                   text="Emprestimos" GridPane.columnIndex="1">
                 <font>
                     <Font name="Segoe UI" size="25.0"/>
                 </font>
             </Label>
             <Button fx:id="BtnRemoveExemplar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                    onAction="#removeSelectedExemplar" prefHeight="25.0" prefWidth="120.0"
-                    text="Remover Exemplar" GridPane.columnIndex="3">
+                    onAction="#removeSelectedExemplar" prefHeight="25.0" prefWidth="120.0" text="Executar devolucao"
+                    GridPane.columnIndex="3">
                 <effect>
 
                 </effect>
             </Button>
             <Button fx:id="BtnAddExemplar" mnemonicParsing="false" onAction="#newExemplar" prefHeight="25.0"
-                    prefWidth="120.0" text="Adicionar Exemplar" GridPane.columnIndex="4"/>
+                    prefWidth="134.0" text="Emprestar exemplar" GridPane.columnIndex="4"/>
         </GridPane>
     </GridPane>
 </Pane>

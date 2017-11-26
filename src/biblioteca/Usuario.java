@@ -15,15 +15,14 @@ import java.util.ArrayList;
  */
 public class Usuario {
     private int id;
-    private int rg;
+    private String rg;
     private String nome;
     private String endereco;
     private ArrayList<Exemplar> listaEmprestimo = new ArrayList<>();
-    private int telefone;
+    private String telefone;
 
 
-
-    public Usuario(int bid, int brg, String bnome, String brua, int btelefone) {
+    public Usuario(int bid, String brg, String bnome, String brua, String btelefone) {
         this.id = bid;
         this.rg = brg;
         this.nome = bnome;
@@ -58,7 +57,7 @@ public class Usuario {
         return this.id;
     }
 
-    public int getRg() {
+    public String getRg() {
         return this.rg;
     }
 
@@ -70,8 +69,8 @@ public class Usuario {
         return this.endereco;
     }
 
-    public int getTelefone() {
-        return this.telefone;
+    public void setRg(String brg) {
+        this.rg = brg;
     }
 
 
@@ -80,8 +79,8 @@ public class Usuario {
         this.id = bid;
     }
 
-    public void setRg(int brg) {
-        this.rg = brg;
+    public String getTelefone() {
+        return this.telefone;
     }
 
     public void setNome(String bnome) {
@@ -92,8 +91,7 @@ public class Usuario {
         this.endereco = brua;
     }
 
-
-    public void setTelefone(int btelefone) {
+    public void setTelefone(String btelefone) {
         this.telefone = btelefone;
     }
 

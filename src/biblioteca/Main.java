@@ -1,6 +1,7 @@
 package biblioteca;
 
-import Controllers.*;
+import Controllers.Controller_Publicacao;
+import Controllers.Controller_Usuario;
 import Views.Screens_controller;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -11,12 +12,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Screens_controller mainContainer = new Screens_controller();
-        mainContainer.loadScreen("ViewLivros", "ViewLivros.fxml");
-        mainContainer.setScreen("ViewLivros");
+        mainContainer.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
+        mainContainer.setScreen("ViewUsuarios");
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Livros");
+        primaryStage.setTitle("iLibrary");
         primaryStage.setScene(scene);
         primaryStage.setMaximized(false);
         primaryStage.setResizable(false);
