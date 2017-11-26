@@ -2,7 +2,6 @@ package Views;
 
 import Controllers.Controller_Usuario;
 import biblioteca.Emprestimo;
-import biblioteca.Exemplar_DAO;
 import biblioteca.Usuario;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,11 +38,11 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
 
     //tabela e colunas
     @FXML
-    private TableView TableExemplares;
+    private TableView<Emprestimo> TableExemplares;
     @FXML
-    private TableColumn ExemplId;
+    private TableColumn<Object, Object> ExemplId;
     @FXML
-    private TableColumn DatalimiteId;
+    private TableColumn<Object, Object> DatalimiteId;
     @FXML
     private TableColumn nomeLivro;
 
@@ -62,7 +61,6 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     }
 
     private void updateExempTable() {
-        //   Exemplar_DAO myexempl = new Exemplar_DAO();
         ObservableList<Emprestimo> listaExemplares = selectedUsuario.getListaEmprestimo();
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         nomeLivro.setCellValueFactory(new PropertyValueFactory("titulo"));
@@ -121,7 +119,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private void removeSelectedEmprestimo() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
             ViewAlert alertGet = new ViewAlert();
-            mainControllerUsuario.removeEmprestimo((Emprestimo) TableExemplares.getSelectionModel().getSelectedItem());
+            mainControllerUsuario.removeEmprestimo(TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
             ViewAlert showAlert = new ViewAlert("Exemplar devolvido");
         } else {

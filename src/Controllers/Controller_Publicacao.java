@@ -11,7 +11,6 @@ public class Controller_Publicacao {
     private static Controller_Publicacao instancepu;
     private static ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
     private Publicacao selectedPub;
-    private Exemplar selectedExemplar;
 
     private Controller_Publicacao() {
         Livro_DAO myLivroDao = new Livro_DAO();

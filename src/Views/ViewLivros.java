@@ -54,7 +54,7 @@ public class ViewLivros extends MasterView implements Initializable, ControlledS
         if (!TableLivros.getSelectionModel().isEmpty()) {
             goToViewEditlivros(event);
         } else {
-            ViewAlert alert = new ViewAlert("Nenhum livro selecionado");
+            new ViewAlert("Nenhum livro selecionado");
         }
     }
 

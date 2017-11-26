@@ -10,9 +10,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-        Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
-
         launch(args);
     }
 

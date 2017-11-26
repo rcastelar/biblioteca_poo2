@@ -11,12 +11,10 @@ import java.io.Serializable;
  * @author f32cpd01
  */
 public class Exemplar implements Serializable {
-    private int livro_id;
     private String codigo_exemplar;
     private String status;
 
-    public Exemplar(String bcodigo_exemplar, int blivro_id, String bstatus) {
-        this.livro_id = blivro_id;
+    public Exemplar(String bcodigo_exemplar, String bstatus) {
         this.codigo_exemplar = bcodigo_exemplar;
         this.status = bstatus;
     }

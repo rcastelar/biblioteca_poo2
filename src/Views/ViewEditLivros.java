@@ -2,7 +2,6 @@ package Views;
 
 import Controllers.Controller_Publicacao;
 import biblioteca.Exemplar;
-import biblioteca.Exemplar_DAO;
 import biblioteca.Livro;
 import biblioteca.Livro_DAO;
 import javafx.collections.ObservableList;
@@ -31,15 +30,15 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
     private Button BtnEditBook;
     //private Screens_controller myController;
     @FXML
-    private TableView TableExemplares;
+    private TableView<Exemplar> TableExemplares;
     @FXML
-    private TableColumn ExemplId;
+    private TableColumn<Object, Object> ExemplId;
     @FXML
-    private TableColumn Cod_Exemplar;
+    private TableColumn<Object, Object> Cod_Exemplar;
     @FXML
-    private TableColumn StatusId;
+    private TableColumn<Object, Object> StatusId;
     @FXML
-    private TableColumn LivroId;
+    private TableColumn<Object, Object> LivroId;
     @FXML
     private Button BtnRemoveExemplar;
     @FXML
@@ -58,7 +57,6 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
     }
 
     private void updateExempTable() {
-        //   Exemplar_DAO myexempl = new Exemplar_DAO();
         ObservableList<Exemplar> listaExemplares = selectedlivro.getListaExemplar();
         LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -85,14 +83,11 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
                 FieldEditora.setDisable(true);
                 FieldLocation.setDisable(true);
                 BtnEditBook.setText("Editar livro");
-                Livro livroAtualizado = new Livro(selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
+                new Livro(selectedlivro.getId(), FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(),
                         FieldGenero.getText(), FieldEditora.getText());
-                Livro_DAO bookController = new Livro_DAO();
-                //bookController.UpdateLivro(livroAtualizado);
-                ///
+
                 Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
                 mainControllerPublicacao.editLivro(mybook);
-                ///
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("iLibrary");
@@ -109,22 +104,22 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
 
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        Exemplar myExemplar = new Exemplar(exempCod, selectedlivro.getId(), "Disponível");
+        Exemplar myExemplar = new Exemplar(exempCod, "Disponível");
         mainControllerPublicacao.addExemplar(myExemplar);
         updateExempTable();
-        ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
+        new ViewAlert("Exemplar adicionado");
 
     }
 
     @FXML
     private void removeSelectedExemplar() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
-            ViewAlert alertGet = new ViewAlert();
-            mainControllerPublicacao.removeExemplar((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+
+            mainControllerPublicacao.removeExemplar(TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
-            ViewAlert showAlert = new ViewAlert("Exemplar removido");
+            new ViewAlert("Exemplar removido");
         } else {
-            ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
+            new ViewAlert("Nenhum exemplar selecionado");
         }
     }
 }

@@ -32,7 +32,6 @@ public class ViewNewLivro extends MasterView implements Initializable, Controlle
     @FXML
     private void newBook(ActionEvent event) {
         if (!FieldTitulo.getText().isEmpty()) {
-            int id = 1;
             Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
             mainControllerPublicacao.addLivro(mybook);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -21,7 +21,7 @@ class ViewAlert {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Ilybrary");
         dialog.setHeaderText(null);
-        dialog.setContentText("Codigo do exemplar:");
+        dialog.setContentText(content);
         Optional<String> result = dialog.showAndWait();
         return result.get();
     }
