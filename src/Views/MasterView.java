@@ -14,7 +14,7 @@ public abstract class MasterView {
 
     public void setScreenParent(Screens_controller screenParent) {
         myscreen = screenParent;
-    }
+   }
 
     @FXML
     public void goToViewLivros(ActionEvent event) {
