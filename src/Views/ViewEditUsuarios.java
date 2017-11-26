@@ -98,7 +98,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("iLibrary");
                 alert.setHeaderText(null);
-                alert.setContentText("Usuario não pode ser salvo. Preencha o campo Título! ");
+                alert.setContentText("Usuário não pode ser salvo. Preencha o campo Nome! ");
                 alert.showAndWait();
                 FieldNome.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
             }
