@@ -27,7 +27,7 @@ public class Emprestimo implements Serializable{
         return this.mybook.getTitulo();
     }
 
- public String getCodigoExemplar(){
+ public String getcodigo_exemplar(){
         return this.myexemplar.getCodigo_exemplar();
  }
 

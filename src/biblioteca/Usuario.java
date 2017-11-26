@@ -40,9 +40,8 @@ public class Usuario implements Serializable {
     }
 
     public void removeEmprestimo(Emprestimo myexemplar) {
-        Livro_DAO myLivroDao = new Livro_DAO();
         for (Emprestimo neededExemplar : listaEmprestimo) {
-            if (myexemplar.getMyexemplar().getCodigo_exemplar() == neededExemplar.getMyexemplar().getCodigo_exemplar()) {
+            if (myexemplar.getMyexemplar().getCodigo_exemplar().equals( neededExemplar.getMyexemplar().getCodigo_exemplar())) {
                 listaEmprestimo.remove(neededExemplar);
                 break;
             }

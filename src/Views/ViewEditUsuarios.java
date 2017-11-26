@@ -112,8 +112,10 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         int result = mainControllerUsuario.addEmprestimo(exempCod);
-        if (result == 0){
-            ViewAlert showAlert= new ViewAlert("Exemplar nao cadastrado!");
+        if (result == 0) {
+            ViewAlert showAlert = new ViewAlert("Exemplar nao cadastrado!");
+        }else if (result == 2){
+            ViewAlert showAlert = new ViewAlert("Efetue a devolucao do exemplar antes de emprestalo novamente.");
         }else {
             updateExempTable();
             ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
@@ -126,7 +128,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
             ViewAlert alertGet = new ViewAlert();
             mainControllerUsuario.removeEmprestimo((Emprestimo) TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
-            ViewAlert showAlert = new ViewAlert("Exemplar removido");
+            ViewAlert showAlert = new ViewAlert("Exemplar devolvido");
         } else {
             ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
         }
