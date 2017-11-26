@@ -19,7 +19,7 @@ public class Usuario implements Serializable {
     private String rg;
     private String nome;
     private String endereco;
-    private ArrayList<Exemplar> listaEmprestimo = new ArrayList<>();
+    private ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
     private String telefone;
 
 
@@ -34,23 +34,23 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public ObservableList<Exemplar> getListaEmprestimo() {
+    public ObservableList<Emprestimo> getListaEmprestimo() {
 
         return FXCollections.observableList(listaEmprestimo);
     }
 
     public void removeEmprestimo(Exemplar myexemplar) {
         Livro_DAO myLivroDao = new Livro_DAO();
-        for (Exemplar neededExemplar : listaEmprestimo) {
-            if (myexemplar.getCodigo_exemplar() == neededExemplar.getCodigo_exemplar()) {
-                listaEmprestimo.remove(neededExemplar);
+        for (Emprestimo neededEmprestimo : listaEmprestimo) {
+            if (myexemplar.getCodigo_exemplar() == neededEmprestimo.getMyExemplar().getCodigo_exemplar()) {
+                listaEmprestimo.remove(neededEmprestimo);
                 break;
             }
         }
     }
 
-    public void addToListaEmprestimo(Exemplar myExemplar) {
-        listaEmprestimo.add(myExemplar);
+    public void addToListaEmprestimo(Emprestimo myEmprestimo) {
+        listaEmprestimo.add(myEmprestimo);
     }
 
 

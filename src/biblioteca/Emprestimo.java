@@ -1,9 +1,23 @@
 package biblioteca;
 
-import java.util.ArrayList;
-
 public class Emprestimo {
-    Usuario cliente;
     String dataDevolucao;
-    private ArrayList<Exemplar> listaEmprestimo = new ArrayList<>();
+    Exemplar myExemplar;
+    Livro myLivro;
+
+    public Exemplar getMyExemplar() {
+        return myExemplar;
+    }
+
+    public void setMyExemplar(Exemplar myExemplar) {
+        this.myExemplar = myExemplar;
+    }
+
+    public Livro getMyLivro() {
+        return myLivro;
+    }
+
+    public void setMyLivro(Livro myLivro) {
+        this.myLivro = myLivro;
+    }
 }

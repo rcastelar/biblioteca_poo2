@@ -1,9 +1,8 @@
 package Views;
 
 import Controllers.Controller_Usuario;
-import biblioteca.Exemplar;
-import biblioteca.Exemplar_DAO;
-import biblioteca.Usuario;
+import biblioteca.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,7 +52,7 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
-
+    ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
 
     // metodos
     @Override
@@ -67,11 +66,11 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
 
         private void updateExempTable(){
             //   Exemplar_DAO myexempl = new Exemplar_DAO();
-            ObservableList<Exemplar> listaExemplares = selectedUsuario.getListaEmprestimo();
+            ObservableList<Emprestimo> listaEmprestimo = selectedUsuario.getListaEmprestimo();
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
             nomeLivro.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
             DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("status"));
-        TableExemplares.setItems(listaExemplares);
+            TableExemplares.setItems(listaEmprestimo);
     }
 
     public void setScreenParent(Screens_controller screenParent) {
@@ -124,15 +123,21 @@ public class ViewEditUsuarios implements Initializable, ControlledScreen {
     }
     @FXML
     private void newEmprestimo(ActionEvent event) {
-
-        ViewAlert alertGet =new ViewAlert();
+        ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        Exemplar myExemplar = new Exemplar(exempCod, selectedUsuario.getId(), "Disponível");
-        mainControllerUsuario.addEmprestimo(myExemplar);
-        updateExempTable();
-        ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
-
+        String[] cods = exempCod.split(";");
+        Livro myLivro;
+        // for (Livro l : listaLivros) {
+        //     if (l.getId() = (cods[0].) {
+        //         Livro = l;
+        //     }
+        //}
+        // Emprestimo myEmprestimo = new Emprestimo(exempCod, selectedUsuario.getId(), "Disponível");
+        // mainControllerUsuario.addEmprestimo(myEmprestimo);
+        //    updateExempTable();
+        ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
     }
+
 
     @FXML
     private void removeSelectedEmprestimo() {

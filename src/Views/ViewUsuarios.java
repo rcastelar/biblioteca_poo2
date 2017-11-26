@@ -46,6 +46,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
     @FXML
     private Button btnEditUser;
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listaUsuarios = mainControllerUsuarios.getListaUsuarios();

@@ -1,6 +1,9 @@
 package Controllers;
 
-import biblioteca.*;
+import biblioteca.Emprestimo;
+import biblioteca.Exemplar;
+import biblioteca.Usuario;
+import biblioteca.Usuario_DAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -50,11 +53,11 @@ public class Controller_Usuario {
         myUsuarioDao.InsertUsuario(listaUsuarios);
     }
 
-    public void addEmprestimo(Exemplar myExemplar) {
+    public void addEmprestimo(Emprestimo myEmprestimo) {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
        for (Usuario neededUsuario : listaUsuarios) {
             if (selectedUser.getId() == neededUsuario.get().getId()) {
-                neededUsuario.addToListaEmprestimo(myExemplar);
+                neededUsuario.addToListaEmprestimo(myEmprestimo);
                 break;
             }
         }

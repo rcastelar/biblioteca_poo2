@@ -1,10 +1,9 @@
 package Views;
 
-import Views.Screens_controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public abstract class MasterView {
+public class MasterView {
 
     Screens_controller myscreen;
 

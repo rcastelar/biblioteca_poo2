@@ -11,7 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
@@ -66,6 +65,7 @@ public class ViewLivros implements Initializable, ControlledScreen {
         } else {
             ViewAlert alert = new ViewAlert("Nenhum livro selecionado");
         }
+
     }
     @FXML
     private void goToViewNewlivro(ActionEvent event) {
