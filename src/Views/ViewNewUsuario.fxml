@@ -1,135 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ViewNewUsuario">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121"
+      fx:controller="Views.ViewNewUsuario">
     <GridPane prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
         <columnConstraints>
-            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="216.0" />
-            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="1070.0" minWidth="0.0" prefWidth="151.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="922.0" minWidth="10.0" prefWidth="865.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="134.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0"
+                               prefWidth="216.0"/>
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="1070.0" minWidth="0.0"
+                               prefWidth="151.0"/>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="922.0" minWidth="10.0"
+                               prefWidth="865.0"/>
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="134.0"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="3.0" minHeight="0.0" prefHeight="0.0" />
-            <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="3.0" minHeight="0.0" prefHeight="0.0"/>
+            <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES"/>
         </rowConstraints>
         <Label text="iLibrary" textFill="WHITE" GridPane.rowIndex="1">
             <font>
-                <Font name="Segoe UI" size="35.0" />
+                <Font name="Segoe UI" size="35.0"/>
             </font>
         </Label>
-        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newUser" prefHeight="30.0" prefWidth="105.0" text="Salvar Usuário" GridPane.columnIndex="3" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onAction="#newUser" prefHeight="30.0" prefWidth="105.0" text="Salvar Usuario"
+                GridPane.columnIndex="3" GridPane.rowIndex="1">
             <effect>
 
             </effect>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
         </Button>
-        <Button mnemonicParsing="false" onAction="#goToViewUsuarios" prefHeight="30.0" prefWidth="73.0" text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#goToViewUsuarios" prefHeight="30.0" prefWidth="73.0" text="Voltar"
+                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
     <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
-        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
+        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="50.0" prefWidth="208.0"
+                style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
             <font>
-                <Font name="Segoe UI" size="22.0" />
+                <Font name="Segoe UI" size="22.0"/>
             </font>
         </Button>
-        <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="274.0" style="-fx-background-color: '#1E90FF';" text="Usuários" textFill="WHITE">
+        <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="274.0"
+                style="-fx-background-color: '#1E90FF';" text="Usuários" textFill="WHITE">
             <font>
-                <Font name="Segoe UI" size="22.0" />
+                <Font name="Segoe UI" size="22.0"/>
             </font>
         </Button>
     </VBox>
-    <TitledPane animated="false" layoutX="223.0" layoutY="-272.0" text="untitled" />
-    <TitledPane animated="false" layoutX="263.0" layoutY="-197.0" text="untitled" />
+    <TitledPane animated="false" layoutX="223.0" layoutY="-272.0" text="untitled"/>
+    <TitledPane animated="false" layoutX="263.0" layoutY="-197.0" text="untitled"/>
     <GridPane layoutX="240.0" layoutY="87.0" prefHeight="610.0" prefWidth="1096.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="191.0" minHeight="9.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="191.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="431.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="191.0" minHeight="9.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="191.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="431.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES"/>
         </rowConstraints>
         <GridPane prefHeight="194.0" prefWidth="1096.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="110.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="427.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="20.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="57.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="502.0" minWidth="10.0" prefWidth="476.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="110.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="427.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="20.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="637.0" minWidth="10.0" prefWidth="57.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="502.0" minWidth="10.0" prefWidth="476.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="598.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="582.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="598.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Nome">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;"
+                   text="Nome">
                 <font>
-                    <Font name="Segoe UI" size="20.0" />
+                    <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
 
-            <TextField id="FieldTitulo" fx:id="FieldNome" onAction="#newUser" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.columnSpan="4">
+            <TextField id="FieldTitulo" fx:id="FieldNome" onAction="#newUser" prefHeight="35.0" prefWidth="430.0"
+                       GridPane.columnIndex="1" GridPane.columnSpan="4">
                 <font>
-                    <Font name="Segoe UI" size="18.0" />
+                    <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="RG" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;"
+                   text="RG" GridPane.columnIndex="3" GridPane.rowIndex="2">
                 <font>
-                    <Font name="Segoe UI" size="20.0" />
+                    <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;" text="Telefone" GridPane.rowIndex="2">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="167.0" style="-fx: 60px;"
+                   text="Telefone" GridPane.rowIndex="2">
                 <font>
-                    <Font name="Segoe UI" size="20.0" />
+                    <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField id="FieldAutor" fx:id="FieldRG" onAction="#newUser" prefHeight="35.0" prefWidth="423.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <TextField id="FieldAutor" fx:id="FieldRG" onAction="#newUser" prefHeight="35.0" prefWidth="423.0"
+                       GridPane.columnIndex="4" GridPane.rowIndex="2">
                 <font>
-                    <Font name="Segoe UI" size="18.0" />
+                    <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
-            <TextField id="FieldGenero" fx:id="FieldTelefone" onAction="#newUser" prefHeight="35.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField id="FieldGenero" fx:id="FieldTelefone" onAction="#newUser" prefHeight="35.0" prefWidth="430.0"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <font>
-                    <Font name="Segoe UI" size="18.0" />
+                    <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
             <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="167.0" text="Endereco" GridPane.rowIndex="1">
                 <font>
-                    <Font name="Segoe UI" size="20.0" />
+                    <Font name="Segoe UI" size="20.0"/>
                 </font>
             </Label>
-            <TextField id="FieldLocation" fx:id="FieldEndereco" onAction="#newUser" prefHeight="35.0" prefWidth="521.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
+            <TextField id="FieldLocation" fx:id="FieldEndereco" onAction="#newUser" prefHeight="35.0" prefWidth="521.0"
+                       GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
                 <font>
-                    <Font name="Segoe UI" size="18.0" />
+                    <Font name="Segoe UI" size="18.0"/>
                 </font>
             </TextField>
         </GridPane>
         <GridPane GridPane.rowIndex="1">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="846.0" minWidth="10.0" prefWidth="659.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="182.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="75.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="81.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="846.0" minWidth="10.0"
+                                   prefWidth="659.0"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0"
+                                   prefWidth="182.0"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0"
+                                   prefWidth="75.0"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0"
+                                   prefWidth="81.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints />
-                <RowConstraints />
-                <RowConstraints />
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
             </rowConstraints>
         </GridPane>
     </GridPane>

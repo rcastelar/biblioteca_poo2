@@ -15,11 +15,11 @@ import java.util.ArrayList;
  * @author f32cpd02
  */
 public class Usuario implements Serializable {
+    private final ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
     private int id;
     private String rg;
     private String nome;
     private String endereco;
-    private ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
     private String telefone;
 
 
@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
 
     public void removeEmprestimo(Emprestimo myexemplar) {
         for (Emprestimo neededExemplar : listaEmprestimo) {
-            if (myexemplar.getMyexemplar().getCodigo_exemplar().equals( neededExemplar.getMyexemplar().getCodigo_exemplar())) {
+            if (myexemplar.getMyexemplar().getCodigo_exemplar().equals(neededExemplar.getMyexemplar().getCodigo_exemplar())) {
                 listaEmprestimo.remove(neededExemplar);
                 break;
             }
@@ -57,46 +57,41 @@ public class Usuario implements Serializable {
         return this.id;
     }
 
+    public void setId(int bid) {
+        this.id = bid;
+    }
+
     public String getRg() {
         return this.rg;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public String getEndereco() {
-        return this.endereco;
     }
 
     public void setRg(String brg) {
         this.rg = brg;
     }
 
-
-
-    public void setId(int bid) {
-        this.id = bid;
-    }
-
-    public String getTelefone() {
-        return this.telefone;
+    public String getNome() {
+        return this.nome;
     }
 
     public void setNome(String bnome) {
         this.nome = bnome;
     }
 
+    public String getEndereco() {
+        return this.endereco;
+    }
+
     public void setEndereco(String brua) {
         this.endereco = brua;
+    }
+
+    public String getTelefone() {
+        return this.telefone;
     }
 
     public void setTelefone(String btelefone) {
         this.telefone = btelefone;
     }
 
-    public Usuario get() {
-        return this;
-    }
 }
 

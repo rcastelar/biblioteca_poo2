@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class ViewNewUsuario extends MasterView implements Initializable, ControlledScreen {
 
-    Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
+    private final Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     @FXML
     private TextField FieldNome;
     @FXML
@@ -30,21 +30,18 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
     @FXML
     private void newUser(ActionEvent event) {
         if (!FieldNome.getText().isEmpty()) {
-            int id = 1;
             Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
             mainControllerUsuario.addUsuario(myuser);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);
-            alert.setContentText("Usuário salvo.");
+            alert.setContentText("Usuario salvo.");
             FieldNome.setText("");
             FieldRG.setText("");
             FieldEndereco.setText("");
             FieldTelefone.setText("");
             alert.showAndWait();
-        }
-        else
-        {
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);
