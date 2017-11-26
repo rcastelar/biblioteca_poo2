@@ -59,12 +59,13 @@ public class Controller_Usuario {
         String[] codigos = myExemplarCod.split(";");
         String livroid = codigos[0];
         String mydate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-       for (Object neededlivro : myController_Publicacao.getListaLivros()) {
-            if (((Livro)neededlivro).getId() == Integer.parseInt(livroid)) {
-                for (Object neededexemplar : ((Livro)neededlivro).getListaExemplar()) {
-                    if (((Exemplar)neededexemplar).getCodigo_exemplar().equals(myExemplarCod)) {
-                        Emprestimo myEmprestimo = new Emprestimo((Exemplar)neededexemplar, (Livro)neededlivro, mydate);
+       for (Livro neededlivro : myController_Publicacao.getListaLivros()) {
+            if ((neededlivro).getId() == Integer.parseInt(livroid)) {
+                for (Exemplar neededexemplar : (neededlivro).getListaExemplar()) {
+                    if ((neededexemplar).getCodigo_exemplar().equals(myExemplarCod)) {
+                        Emprestimo myEmprestimo = new Emprestimo(neededexemplar, neededlivro, mydate);
                         selectedUser.addToListaEmprestimo(myEmprestimo);
+                        return 1;
                     }else {
                         return 0;
                     }

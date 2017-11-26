@@ -26,7 +26,7 @@ public class Controller_Publicacao {
         return instancepu;
     }
 
-    public ObservableList getListaLivros() {
+    public ObservableList<Livro> getListaLivros() {
         return listaLivros;
     }
 
