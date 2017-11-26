@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewEditLivros extends MasterView implements Initializable, ControlledScreen {
+public class ViewEditLivros implements Initializable, ControlledScreen {
     @FXML
     private TextField FieldTitulo;
     @FXML
@@ -28,7 +28,7 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
     private TextField FieldLocation;
     @FXML
     private Button BtnEditBook;
-    //private Screens_controller myController;
+    private Screens_controller myController;
     @FXML  private TableView TableExemplares;
     @FXML private TableColumn ExemplId;
     @FXML private TableColumn Cod_Exemplar;
@@ -57,6 +57,17 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
+    }
+
+    public void setScreenParent(Screens_controller screenParent) {
+        myController = screenParent;
+    }
+
+    @FXML
+    private void goToViewLivros(ActionEvent event) {
+        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
+        myController.setScreen("ViewLivros");
+        myController.unloadScreen("VewEditLivros");
     }
 
     @FXML

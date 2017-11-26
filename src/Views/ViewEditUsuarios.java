@@ -1,8 +1,10 @@
 package Views;
 
 import Controllers.Controller_Usuario;
-import biblioteca.*;
-import javafx.collections.FXCollections;
+import biblioteca.Emprestimo;
+import biblioteca.Exemplar;
+import biblioteca.Exemplar_DAO;
+import biblioteca.Usuario;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewEditUsuarios extends MasterView implements Initializable, ControlledScreen {
+public class ViewEditUsuarios implements Initializable, ControlledScreen {
 
     //Botoes
     @FXML
@@ -48,10 +50,11 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private TableColumn nomeLivro;
 
     //controlers e entidades
+    private Screens_controller myController;
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
-    ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
+
 
     // metodos
     @Override
@@ -65,13 +68,29 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
 
         private void updateExempTable(){
             //   Exemplar_DAO myexempl = new Exemplar_DAO();
-            ObservableList<Emprestimo> listaEmprestimo = selectedUsuario.getListaEmprestimo();
-        ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
-            nomeLivro.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
-            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("status"));
-            TableExemplares.setItems(listaEmprestimo);
+            ObservableList<Emprestimo> listaExemplares = selectedUsuario.getListaEmprestimo();
+        ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
+            nomeLivro.setCellValueFactory(new PropertyValueFactory("titulo"));
+            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("Dataemprestimo"));
+        TableExemplares.setItems(listaExemplares);
     }
 
+    public void setScreenParent(Screens_controller screenParent) {
+        myController = screenParent;
+    }
+
+    @FXML
+    private void goToViewUsuarios(ActionEvent event) {
+        myController.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
+        myController.setScreen("ViewUsuarios");
+        myController.unloadScreen("VewEditUsuarios");
+    }
+    @FXML
+    private void goToViewLivros(ActionEvent event) {
+        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
+        myController.setScreen("ViewLivros");
+        myController.unloadScreen("VewEditUsuarios");
+    }
     @FXML
     private void editUser(ActionEvent event) {
         if (FieldNome.isDisabled()) {
@@ -106,27 +125,20 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     }
     @FXML
     private void newEmprestimo(ActionEvent event) {
-        ViewAlert alertGet = new ViewAlert();
-        String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        String[] cods = exempCod.split(";");
-        Livro myLivro;
-        // for (Livro l : listaLivros) {
-        //     if (l.getId() = (cods[0].) {
-        //         Livro = l;
-        //     }
-        //}
-        // Emprestimo myEmprestimo = new Emprestimo(exempCod, selectedUsuario.getId(), "Disponível");
-        // mainControllerUsuario.addEmprestimo(myEmprestimo);
-        //    updateExempTable();
-        ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
-    }
 
+        ViewAlert alertGet =new ViewAlert();
+        String exempCod = alertGet.getUmDado("Codigo do exemplar:");
+        mainControllerUsuario.addEmprestimo(exempCod);
+        updateExempTable();
+        ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
+
+    }
 
     @FXML
     private void removeSelectedEmprestimo() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
             ViewAlert alertGet = new ViewAlert();
-            mainControllerUsuario.removeEmprestimo((Exemplar) TableExemplares.getSelectionModel().getSelectedItem());
+            mainControllerUsuario.removeEmprestimo((Emprestimo) TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
             ViewAlert showAlert = new ViewAlert("Exemplar removido");
         } else {

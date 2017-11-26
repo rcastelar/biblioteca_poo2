@@ -19,7 +19,7 @@ public class ViewAlert {
 
     public String getUmDado(String content){
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("ILybrary");
+        dialog.setTitle("Ilybrary");
         dialog.setHeaderText(null);
         dialog.setContentText("Codigo do exemplar:");
         Optional<String> result = dialog.showAndWait();

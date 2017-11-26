@@ -11,8 +11,9 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewNewUsuario extends MasterView implements Initializable, ControlledScreen {
+public class ViewNewUsuario implements Initializable, ControlledScreen {
 
+    Screens_controller myController;
     Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     @FXML
     private TextField FieldNome;
@@ -27,6 +28,24 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
     public void initialize(URL url, ResourceBundle rb) {
     }
 
+    public void setScreenParent(Screens_controller screenParent) {
+        myController = screenParent;
+    }
+
+    @FXML
+    private void goToViewLivros(ActionEvent event) {
+        myController.loadScreen("ViewLivros", "ViewLivros.fxml");
+        myController.setScreen("ViewLivros");
+        myController.unloadScreen("ViewNewUsuario");
+    }
+
+    @FXML
+    private void goToViewUsuario(ActionEvent event) {
+        myController.loadScreen("ViewUsuarios", "ViewUsuarios.fxml");
+        myController.setScreen("ViewUsuarios");
+        myController.unloadScreen("ViewNewUsuario");
+    }
+
     @FXML
     private void newUser(ActionEvent event) {
         if (!FieldNome.getText().isEmpty()) {
@@ -36,7 +55,7 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("iLibrary");
             alert.setHeaderText(null);
-            alert.setContentText("Usuario salvo.");
+            alert.setContentText("Livro salvo.");
             FieldNome.setText("");
             FieldRG.setText("");
             FieldEndereco.setText("");

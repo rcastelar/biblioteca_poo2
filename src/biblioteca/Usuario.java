@@ -39,18 +39,18 @@ public class Usuario implements Serializable {
         return FXCollections.observableList(listaEmprestimo);
     }
 
-    public void removeEmprestimo(Exemplar myexemplar) {
+    public void removeEmprestimo(Emprestimo myexemplar) {
         Livro_DAO myLivroDao = new Livro_DAO();
-        for (Emprestimo neededEmprestimo : listaEmprestimo) {
-            if (myexemplar.getCodigo_exemplar() == neededEmprestimo.getMyExemplar().getCodigo_exemplar()) {
-                listaEmprestimo.remove(neededEmprestimo);
+        for (Emprestimo neededExemplar : listaEmprestimo) {
+            if (myexemplar.getMyexemplar().getCodigo_exemplar() == neededExemplar.getMyexemplar().getCodigo_exemplar()) {
+                listaEmprestimo.remove(neededExemplar);
                 break;
             }
         }
     }
 
-    public void addToListaEmprestimo(Emprestimo myEmprestimo) {
-        listaEmprestimo.add(myEmprestimo);
+    public void addToListaEmprestimo(Emprestimo myExemplar) {
+        listaEmprestimo.add(myExemplar);
     }
 
 

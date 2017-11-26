@@ -25,12 +25,12 @@
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ToViewEditlivros" prefHeight="30.0" prefWidth="106.0" text="Detalhes do livro" GridPane.columnIndex="3">
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToViewEditlivros" prefHeight="30.0" prefWidth="106.0" text="Detalhes do livro" GridPane.columnIndex="3">
             <effect>
 
             </effect>
             <cursor>
-                <Cursor fx:constant="CLOSED_HAND" />
+                <Cursor fx:constant="S_RESIZE" />
             </cursor>
         </Button>
         <Button mnemonicParsing="false" onAction="#goToViewNewlivro" prefHeight="30.0" prefWidth="71.0" text="Novo livro" GridPane.columnIndex="2">
@@ -50,12 +50,22 @@
         </TextField>
     </GridPane>
     <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="210.0" style="-fx-background-color: '#1E90FF';">
-        <Button mnemonicParsing="false" onAction="#goToViewLivros" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
+        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';" text="Livros" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0" />
             </font>
         </Button>
-        <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#goToViewUsuarios" prefHeight="50.0" prefWidth="274.0" style="-fx-background-color: '#1E90FF';" text="Usuários" textFill="WHITE">
+        <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="214.0" style="-fx-background-color: '#1E90FF';" text="Fila de Espera" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI" size="22.0" />
+            </font>
+        </Button>
+        <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="244.0" style="-fx-background-color: '#1E90FF';" text="Emprestimo" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI" size="22.0" />
+            </font>
+        </Button>
+        <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="274.0" style="-fx-background-color: '#1E90FF';" text="Usuários" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0" />
             </font>
