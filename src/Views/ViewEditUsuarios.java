@@ -48,7 +48,6 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private TableColumn nomeLivro;
 
     //controlers e entidades
-    private Screens_controller myController;
     private Exemplar_DAO bdControl = new Exemplar_DAO();
     private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
     private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
@@ -72,10 +71,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
             DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("Dataemprestimo"));
         TableExemplares.setItems(listaExemplares);
     }
-
-    public void setScreenParent(Screens_controller screenParent) {
-        myController = screenParent;
-    }
+    
 
 
 
