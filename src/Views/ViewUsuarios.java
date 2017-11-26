@@ -83,9 +83,7 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
                         || l.getEndereco().contains(palavraChave)) && !listaPesquisa.contains(l))
                     listaPesquisa.add(l);
             }
-
-            if (!listaPesquisa.isEmpty())
-                TableUsuarios.setItems(listaPesquisa);
+            TableUsuarios.setItems(listaPesquisa);
 
         } else if (palavraChave.length() == 0 ) {
             TableUsuarios.setItems(listaUsuarios);
