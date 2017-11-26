@@ -53,7 +53,7 @@ public class Controller_Usuario {
         myUsuarioDao.InsertUsuario(listaUsuarios);
     }
 
-    public void addEmprestimo(String myExemplarCod) {
+    public int addEmprestimo(String myExemplarCod) {
 
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
         String[] codigos = myExemplarCod.split(";");
@@ -62,16 +62,21 @@ public class Controller_Usuario {
        for (Object neededlivro : myController_Publicacao.getListaLivros()) {
             if (((Livro)neededlivro).getId() == Integer.parseInt(livroid)) {
                 for (Object neededexemplar : ((Livro)neededlivro).getListaExemplar()) {
-                    if ((((Exemplar)neededexemplar).getCodigo_exemplar() ==myExemplarCod)) {
+                    if (((Exemplar)neededexemplar).getCodigo_exemplar().equals(myExemplarCod)) {
                         Emprestimo myEmprestimo = new Emprestimo((Exemplar)neededexemplar, (Livro)neededlivro, mydate);
                         selectedUser.addToListaEmprestimo(myEmprestimo);
-                        break;
+
+
+                    }else {
+                        return 0;
                     }
                 }
+
 
             }
         }
         myUsuarioDao.InsertUsuario(listaUsuarios);
+       return 1;
     }
 
     public void removeEmprestimo(Emprestimo myExemplar) {

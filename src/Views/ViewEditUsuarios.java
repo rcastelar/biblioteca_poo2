@@ -71,7 +71,7 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
             DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("Dataemprestimo"));
         TableExemplares.setItems(listaExemplares);
     }
-    
+
 
 
 
@@ -111,7 +111,8 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private void newEmprestimo(ActionEvent event) {
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
-        mainControllerUsuario.addEmprestimo(exempCod);
+        int result = mainControllerUsuario.addEmprestimo(exempCod);
+        if (result == 0)
         updateExempTable();
         ViewAlert showAlert= new ViewAlert("Exemplar adicionado");
 
