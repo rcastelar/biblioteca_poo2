@@ -12,13 +12,12 @@ import javafx.util.Duration;
 
 import java.util.HashMap;
 
-public class Screens_controller extends StackPane{
-
-    public String NameViewAtual;
+public class Screens_controller extends StackPane {
 
     private static final HashMap<String, Node> screens = new HashMap<>();
+    public String NameViewAtual;
 
-    public Screens_controller(){
+    public Screens_controller() {
         super();
     }
 
@@ -26,25 +25,19 @@ public class Screens_controller extends StackPane{
         screens.put(name, screen);
     }
 
-    public Node getScreen(String name){
-        return screens.get(name);
-    }
-
-    public boolean loadScreen(String name, String resource){
-        try{
+    public void loadScreen(String name, String resource) {
+        try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScreen = myLoader.load();
             ControlledScreen myScreenControler = myLoader.getController();
-                myScreenControler.setScreenParent(this);
-                addScreen(name, loadScreen);
-                return true;
-            } catch (Exception e){
-                System.out.println(e.getMessage());
-                return false;
-            }
+            myScreenControler.setScreenParent(this);
+            addScreen(name, loadScreen);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }
 
-    public boolean setScreen(String name) {
+    public void setScreen(String name) {
         if (screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
             if (!getChildren().isEmpty()) {
@@ -67,22 +60,13 @@ public class Screens_controller extends StackPane{
                         new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
                 fadeIn.play();
             }
-
             NameViewAtual = name;
-
-            return true;
         } else {
             System.out.println("Screen hasn't benn loaded! \n");
-            return false;
         }
     }
 
-    boolean unloadScreen(String name) {
-            screens.remove(name);
-            return false;
-
+    void unloadScreen(String name) {
+        screens.remove(name);
     }
-
-
-
 }

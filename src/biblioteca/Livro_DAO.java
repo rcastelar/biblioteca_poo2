@@ -23,7 +23,7 @@ import java.util.List;
  * @author f32cpd02
  */
 public class Livro_DAO {
-    Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
+    private final Path arquivoLivros = Paths.get("./src/bd/arquivoLivros.txt");
 
 
     public Livro_DAO() {
@@ -58,14 +58,12 @@ public class Livro_DAO {
 
 
     public void InsertLivro(ObservableList<Livro> meusLivros) {
-        int i = 0;
-        while ((!Files.exists(arquivoLivros) && (i < 2))) {
+        if (!Files.exists(arquivoLivros) ) {
             try {
                 Files.createFile(arquivoLivros);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            i++;
         }
         try {
             ObjectOutputStream os = new ObjectOutputStream(
@@ -76,7 +74,5 @@ public class Livro_DAO {
         }
     }
 
-    public void DeleteLivro(Livro Lv) {
-    }
 }
 

@@ -1,15 +1,13 @@
 package biblioteca;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 
-public class Emprestimo implements Serializable{
-    private String Dataemprestimo;
+public class Emprestimo implements Serializable {
+    private String dataemprestimo;
     private Exemplar myexemplar;
     private Livro mybook;
 
-    public Emprestimo(Exemplar gexemplar, Livro glivro, String gdate){
+    public Emprestimo(Exemplar gexemplar, Livro glivro, String gdate) {
         this.setMybook(glivro);
         this.setDataemprestimo(gdate);
         this.setMyexemplar(gexemplar);
@@ -19,31 +17,27 @@ public class Emprestimo implements Serializable{
         return myexemplar;
     }
 
-    public Livro getMybook() {
-        return mybook;
+    private void setMyexemplar(Exemplar myexemplar) {
+        this.myexemplar = myexemplar;
+    }
+
+    private void setMybook(Livro mybook) {
+        this.mybook = mybook;
+    }
+
+    public String getCodigo_exemplar() {
+        return this.myexemplar.getCodigo_exemplar();
+    }
+
+    public String getDataemprestimo(){
+        return this.dataemprestimo;
     }
 
     public String getTitulo(){
         return this.mybook.getTitulo();
     }
 
- public String getCodigoExemplar(){
-        return this.myexemplar.getCodigo_exemplar();
- }
-
-    public String getDataemprestimo() {
-        return Dataemprestimo;
-    }
-
-    public void setDataemprestimo(String dataemprestimo) {
-        Dataemprestimo = dataemprestimo;
-    }
-
-    public void setMybook(Livro mybook) {
-        this.mybook = mybook;
-    }
-
-    public void setMyexemplar(Exemplar myexemplar) {
-        this.myexemplar = myexemplar;
+    private void setDataemprestimo(String gdataemprestimo) {
+        dataemprestimo = gdataemprestimo;
     }
 }

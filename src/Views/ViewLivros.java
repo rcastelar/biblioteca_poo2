@@ -17,8 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewLivros extends MasterView implements Initializable, ControlledScreen {
-    Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
-
+    private final Controller_Publicacao mainControllerPublicacao = Controller_Publicacao.getInstance();
+    private ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
+    private final ObservableList<Livro> listaPesquisa = FXCollections.observableArrayList();
     @FXML
     private TextField Pesquisar;
     @FXML
@@ -35,9 +36,6 @@ public class ViewLivros extends MasterView implements Initializable, ControlledS
     private TableColumn<Object, Object> LivroId;
     @FXML
     private TableColumn<Object, Object> EditoraId;
-
-    ObservableList<Livro> listaLivros = FXCollections.observableArrayList();
-    ObservableList<Livro> listaPesquisa = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,14 +54,15 @@ public class ViewLivros extends MasterView implements Initializable, ControlledS
         if (!TableLivros.getSelectionModel().isEmpty()) {
             goToViewEditlivros(event);
         } else {
-            ViewAlert alert = new ViewAlert("Nenhum livro selecionado");
+            new ViewAlert("Nenhum livro selecionado");
         }
     }
 
     @FXML
-    private void mySelectedBook(){
+    private void mySelectedBook() {
         mainControllerPublicacao.setSelectedPublicacao(TableLivros.getSelectionModel().getSelectedItem());
     }
+
     @FXML
     private void pesquisaLivros(KeyEvent e) {
         String palavraChave = Pesquisar.getText();
@@ -78,9 +77,8 @@ public class ViewLivros extends MasterView implements Initializable, ControlledS
             }
             TableLivros.setItems(listaPesquisa);
 
-        } else if (palavraChave.length() == 0 ) {
+        } else{
             TableLivros.setItems(listaLivros);
-
         }
     }
 }

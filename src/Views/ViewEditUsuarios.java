@@ -1,8 +1,8 @@
 package Views;
 
 import Controllers.Controller_Usuario;
-import biblioteca.*;
-import javafx.collections.FXCollections;
+import biblioteca.Emprestimo;
+import biblioteca.Usuario;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,9 +23,6 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     @FXML
     private Button BtnRemoveExemplar;
 
-    //Colunas
-    @FXML
-    private TableColumn nome_livro;
     @FXML
     private TableColumn LivroId;
 
@@ -40,17 +37,17 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
     private TextField FieldEndereco;
 
     //tabela e colunas
-    @FXML  private TableView TableExemplares;
-    @FXML private TableColumn ExemplId;
     @FXML
-    private TableColumn DatalimiteId;
+    private TableView<Emprestimo> TableExemplares;
+    @FXML
+    private TableColumn<Object, Object> ExemplId;
+    @FXML
+    private TableColumn<Object, Object> DatalimiteId;
     @FXML
     private TableColumn nomeLivro;
 
-    //controlers e entidades
-    private Exemplar_DAO bdControl = new Exemplar_DAO();
-    private Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
-    private Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
+    private final Controller_Usuario mainControllerUsuario = Controller_Usuario.getInstance();
+    private final Usuario selectedUsuario = (Usuario) mainControllerUsuario.getSelectedUsuario();
 
 
     // metodos
@@ -63,16 +60,13 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
         updateExempTable();
     }
 
-        private void updateExempTable(){
-            //   Exemplar_DAO myexempl = new Exemplar_DAO();
-            ObservableList<Emprestimo> listaExemplares = selectedUsuario.getListaEmprestimo();
+    private void updateExempTable() {
+        ObservableList<Emprestimo> listaExemplares = selectedUsuario.getListaEmprestimo();
         ExemplId.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
-            nomeLivro.setCellValueFactory(new PropertyValueFactory("titulo"));
-            DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("Dataemprestimo"));
+        nomeLivro.setCellValueFactory(new PropertyValueFactory("titulo"));
+        DatalimiteId.setCellValueFactory(new PropertyValueFactory<>("dataemprestimo"));
         TableExemplares.setItems(listaExemplares);
     }
-
-
 
 
     @FXML
@@ -91,13 +85,9 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
                 FieldRG.setDisable(true);
                 FieldEndereco.setDisable(true);
                 BtnEditUser.setText("Editar Usuario");
-                Usuario UsuarioAtualizado = new Usuario(selectedUsuario.getId(), FieldNome.getText(), FieldEndereco.getText(),
-                        FieldRG.getText(), FieldTelefone.getText());
                 Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
                 mainControllerUsuario.editUsuario(myuser);
-            }
-            else
-            {
+            } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("iLibrary");
                 alert.setHeaderText(null);
@@ -107,28 +97,31 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
             }
         }
     }
+
     @FXML
     private void newEmprestimo(ActionEvent event) {
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         int result = mainControllerUsuario.addEmprestimo(exempCod);
-        if (result == 0){
-            ViewAlert showAlert= new ViewAlert("Exemplar nao cadastrado!");
-        }else {
+        if (result == 0) {
+            new ViewAlert("Exemplar nao cadastrado!");
+        } else if (result == 2) {
+            new ViewAlert("Efetue a devolucao do exemplar antes de emprestalo novamente.");
+        } else {
             updateExempTable();
-            ViewAlert showAlert = new ViewAlert("Exemplar adicionado");
+            new ViewAlert("Exemplar adicionado");
         }
     }
 
     @FXML
     private void removeSelectedEmprestimo() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
-            ViewAlert alertGet = new ViewAlert();
-            mainControllerUsuario.removeEmprestimo((Emprestimo) TableExemplares.getSelectionModel().getSelectedItem());
+            new ViewAlert();
+            mainControllerUsuario.removeEmprestimo(TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
-            ViewAlert showAlert = new ViewAlert("Exemplar removido");
+            new ViewAlert("Exemplar devolvido");
         } else {
-            ViewAlert erro = new ViewAlert("Nenhum exemplar selecionado");
+            new ViewAlert("Nenhum exemplar selecionado");
         }
     }
 }

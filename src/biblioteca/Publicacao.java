@@ -10,14 +10,14 @@ import java.util.ArrayList;
  * @author f32cpd02
  */
 public abstract class Publicacao implements Serializable {
-    protected int id;
-    protected String titulo;
-    protected String posicao;
-    protected String genero;
-    protected String editora;
-    private ArrayList<Exemplar> listaExemplar = new ArrayList<>();
+    private int id;
+    private String titulo;
+    private String posicao;
+    private String genero;
+    private String editora;
+    private final ArrayList<Exemplar> listaExemplar = new ArrayList<>();
 
-    public Publicacao(int bid, String btitulo, String bposicao, String bgenero, String beditora) {
+    Publicacao(int bid, String btitulo, String bposicao, String bgenero, String beditora) {
         this.id = bid;
         this.titulo = btitulo;
         this.posicao = bposicao;
@@ -25,7 +25,7 @@ public abstract class Publicacao implements Serializable {
         this.editora = beditora;
     }
 
-    public Publicacao(){
+    Publicacao() {
     }
 
     public ObservableList<Exemplar> getListaExemplar() {
@@ -34,9 +34,8 @@ public abstract class Publicacao implements Serializable {
     }
 
     public void removeExemplar(Exemplar myexemplar) {
-        Livro_DAO myLivroDao = new Livro_DAO();
         for (Exemplar neededExemplar : listaExemplar) {
-            if (myexemplar.getCodigo_exemplar() == neededExemplar.getCodigo_exemplar()) {
+            if (myexemplar.getCodigo_exemplar().equals(neededExemplar.getCodigo_exemplar())) {
                 listaExemplar.remove(neededExemplar);
                 break;
             }
@@ -76,10 +75,6 @@ public abstract class Publicacao implements Serializable {
         return this.id;
     }
 
-    public void setId(int bid) {
-        this.id = bid;
-    }
-
     public String getTitulo() {
         return this.titulo;
     }
@@ -88,7 +83,4 @@ public abstract class Publicacao implements Serializable {
         this.titulo = btitulo;
     }
 
-    public Publicacao get() {
-        return this;
-    }
 }
