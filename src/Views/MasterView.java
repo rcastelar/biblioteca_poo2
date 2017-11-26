@@ -9,7 +9,6 @@ public abstract class MasterView {
     Screens_controller myscreen;
 
     public MasterView(){
-
     }
 
     public void setScreenParent(Screens_controller screenParent) {

@@ -89,10 +89,8 @@ public class ViewLivros implements Initializable, ControlledScreen {
                         l.getAutor().contains(palavraChave) || l.getTitulo().contains(palavraChave)) && !listaPesquisa.contains(l))
                     listaPesquisa.add(l);
             }
+            TableLivros.setItems(listaPesquisa);
 
-            if (!listaPesquisa.isEmpty()) {
-                TableLivros.setItems(listaPesquisa);
-            }
         } else if (palavraChave.length() == 0 ) {
             TableLivros.setItems(listaLivros);
 
