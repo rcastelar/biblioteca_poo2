@@ -52,17 +52,22 @@ public class Controller_Publicacao {
         myLivroDao.InsertLivro(listaLivros);
     }
 
-    public void addExemplar(Exemplar myExemplar) {
+    public int addExemplar(Exemplar myExemplar) {
         Livro_DAO myLivroDao = new Livro_DAO();
         String cod = selectedPub.getId() + "/" + myExemplar.getCodigo_exemplar();
         myExemplar.setCodigo_exemplar(cod);
         for (Livro neededBook : listaLivros) {
             if (selectedPub.getId() == neededBook.get().getId()) {
+                for (Exemplar existe : neededBook.getListaExemplar()) {
+                    if (existe.getCodigo_exemplar().equals(myExemplar.getCodigo_exemplar())){
+                    return 1;
+                    }
+                }
                 neededBook.addToListaExempar(myExemplar);
-                break;
             }
         }
         myLivroDao.InsertLivro(listaLivros);
+        return 0;
     }
 
     public void removeExemplar(Exemplar myExemplar) {

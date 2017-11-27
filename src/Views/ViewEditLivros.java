@@ -101,10 +101,14 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
         ViewAlert alertGet = new ViewAlert();
         String exempCod = alertGet.getUmDado("Codigo do exemplar:");
         Exemplar myExemplar = new Exemplar(exempCod, "Disponível");
-        mainControllerPublicacao.addExemplar(myExemplar);
-        updateExempTable();
-        new ViewAlert("Exemplar adicionado");
+        int result = mainControllerPublicacao.addExemplar(myExemplar);
+        if (result == 1) {
+            new ViewAlert("Um exemplar com este codigo ja foi cadastrado");
+        } else {
+            updateExempTable();
+            new ViewAlert("Exemplar adicionado");
 
+        }
     }
 
     @FXML
