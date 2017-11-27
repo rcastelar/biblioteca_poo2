@@ -41,24 +41,13 @@ public class Screens_controller extends StackPane {
         if (screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
             if (!getChildren().isEmpty()) {
-                Timeline fade = new Timeline(
-                        new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                        new KeyFrame(new Duration(100), t -> {
+
                             getChildren().remove(0);
                             getChildren().add(0, screens.get(name));
-                            Timeline fadeIn = new Timeline(
-                                    new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                                    new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
-                            fadeIn.play();
-                        }, new KeyValue(opacity, 0.0)));
-                fade.play();
+
             } else {
-                setOpacity(0.0);
+
                 getChildren().add(screens.get(name));
-                Timeline fadeIn = new Timeline(
-                        new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                        new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
-                fadeIn.play();
             }
             NameViewAtual = name;
         } else {
