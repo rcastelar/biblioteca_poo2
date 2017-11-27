@@ -72,14 +72,14 @@ public class ViewUsuarios extends MasterView implements Initializable, Controlle
 
     @FXML
     private void pesquisaUsuarios(KeyEvent e) {
-        String palavraChave = Pesquisar.getText();
+        String palavraChave = Pesquisar.getText().toUpperCase();
 
         if (!palavraChave.isEmpty()) {
             listaPesquisa.clear();
 
             for (Usuario l : listaUsuarios) {
-                if ((l.getNome().contains(palavraChave) || l.getRg().contains(palavraChave) || l.getTelefone().contains(palavraChave)
-                        || l.getEndereco().contains(palavraChave)) && !listaPesquisa.contains(l))
+                if ((l.getNome().toUpperCase().contains(palavraChave) || l.getRg().toUpperCase().contains(palavraChave) || l.getTelefone().toUpperCase().contains(palavraChave)
+                        || l.getEndereco().toUpperCase().contains(palavraChave)) && !listaPesquisa.contains(l))
                     listaPesquisa.add(l);
             }
             TableUsuarios.setItems(listaPesquisa);
