@@ -24,10 +24,8 @@ import java.util.List;
 public class Usuario_DAO {
     private static final Path arquivoUsuarios = Paths.get("./arquivoUsuarios.txt");
 
-
     public Usuario_DAO() {
     }
-
 
     public ObservableList<Usuario> getAllUsuario() {
         ObjectInputStream os;
@@ -55,7 +53,6 @@ public class Usuario_DAO {
         return mylist;
     }
 
-
     public void InsertUsuario(ObservableList<Usuario> meusUsuarios) {
         if (!Files.exists(arquivoUsuarios)) {
             try {
@@ -72,5 +69,4 @@ public class Usuario_DAO {
             ex.printStackTrace();
         }
     }
-
 }

@@ -8,7 +8,6 @@ package biblioteca;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,10 +24,8 @@ import java.util.List;
 public class Livro_DAO {
     private final Path arquivoLivros = Paths.get("./arquivoLivros.txt");
 
-
     public Livro_DAO() {
     }
-
 
     public ObservableList<Livro> getAllLivro() {
         ObjectInputStream os;
