@@ -88,7 +88,7 @@ public class Controller_Usuario {
     }
 
     public void removeEmprestimo(Emprestimo myExemplar) {
-        String[] codigos = myExemplar.getCodigo_exemplar().split(";");
+        String[] codigos = myExemplar.getCodigo_exemplar().split("/");
         String livroid = codigos[0];
         Livro_DAO myLivroDao = new Livro_DAO();
         Usuario_DAO myUsuarioDao = new Usuario_DAO();

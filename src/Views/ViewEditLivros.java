@@ -110,12 +110,16 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
     @FXML
     private void removeSelectedExemplar() {
         if (!TableExemplares.getSelectionModel().isEmpty()) {
-
+               if (TableExemplares.getSelectionModel().getSelectedItem().getStatus().equals("Emprestado")){
+                   new ViewAlert("Exemplar emprestado não pode ser removido!");
+               } else{
             mainControllerPublicacao.removeExemplar(TableExemplares.getSelectionModel().getSelectedItem());
             updateExempTable();
             new ViewAlert("Exemplar removido");
-        } else {
-            new ViewAlert("Nenhum exemplar selecionado");
+        } 
         }
+        else {
+            new ViewAlert("Nenhum exemplar selecionado");
+    }
     }
 }
