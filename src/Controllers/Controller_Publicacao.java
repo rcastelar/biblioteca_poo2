@@ -36,10 +36,16 @@ public class Controller_Publicacao {
         selectedPub = gid;
     }
 
-    public void addLivro(Livro myLivro) {
+    public int addLivro(Livro myLivro) {
         Livro_DAO myLivroDao = new Livro_DAO();
+        for (Livro neededbook : listaLivros) {
+            if ((neededbook).getTitulo().equals(myLivro.getTitulo())) {
+                return 1;
+            }
+        }
         listaLivros.add(myLivro);
         myLivroDao.InsertLivro(listaLivros);
+        return 0;
     }
 
     public void editLivro(Livro myLivro) {
