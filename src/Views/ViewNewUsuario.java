@@ -29,26 +29,24 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
 
     @FXML
     private void newUser(ActionEvent event) {
-        if (!FieldNome.getText().isEmpty()) {
+        if (!FieldRG.getText().isEmpty()) {
             Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
-            mainControllerUsuario.addUsuario(myuser);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("iLibrary");
-            alert.setHeaderText(null);
-            alert.setContentText("Usuario salvo.");
+            int result =mainControllerUsuario.addUsuario(myuser);
+            if (result == 1){
+                new ViewAlert("Usuario ja cadastrado");
+            }else {
+
             FieldNome.setText("");
             FieldRG.setText("");
             FieldEndereco.setText("");
             FieldTelefone.setText("");
-            alert.showAndWait();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("iLibrary");
-            alert.setHeaderText(null);
-            alert.setContentText("Usuario não pode ser salvo. Preencha o campo Nome!");
-            alert.showAndWait();
-            FieldNome.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
+            new ViewAlert("Usu'ario salvo");
+            }
+        }else {
+            new ViewAlert("Usuario não pode ser salvo. Preencha o campo RG!");
+            FieldRG.setStyle("-fx-border-style:solid; -fx-border-color: red; -fx-border-radius: 5px; -fx-effect: dropshadow(three-pass-box, red, 10, 0, 0, 0);");
         }
     }
 }
+
 

@@ -38,10 +38,16 @@ public class Controller_Usuario {
     }
 
 
-    public void addUsuario(Usuario myUsuario) {
+    public int addUsuario(Usuario myUsuario) {
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
+        for (Usuario neededuser : listaUsuarios) {
+            if ((neededuser).getRg().equals(myUsuario.getRg())) {
+                return 1;
+            }
+        }
         listaUsuarios.add(myUsuario);
         myUsuarioDao.InsertUsuario(listaUsuarios);
+        return 0;
     }
 
     public void editUsuario(Usuario myUsuario) {
