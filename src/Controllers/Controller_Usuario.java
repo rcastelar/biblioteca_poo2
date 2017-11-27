@@ -58,7 +58,8 @@ public class Controller_Usuario {
         Livro_DAO myLivroDao = new Livro_DAO();
         Usuario_DAO myUsuarioDao = new Usuario_DAO();
         //o simbolo ; separa a parte do codigo do exemplar que se refere ao livro da parte que se refere ao proprio exemplar
-        String[] codigos = myExemplarCod.split(";");
+        if (myExemplarCod.contains("/")){
+        String[] codigos = myExemplarCod.split("/");
         String livroid = codigos[0];
         String mydate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         for (Livro neededlivro : myController_Publicacao.getListaLivros()) {
@@ -79,6 +80,9 @@ public class Controller_Usuario {
                 }
             }
         }
+        }else{
+                return 3;
+                }
 
         return 0;
     }

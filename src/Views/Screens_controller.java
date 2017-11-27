@@ -1,5 +1,6 @@
 package Views;
 
+import java.io.IOException;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -32,7 +33,7 @@ public class Screens_controller extends StackPane {
             ControlledScreen myScreenControler = myLoader.getController();
             myScreenControler.setScreenParent(this);
             addScreen(name, loadScreen);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -41,12 +42,9 @@ public class Screens_controller extends StackPane {
         if (screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
             if (!getChildren().isEmpty()) {
-
                             getChildren().remove(0);
                             getChildren().add(0, screens.get(name));
-
             } else {
-
                 getChildren().add(screens.get(name));
             }
             NameViewAtual = name;

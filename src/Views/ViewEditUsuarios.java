@@ -107,7 +107,10 @@ public class ViewEditUsuarios extends MasterView implements Initializable, Contr
             new ViewAlert("Exemplar nao cadastrado!");
         } else if (result == 2) {
             new ViewAlert("Efetue a devolucao do exemplar antes de emprestalo novamente.");
-        } else {
+        } else if (result ==3){
+            new ViewAlert("O codigo do exemplar deve ser inserido no formato  ´codigo do livro/codigo do exemplar´, como cadastrado na tela de detalhes do livro");
+        }
+        else {
             updateExempTable();
             new ViewAlert("Exemplar adicionado");
         }
