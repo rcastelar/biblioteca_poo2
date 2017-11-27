@@ -31,8 +31,6 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
     @FXML
     private TableView<Exemplar> TableExemplares;
     @FXML
-    private TableColumn<Object, Object> ExemplId;
-    @FXML
     private TableColumn<Object, Object> Cod_Exemplar;
     @FXML
     private TableColumn<Object, Object> StatusId;
@@ -58,7 +56,6 @@ public class ViewEditLivros extends MasterView implements Initializable, Control
     private void updateExempTable() {
         ObservableList<Exemplar> listaExemplares = selectedlivro.getListaExemplar();
         LivroId.setCellValueFactory(new PropertyValueFactory<>("id_livro"));
-        ExemplId.setCellValueFactory(new PropertyValueFactory<>("id"));
         Cod_Exemplar.setCellValueFactory(new PropertyValueFactory<>("codigo_exemplar"));
         StatusId.setCellValueFactory(new PropertyValueFactory<>("status"));
         TableExemplares.setItems(listaExemplares);
