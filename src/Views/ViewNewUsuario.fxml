@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121"
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.121"
       fx:controller="Views.ViewNewUsuario">
     <GridPane prefHeight="73.0" prefWidth="1366.0" style="-fx-background-color: '#1E90FF';">
         <columnConstraints>
@@ -42,7 +42,7 @@
             </font>
         </Button>
         <Button layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="274.0"
-                style="-fx-background-color: '#1E90FF';" text="Usuários" textFill="WHITE">
+                style="-fx-background-color: '#1E90d0';" text="Usuários" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0"/>
             </font>

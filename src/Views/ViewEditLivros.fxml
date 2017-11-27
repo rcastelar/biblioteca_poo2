@@ -35,7 +35,7 @@
                 wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
     <VBox layoutX="-2.0" layoutY="71.0" prefHeight="697.0" prefWidth="202.0" style="-fx-background-color: '#1E90FF';">
-        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90FF';"
+        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: '#1E90d0';"
                 text="Livros" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0"/>

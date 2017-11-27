@@ -27,7 +27,7 @@
 
             </effect>
             <cursor>
-                <Cursor fx:constant="DEFAULT"/>
+                <Cursor fx:constant="S_RESIZE"/>
             </cursor>
         </Button>
         <Button fx:id="btnNewUser" mnemonicParsing="false" onAction="#goToViewNewUsuario" prefHeight="29.0"
@@ -59,7 +59,7 @@
         </Button>
         <Button fx:id="btnMainUsuarios" layoutX="10.0" layoutY="50.0" mnemonicParsing="false"
                 onAction="#goToViewUsuarios" prefHeight="50.0" prefWidth="274.0"
-                style="-fx-background-color: '#1E90FF';" text="Usuários" textFill="WHITE">
+                style="-fx-background-color: '#1E90d0';" text="Usuários" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="22.0"/>
             </font>
