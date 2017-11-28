@@ -35,7 +35,7 @@ public class ViewNewLivro extends MasterView implements Initializable, Controlle
             Livro mybook = new Livro(mainControllerPublicacao.getListaLivros().size() + 1, FieldTitulo.getText(), FieldLocation.getText(), FieldAutor.getText(), FieldGenero.getText(), FieldEditora.getText());
             int result = mainControllerPublicacao.addLivro(mybook);
             if (result == 1) {
-                new ViewAlert("Livro com o titulo digitado ja foi cadastrado");
+                new ViewAlert("Livro com o título digitado já foi cadastrado");
             } else {
                 FieldTitulo.setText("");
                 FieldAutor.setText("");

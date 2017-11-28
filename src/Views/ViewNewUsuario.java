@@ -33,14 +33,14 @@ public class ViewNewUsuario extends MasterView implements Initializable, Control
             Usuario myuser = new Usuario(mainControllerUsuario.getListaUsuarios().size() + 1, FieldNome.getText(), FieldEndereco.getText(), FieldRG.getText(), FieldTelefone.getText());
             int result =mainControllerUsuario.addUsuario(myuser);
             if (result == 1){
-                new ViewAlert("Usuario ja cadastrado");
+                new ViewAlert("Usuário já cadastrado");
             }else {
 
             FieldNome.setText("");
             FieldRG.setText("");
             FieldEndereco.setText("");
             FieldTelefone.setText("");
-            new ViewAlert("Usu'ario salvo");
+            new ViewAlert("Usuário salvo");
             }
         }else {
             new ViewAlert("Usuario não pode ser salvo. Preencha o campo RG!");
